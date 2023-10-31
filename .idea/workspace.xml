@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a471ca08-143f-4b3b-a851-c11408a5448d" name="Changes" comment="First Commit">
-      <change afterPath="$PROJECT_DIR$/src/BackEnd/ArrayBord.java" afterDir="false" />
+    <list default="true" id="a471ca08-143f-4b3b-a851-c11408a5448d" name="Changes" comment="second Commit">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BackEnd/Receiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BackEnd/BackEndBord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BackEnd/ArrayBord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BackEnd/ArrayBord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BackEnd/BackEndBord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BackEnd/BackEndBord.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +30,20 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "AlexanderRosen96"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="ea50b626-fb25-4f7f-9b5a-53e3d25ae5a3" />
+        <option name="url" value="https://github.com/MarcusEdug/BattleShip300.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -43,6 +57,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "Alex-Task4",
     "node.js.detected.package.eslint": "true",
@@ -61,7 +76,7 @@
       <option name="presentableId" value="Default" />
       <updated>1698754323892</updated>
       <workItem from="1698754325209" duration="1000" />
-      <workItem from="1698754453933" duration="4434000" />
+      <workItem from="1698754453933" duration="6994000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -71,7 +86,23 @@
       <option name="project" value="LOCAL" />
       <updated>1698755933469</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="First Commit">
+      <option name="closed" value="true" />
+      <created>1698758941696</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1698758941696</updated>
+    </task>
+    <task id="LOCAL-00003" summary="second Commit">
+      <option name="closed" value="true" />
+      <created>1698761333524</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1698761333524</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -79,7 +110,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="First Commit" />
+    <MESSAGE value="second Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="second Commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -17,20 +17,9 @@ public class BackEndBord {
         }
     }
     public void bord () {
-        int[][] arr = new int[XRowValue][YRowValue];
-
-        for (int x = 0; x < 10; x++) {
-            for (int y = 0; y < YRowValue; y++) {
-                arr[x][y] = (x*10)+y;
-            }
-        }
-        for (int x = 0; x < XRowValue; x++) {
-            for (int y = 0; y < YRowValue; y++) {
-                System.out.print(arr[x][y] + " " );
-            }
-            System.out.println(" ");
-        }
+        ArrayBord bord = new ArrayBord(XRowValue,YRowValue);
     }
+
 
 
     public void writeOutXlist(){
