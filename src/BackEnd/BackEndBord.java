@@ -4,33 +4,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BackEndBord {
-    private int XRowValue;
-    private String YRowValue;
+    private int XRowValue = 10;
+    private int YRowValue = 10;
     private List<Integer> XRowList = new ArrayList<>();
     private List<Character> YRowList = new ArrayList<>();
     public BackEndBord(){
         for (char c = 'A'; c <= 'J' ; ++c){
             YRowList.add(c);
         }
-        for (int i = 0; i<10; i++){
+        for (int i = 0; i<100; i++){
             XRowList.add(i);
         }
     }
-    public void bord (){
-        int[][] arr ={ {0,1,2,3,4,5,6,7,8,9}, {0,1,2,3,4,5,6,7,8,9} };
+    public void bord () {
+        int[][] arr = new int[XRowValue][YRowValue];
 
-        for(int x = 0; x < 10; x++){
-            for (int y = 0; y < 10; y++){
-                System.out.print(arr[x][y] + " ");
+        for (int x = 0; x < 10; x++) {
+            for (int y = 0; y < YRowValue; y++) {
+                arr[x][y] = (x*10)+y;
             }
-            System.out.println();
+        }
+        for (int x = 0; x < XRowValue; x++) {
+            for (int y = 0; y < YRowValue; y++) {
+                System.out.print(arr[x][y] + " " );
+            }
+            System.out.println(" ");
         }
     }
 
 
     public void writeOutXlist(){
         for(int i = 0; i<XRowList.size(); i++){
-            System.out.println(getXRowList(i));
+            getXRowList(i);
 
         }
     }
