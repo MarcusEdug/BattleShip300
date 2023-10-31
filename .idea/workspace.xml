@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a471ca08-143f-4b3b-a851-c11408a5448d" name="Changes" comment="Gjort en testversion av en FireFunktion med tillhörande spelplan">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +58,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1698754323892</updated>
-      <workItem from="1698754325209" duration="1824000" />
+      <workItem from="1698754325209" duration="2468000" />
     </task>
     <task id="LOCAL−00001" summary="Gjort en testversion TimeUnit delay">
       <option name="closed" value="true" />
@@ -73,7 +74,14 @@
       <option name="presentableId" value="LOCAL−00002" />
       <updated>1698755799616</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL−00003" summary="Gjort en testversion av en FireFunktion med tillhörande spelplan">
+      <option name="closed" value="true" />
+      <created>1698766790603</created>
+      <option name="number" value="LOCAL−00003" />
+      <option name="presentableId" value="LOCAL−00003" />
+      <updated>1698766790603</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

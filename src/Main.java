@@ -16,7 +16,7 @@ public class Main {
             //Skriv ut spelplan för att se hits och missar
             for (int i = 0; i < battleship.getBoard().length; i++) {
                 for (int j = 0; j < battleship.getBoard()[i].length; j++) {
-                    System.out.println(battleship.getBoard()[i][j] + " ");
+                    System.out.print(battleship.getBoard()[i][j] + " ");
 
                 }
                 System.out.println();
