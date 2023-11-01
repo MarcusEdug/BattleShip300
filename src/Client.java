@@ -15,7 +15,7 @@ public class Client {
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
             BufferedReader reader = new BufferedReader(inputStreamReader);
             System.out.println(reader.readLine());
-            writer.println("Connected");
+            writer.println("Connected...");
 
         } catch (IOException e) {
             throw new RuntimeException(e);
