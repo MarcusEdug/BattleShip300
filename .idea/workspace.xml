@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a471ca08-143f-4b3b-a851-c11408a5448d" name="Changes" comment="Gjort en testversion av en FireFunktion med tillhörande spelplan">
-      <change afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ClientMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ServerMain.java" afterDir="false" />
+    <list default="true" id="a471ca08-143f-4b3b-a851-c11408a5448d" name="Changes" comment="Gjort en testversion av en Sockets till server och client">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +63,7 @@
       <workItem from="1698754325209" duration="3487000" />
       <workItem from="1698768724205" duration="187000" />
       <workItem from="1698825337132" duration="13000" />
-      <workItem from="1698828258143" duration="847000" />
+      <workItem from="1698828258143" duration="10235000" />
     </task>
     <task id="LOCAL−00001" summary="Gjort en testversion TimeUnit delay">
       <option name="closed" value="true" />
@@ -95,7 +93,21 @@
       <option name="presentableId" value="LOCAL−00004" />
       <updated>1698767039257</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL−00005" summary="Gjort en testversion av en FireFunktion med tillhörande spelplan">
+      <option name="closed" value="true" />
+      <created>1698829305158</created>
+      <option name="number" value="LOCAL−00005" />
+      <option name="presentableId" value="LOCAL−00005" />
+      <updated>1698829305158</updated>
+    </task>
+    <task id="LOCAL−00006" summary="Gjort en testversion av en Sockets till server och client">
+      <option name="closed" value="true" />
+      <created>1698829357291</created>
+      <option name="number" value="LOCAL−00006" />
+      <option name="presentableId" value="LOCAL−00006" />
+      <updated>1698829357291</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,6 +116,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Gjort en testversion TimeUnit delay" />
     <MESSAGE value="Gjort en testversion av en FireFunktion med tillhörande spelplan" />
-    <option name="LAST_COMMIT_MESSAGE" value="Gjort en testversion av en FireFunktion med tillhörande spelplan" />
+    <MESSAGE value="Gjort en testversion av en Sockets till server och client" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gjort en testversion av en Sockets till server och client" />
   </component>
 </project>
