@@ -5,33 +5,47 @@ public class BackEndMap implements SystemBord {
     private char YRowChar;
     private int YRowInt;
 
-    public void endMap(int XRowValue, int YRowValue){
+    public void createEndMap(int XRowValue, int YRowValue){
 
-            for (int x = 0; x < XRowValue; x++) {
-                for (int y = 0; y < YRowValue; y++) {
+            for (int y = 0; y < XRowValue; y++) {
+                for (int x = 0; x < YRowValue; x++) {
                     array[x][y] = "i";
                 }
             }
     }
     public void showEndMap(int XRowValue, int YRowValue){
-        for (int x = 0; x < XRowValue; x++) {
-            for (int y = 0; y < YRowValue; y++) {
+        for (int y = 0; y < XRowValue; y++) {
+            for (int x = 0; x < YRowValue; x++) {
                 System.out.print(array[x][y] + " " );
             }
             System.out.println(" ");
 
         }
     }
-    public void hit (String inPut){
-        XRow = Character.getNumericValue(inPut.charAt(0));
-        System.out.println(XRow);
-        YRowChar = inPut.charAt(1);
-        System.out.println(YRowChar);
-        covertYCharToYint(YRowChar);
-        System.out.println(YRowInt);
-
-        array[XRow][YRowInt] = "h";
+    public void bout51 (){
+        array[0][1] = "s";
+        array[0][2] = "s";
+        array[0][3] = "s";
+        array[0][4] = "s";
+        array[0][5] = "s";
     }
+    // MS,FK,AR
+    public void hitInput (String input){
+        XRow = Character.getNumericValue(input.charAt(0));
+        YRowChar = input.charAt(1);
+        covertYCharToYint(YRowChar);
+
+        if (array[XRow][YRowInt].equals("s")){
+            System.out.println("Hit!");
+
+            array[XRow][YRowInt] = "h";
+        }
+        else {
+            System.out.println("Miss!");
+            array[XRow][YRowInt] = "m";
+        }
+    }
+    //AR
     public int covertYCharToYint(char y){
         if (y == 'a'){
             YRowInt = 0;
@@ -75,14 +89,17 @@ public class BackEndMap implements SystemBord {
         }
     }
 
+    //AR
     public int getXRow() {
         return XRow;
     }
 
+    //AR
     public void setXRow(int XRow) {
         this.XRow = XRow;
     }
 
+    //AR
     public char getYRowChar() {
         return YRowChar;
     }
