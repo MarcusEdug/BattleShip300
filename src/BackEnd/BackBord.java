@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class BackBord implements SystemBord{
     boolean playGame = true;
     Scanner myScanner = new Scanner(System.in);
-    Hit hit = new Hit();
+
     BackEndMap backEndMap = new BackEndMap();
 
     public void backBord() {

@@ -30,7 +30,7 @@ public class BackEndMap implements SystemBord {
         covertYCharToYint(YRowChar);
         System.out.println(YRowInt);
 
-        array[1][1] = "m";
+        array[XRow][YRowInt] = "h";
     }
     public int covertYCharToYint(char y){
         if (y == 'a'){
