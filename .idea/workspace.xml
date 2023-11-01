@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a471ca08-143f-4b3b-a851-c11408a5448d" name="Changes" comment="Gjort en testversion av en FireFunktion med tillhörande spelplan">
+      <change afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ClientMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ServerMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,14 +26,14 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Marcus-TestDelay" />
+        <entry key="$PROJECT_DIR$" value="Marcus-FireFunktionTest" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2XWohyTkoL1U0cozDEUoOClF9FL" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -42,7 +45,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Marcus-FireFunktionTest",
+    "git-widget-placeholder": "Marcus-Sockets-Server-Client",
+    "last_opened_file_path": "C:/Users/msved/IdeaProjects/Snake game",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -58,7 +62,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1698754323892</updated>
-      <workItem from="1698754325209" duration="2468000" />
+      <workItem from="1698754325209" duration="3487000" />
+      <workItem from="1698768724205" duration="187000" />
+      <workItem from="1698825337132" duration="13000" />
+      <workItem from="1698828258143" duration="847000" />
     </task>
     <task id="LOCAL−00001" summary="Gjort en testversion TimeUnit delay">
       <option name="closed" value="true" />
@@ -81,7 +88,14 @@
       <option name="presentableId" value="LOCAL−00003" />
       <updated>1698766790603</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL−00004" summary="Gjort en testversion av en FireFunktion med tillhörande spelplan">
+      <option name="closed" value="true" />
+      <created>1698767039257</created>
+      <option name="number" value="LOCAL−00004" />
+      <option name="presentableId" value="LOCAL−00004" />
+      <updated>1698767039257</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
