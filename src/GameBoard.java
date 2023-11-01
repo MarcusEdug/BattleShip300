@@ -12,6 +12,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+//@Fabian Knopf, testade att skapa en gameboard.
+
 public class GameBoard extends Application {
     private static final int GRID_SIZE_IN_CELLS = 5;
     private static final int CELL_SIZE = 75;
