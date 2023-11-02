@@ -4,17 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+
     <list default="true" id="a471ca08-143f-4b3b-a851-c11408a5448d" name="Changes" comment="Push 2023110">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+
+
+    <list default="true" id="a471ca08-143f-4b3b-a851-c11408a5448d" name="Changes" comment="Push 2023110">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+
+    <list default="true" id="a471ca08-143f-4b3b-a851-c11408a5448d" name="Changes" comment="fourth Commit 2023-11-01">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BackEnd/BackBord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BackEnd/BackBord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BackEnd/BackEndMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BackEnd/BackEndMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BackEnd/SystemBord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BackEnd/SystemBord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FrontEnd/Fire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FrontEnd/Fire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" /> 
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+
+
+
+
+        <option value="Interface" />
+
+
         <option value="Class" />
       </list>
     </option>
@@ -27,9 +49,31 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+
   <component name="ProjectColorInfo">{
     &quot;associatedIndex&quot;: 6
     }</component>
+
+
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;AlexanderRosen96&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="ea50b626-fb25-4f7f-9b5a-53e3d25ae5a3" />
+        <option name="url" value="https://github.com/MarcusEdug/BattleShip300.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+
   <component name="ProjectId" id="2XWohyTkoL1U0cozDEUoOClF9FL" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -37,21 +81,76 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
+
     &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;FAKN--3D-spelplan&quot;,
+
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;FAKN--3D-spelplan&quot;,
+
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Alex-Task4&quot;,
+
+
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+
+
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+
     }
     }</component>
+
+  }
+}</component>
+
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Fire" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="FrontEnd.Fire" />
+      <module name="BattleShip300" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="FrontEnd.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="BattleShip300" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Fire" />
+      </list>
+    </recent_temporary>
+  </component>
+
+
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -61,6 +160,7 @@
       <option name="presentableId" value="Default" />
       <updated>1698754323892</updated>
       <workItem from="1698754325209" duration="1000" />
+
       <workItem from="1698754927020" duration="5725000" />
       <workItem from="1698819023594" duration="14053000" />
     </task>
@@ -84,6 +184,7 @@
       <option name="number" value="LOCAL−00003" />
       <option name="presentableId" value="LOCAL−00003" />
       <updated>1698837714664</updated>
+
     </task>
     <task id="LOCAL−00004" summary="Push 2023110">
       <option name="closed" value="true" />
@@ -100,11 +201,93 @@
       <updated>1698837927048</updated>
     </task>
     <option name="localTasksCounter" value="6" />
+
+    </task>
+    <task id="LOCAL−00004" summary="Push 2023110">
+      <option name="closed" value="true" />
+      <created>1698837857493</created>
+      <option name="number" value="LOCAL−00004" />
+      <option name="presentableId" value="LOCAL−00004" />
+      <updated>1698837857493</updated>
+    </task>
+    <task id="LOCAL−00005" summary="Push 2023110">
+      <option name="closed" value="true" />
+      <created>1698837927048</created>
+      <option name="number" value="LOCAL−00005" />
+      <option name="presentableId" value="LOCAL−00005" />
+      <updated>1698837927048</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+
+      <workItem from="1698754453933" duration="7302000" />
+      <workItem from="1698818337005" duration="18900000" />
+      <workItem from="1698911687562" duration="2223000" />
+    </task>
+    <task id="LOCAL-00001" summary="First Commit">
+      <option name="closed" value="true" />
+      <created>1698755933469</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1698755933469</updated>
+    </task>
+    <task id="LOCAL-00002" summary="First Commit">
+      <option name="closed" value="true" />
+      <created>1698758941696</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1698758941696</updated>
+    </task>
+    <task id="LOCAL-00003" summary="second Commit">
+      <option name="closed" value="true" />
+      <created>1698761333524</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1698761333524</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Third Commit">
+      <option name="closed" value="true" />
+      <created>1698761837735</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1698761837735</updated>
+    </task>
+    <task id="LOCAL-00005" summary="First Commit 2023-11-01">
+      <option name="closed" value="true" />
+      <created>1698824500986</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1698824500986</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Second Commit 2023-11-01">
+      <option name="closed" value="true" />
+      <created>1698824612133</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1698824612133</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fourth Commit 2023-11-01">
+      <option name="closed" value="true" />
+      <created>1698844412590</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1698844412590</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+
+
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -120,6 +303,30 @@
     <MESSAGE value="Testar igen" />
     <MESSAGE value="Push 2023110" />
     <option name="LAST_COMMIT_MESSAGE" value="Push 2023110" />
+
+  </component>
+</project>
+
+
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="First Commit" />
+    <MESSAGE value="second Commit" />
+    <MESSAGE value="Third Commit" />
+    <MESSAGE value="First Commit 2023-11-01" />
+    <MESSAGE value="Second Commit 2023-11-01" />
+    <MESSAGE value="fourth Commit 2023-11-01" />
+    <option name="LAST_COMMIT_MESSAGE" value="fourth Commit 2023-11-01" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+
   </component>
 </project>
 
