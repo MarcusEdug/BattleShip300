@@ -8,6 +8,10 @@
     <list default="true" id="a471ca08-143f-4b3b-a851-c11408a5448d" name="Changes" comment="Push 2023110">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
 
+
+    <list default="true" id="a471ca08-143f-4b3b-a851-c11408a5448d" name="Changes" comment="Push 2023110">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+
     <list default="true" id="a471ca08-143f-4b3b-a851-c11408a5448d" name="Changes" comment="fourth Commit 2023-11-01">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BackEnd/BackBord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BackEnd/BackBord.java" afterDir="false" />
@@ -15,6 +19,7 @@
       <change beforePath="$PROJECT_DIR$/src/BackEnd/SystemBord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BackEnd/SystemBord.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FrontEnd/Fire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FrontEnd/Fire.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+
 
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +32,10 @@
       <list>
 
 
+
+
         <option value="Interface" />
+
 
         <option value="Class" />
       </list>
@@ -41,6 +49,11 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+
+  <component name="ProjectColorInfo">{
+    &quot;associatedIndex&quot;: 6
+    }</component>
+
 
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -60,6 +73,7 @@
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
+
   <component name="ProjectId" id="2XWohyTkoL1U0cozDEUoOClF9FL" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -67,6 +81,13 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
+
+    &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;FAKN--3D-spelplan&quot;,
+
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
@@ -78,15 +99,21 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;Alex-Task4&quot;,
 
+
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
 
+
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+
+    }
+    }</component>
+
   }
 }</component>
 
@@ -123,6 +150,7 @@
     </recent_temporary>
   </component>
 
+
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -156,6 +184,24 @@
       <option name="number" value="LOCAL−00003" />
       <option name="presentableId" value="LOCAL−00003" />
       <updated>1698837714664</updated>
+
+    </task>
+    <task id="LOCAL−00004" summary="Push 2023110">
+      <option name="closed" value="true" />
+      <created>1698837857493</created>
+      <option name="number" value="LOCAL−00004" />
+      <option name="presentableId" value="LOCAL−00004" />
+      <updated>1698837857493</updated>
+    </task>
+    <task id="LOCAL−00005" summary="Push 2023110">
+      <option name="closed" value="true" />
+      <created>1698837927048</created>
+      <option name="number" value="LOCAL−00005" />
+      <option name="presentableId" value="LOCAL−00005" />
+      <updated>1698837927048</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+
     </task>
     <task id="LOCAL−00004" summary="Push 2023110">
       <option name="closed" value="true" />
@@ -235,6 +281,7 @@
     </task>
     <option name="localTasksCounter" value="8" />
 
+
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,6 +303,11 @@
     <MESSAGE value="Testar igen" />
     <MESSAGE value="Push 2023110" />
     <option name="LAST_COMMIT_MESSAGE" value="Push 2023110" />
+
+  </component>
+</project>
+
+
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First Commit" />
     <MESSAGE value="second Commit" />
@@ -277,3 +329,4 @@
 
   </component>
 </project>
+
