@@ -10,7 +10,7 @@ public class BackBord implements SystemBord{
     public void runBackEnd() {
         backEndMap.createEndMap(XRowValue,YRowValue);
         backEndMap.bout51();
-        backEndMap.bout52();
+       // backEndMap.bout52();
         System.out.println(lifeOnBoat.size());
         backEndMap.showEndMap(XRowValue,YRowValue);
         while (!lifeOnBoat.isEmpty()) {
