@@ -15,8 +15,8 @@ import javafx.scene.text.FontWeight;
 //@Fabian Knopf, testade att skapa en gameboard.
 
 public class GameBoard extends Application {
-    private static final int GRID_SIZE_IN_CELLS = 5;
-    private static final int CELL_SIZE = 75;
+    private static final int GRID_SIZE_IN_CELLS = 9;
+    private static final int CELL_SIZE = 40;
     private static final String SPELARE1 = "Spelare 1";
     private static final String SPELARE2 = "Spelare 2";
 

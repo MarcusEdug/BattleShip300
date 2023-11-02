@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a471ca08-143f-4b3b-a851-c11408a5448d" name="Changes" comment="Testar igen">
+    <list default="true" id="a471ca08-143f-4b3b-a851-c11408a5448d" name="Changes" comment="Push 2023110">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameBoard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +62,7 @@
       <updated>1698754323892</updated>
       <workItem from="1698754325209" duration="1000" />
       <workItem from="1698754927020" duration="5725000" />
-      <workItem from="1698819023594" duration="11896000" />
+      <workItem from="1698819023594" duration="14053000" />
     </task>
     <task id="LOCAL−00001" summary="Testar igen">
       <option name="closed" value="true" />
@@ -79,7 +78,28 @@
       <option name="presentableId" value="LOCAL−00002" />
       <updated>1698760217420</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL−00003" summary="Push 2023110">
+      <option name="closed" value="true" />
+      <created>1698837714664</created>
+      <option name="number" value="LOCAL−00003" />
+      <option name="presentableId" value="LOCAL−00003" />
+      <updated>1698837714664</updated>
+    </task>
+    <task id="LOCAL−00004" summary="Push 2023110">
+      <option name="closed" value="true" />
+      <created>1698837857493</created>
+      <option name="number" value="LOCAL−00004" />
+      <option name="presentableId" value="LOCAL−00004" />
+      <updated>1698837857493</updated>
+    </task>
+    <task id="LOCAL−00005" summary="Push 2023110">
+      <option name="closed" value="true" />
+      <created>1698837927048</created>
+      <option name="number" value="LOCAL−00005" />
+      <option name="presentableId" value="LOCAL−00005" />
+      <updated>1698837927048</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -98,6 +118,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Testar igen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Testar igen" />
+    <MESSAGE value="Push 2023110" />
+    <option name="LAST_COMMIT_MESSAGE" value="Push 2023110" />
   </component>
 </project>
