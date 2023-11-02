@@ -26,17 +26,32 @@ public class BackEndMap implements SystemBord {
         }
     }
     public void bout51 (){
+        array[0][0] = "s";
         array[0][1] = "s";
         array[0][2] = "s";
         array[0][3] = "s";
         array[0][4] = "s";
-        array[0][5] = "s";
+        lifeOnBoat.add(5);
+        lifeOnBoat.add(5);
+        lifeOnBoat.add(5);
+        lifeOnBoat.add(5);
+        lifeOnBoat.add(5);
+    }
+    public void bout52 (){
+        array[4][2] = "s";
+        array[5][2] = "s";
+        array[6][2] = "s";
+        lifeOnBoat.add(3);
+        lifeOnBoat.add(3);
+        lifeOnBoat.add(3);
     }
 
+    public void fire (){
+            fire.fireRandom(XRowValue, YRowValue);
 
+    }
     // MS,FK,AR
     public void hitInput (String input){
-        fire.fireRandom(XRowValue, YRowValue);
         XRow = Character.getNumericValue(input.charAt(0));
         YRowChar = input.charAt(1);
         covertYCharToYint(YRowChar);

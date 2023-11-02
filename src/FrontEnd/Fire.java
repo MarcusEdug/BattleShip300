@@ -30,23 +30,21 @@ public class Fire implements SystemBord {
     int indexX;
     int indexY;
     int randomNumber;
-    public void fireRandom (int x, int y){
-        Random random = new Random();
+    Random random = new Random();
+        public void fireRandom (int x, int y) {
         indexX = randomNumber = random.nextInt(x);
         indexY = randomNumber = random.nextInt(y);
-        if (array[indexX][indexY].equals("s")) {
-            System.out.println("Hit!");
-
-            array[indexX][indexY] = "h";
-        }
-            else if (array[indexX][indexY].equals("h") || array[indexX][indexY].equals("m")) {
-            fireRandom(x, y);
-        }
-        else{
+            if (array[indexX][indexY].equals("s")) {
+                System.out.println("Hit!");
+                array[indexX][indexY] = "h";
+                System.out.println(lifeOnBoat.size());
+                lifeOnBoat.remove(0);
+                System.out.println(lifeOnBoat.size());
+            }
+            else {
                 System.out.println("Miss!");
                 array[indexX][indexY] = "m";
             }
-
 
     }
 

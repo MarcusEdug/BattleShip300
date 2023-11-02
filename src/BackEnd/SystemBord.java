@@ -1,10 +1,13 @@
 package BackEnd;
 
-public interface SystemBord {
-    int XRowValue = 2;
-    int YRowValue = 2;
-    String[][] array = new String[XRowValue][YRowValue];
+import java.util.ArrayList;
+import java.util.List;
 
+public interface SystemBord {
+    int XRowValue = 10;
+    int YRowValue = 10;
+    String[][] array = new String[XRowValue][YRowValue];
+    List<Integer> lifeOnBoat = new ArrayList<>();
 
 
 
