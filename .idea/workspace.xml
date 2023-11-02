@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a471ca08-143f-4b3b-a851-c11408a5448d" name="Changes" comment="Gjort en testversion av en Sockets till server och client">
+    <list default="true" id="a471ca08-143f-4b3b-a851-c11408a5448d" name="Changes" comment="Push 2023110">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,34 +22,36 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Marcus-FireFunktionTest" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 6
-}</component>
+    &quot;associatedIndex&quot;: 6
+    }</component>
   <component name="ProjectId" id="2XWohyTkoL1U0cozDEUoOClF9FL" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Marcus-Sockets-Server-Client",
-    "last_opened_file_path": "C:/Users/msved/IdeaProjects/Avancerad Javaprogrammering/BattleShip300",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
-  }
-}]]></component>
+  <component name="PropertiesComponent">{
+    &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;FAKN--3D-spelplan&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+    }
+    }</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -60,71 +60,66 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1698754323892</updated>
-      <workItem from="1698754325209" duration="3487000" />
-      <workItem from="1698768724205" duration="187000" />
-      <workItem from="1698825337132" duration="13000" />
-      <workItem from="1698828258143" duration="10253000" />
-      <workItem from="1698911763418" duration="4704000" />
+      <workItem from="1698754325209" duration="1000" />
+      <workItem from="1698754927020" duration="5725000" />
+      <workItem from="1698819023594" duration="14053000" />
     </task>
-    <task id="LOCAL−00001" summary="Gjort en testversion TimeUnit delay">
+    <task id="LOCAL−00001" summary="Testar igen">
       <option name="closed" value="true" />
-      <created>1698754796935</created>
+      <created>1698759305979</created>
       <option name="number" value="LOCAL−00001" />
       <option name="presentableId" value="LOCAL−00001" />
-      <updated>1698754796935</updated>
+      <updated>1698759305980</updated>
     </task>
-    <task id="LOCAL−00002" summary="Gjort en testversion av en FireFunktion med tillhörande spelplan">
+    <task id="LOCAL−00002" summary="Testar igen">
       <option name="closed" value="true" />
-      <created>1698755799616</created>
+      <created>1698760217419</created>
       <option name="number" value="LOCAL−00002" />
       <option name="presentableId" value="LOCAL−00002" />
-      <updated>1698755799616</updated>
+      <updated>1698760217420</updated>
     </task>
-    <task id="LOCAL−00003" summary="Gjort en testversion av en FireFunktion med tillhörande spelplan">
+    <task id="LOCAL−00003" summary="Push 2023110">
       <option name="closed" value="true" />
-      <created>1698766790603</created>
+      <created>1698837714664</created>
       <option name="number" value="LOCAL−00003" />
       <option name="presentableId" value="LOCAL−00003" />
-      <updated>1698766790603</updated>
+      <updated>1698837714664</updated>
     </task>
-    <task id="LOCAL−00004" summary="Gjort en testversion av en FireFunktion med tillhörande spelplan">
+    <task id="LOCAL−00004" summary="Push 2023110">
       <option name="closed" value="true" />
-      <created>1698767039257</created>
+      <created>1698837857493</created>
       <option name="number" value="LOCAL−00004" />
       <option name="presentableId" value="LOCAL−00004" />
-      <updated>1698767039257</updated>
+      <updated>1698837857493</updated>
     </task>
-    <task id="LOCAL−00005" summary="Gjort en testversion av en FireFunktion med tillhörande spelplan">
+    <task id="LOCAL−00005" summary="Push 2023110">
       <option name="closed" value="true" />
-      <created>1698829305158</created>
+      <created>1698837927048</created>
       <option name="number" value="LOCAL−00005" />
       <option name="presentableId" value="LOCAL−00005" />
-      <updated>1698829305158</updated>
+      <updated>1698837927048</updated>
     </task>
-    <task id="LOCAL−00006" summary="Gjort en testversion av en Sockets till server och client">
-      <option name="closed" value="true" />
-      <created>1698829357291</created>
-      <option name="number" value="LOCAL−00006" />
-      <option name="presentableId" value="LOCAL−00006" />
-      <updated>1698829357291</updated>
-    </task>
-    <task id="LOCAL−00007" summary="Gjort en testversion av en Sockets till server och client">
-      <option name="closed" value="true" />
-      <created>1698861023004</created>
-      <option name="number" value="LOCAL−00007" />
-      <option name="presentableId" value="LOCAL−00007" />
-      <updated>1698861023004</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Gjort en testversion TimeUnit delay" />
-    <MESSAGE value="Gjort en testversion av en FireFunktion med tillhörande spelplan" />
-    <MESSAGE value="Gjort en testversion av en Sockets till server och client" />
-    <option name="LAST_COMMIT_MESSAGE" value="Gjort en testversion av en Sockets till server och client" />
+    <MESSAGE value="Testar igen" />
+    <MESSAGE value="Push 2023110" />
+    <option name="LAST_COMMIT_MESSAGE" value="Push 2023110" />
   </component>
 </project>
+
