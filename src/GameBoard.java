@@ -32,6 +32,17 @@ public class GameBoard extends Application {
         player2Label.setFont(Font.font("Arial", FontWeight.BOLD, 16));
         player2Label.setTextFill(Color.BLACK);
 
+        //Ange önskat värde på startfönstret
+        double windowWidth = 1300;
+        double windowHeight = 550;
+        stage.setMinWidth(1100);
+        stage.setMaxWidth(2000);
+        stage.setWidth(windowWidth);
+        stage.setMinHeight(550);
+        stage.setMaxHeight(1000);
+        stage.setHeight(windowHeight);
+        gridPane.setGridLinesVisible(true);
+
         VBox numVBox1 = createNumberVBox();
         VBox numVBox2 = createNumberVBox();
         HBox letterHBox1 = createLetterHBox();
