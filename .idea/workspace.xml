@@ -44,7 +44,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "Marcus-Sockets-Server-Client",
-    "last_opened_file_path": "C:/Users/msved/IdeaProjects/Snake game",
+    "last_opened_file_path": "C:/Users/msved/IdeaProjects/Avancerad Javaprogrammering/BattleShip300",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -63,7 +63,8 @@
       <workItem from="1698754325209" duration="3487000" />
       <workItem from="1698768724205" duration="187000" />
       <workItem from="1698825337132" duration="13000" />
-      <workItem from="1698828258143" duration="10235000" />
+      <workItem from="1698828258143" duration="10253000" />
+      <workItem from="1698911763418" duration="4704000" />
     </task>
     <task id="LOCAL−00001" summary="Gjort en testversion TimeUnit delay">
       <option name="closed" value="true" />
@@ -107,7 +108,14 @@
       <option name="presentableId" value="LOCAL−00006" />
       <updated>1698829357291</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL−00007" summary="Gjort en testversion av en Sockets till server och client">
+      <option name="closed" value="true" />
+      <created>1698861023004</created>
+      <option name="number" value="LOCAL−00007" />
+      <option name="presentableId" value="LOCAL−00007" />
+      <updated>1698861023004</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

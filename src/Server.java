@@ -23,14 +23,14 @@ public class Server {
 
             //Output
             PrintWriter writer = new PrintWriter(socket.getOutputStream(),true);
-            writer.println("Välkommen till servern!");
+            writer.println("Välkommen till servern!"); //Skickas till klienten
 
             String incomingMessage = "";
             String outMessage = "";
 
             while (true) {
                 incomingMessage = reader.readLine();
-                System.out.println("Klienten = " + incomingMessage);
+                System.out.println("Klienten " + incomingMessage);
                 writer.println(outMessage);
                 System.out.println("Väntar på klientens tur att svara");
                 break;

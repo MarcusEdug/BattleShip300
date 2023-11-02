@@ -19,13 +19,13 @@ public class Client {
             InputStream inputStream = socket.getInputStream();
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
             BufferedReader reader = new BufferedReader(inputStreamReader);
-            writer.println("Connected...");
+            writer.println("connected..."); //Skickas till servern
             System.out.println(reader.readLine());
 
 
             String text = "";
-            while (!text.equals("quit")) {
-                writer.println();
+            while (true) {
+                writer.println("Hej Servern");
                 String incomingMessage = reader.readLine();
                 System.out.println(incomingMessage);
                 break;
