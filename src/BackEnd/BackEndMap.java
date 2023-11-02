@@ -1,9 +1,12 @@
 package BackEnd;
 
+import FrontEnd.Fire;
+
 public class BackEndMap implements SystemBord {
     private int XRow;
     private char YRowChar;
     private int YRowInt;
+    Fire fire = new Fire();
 
     public void createEndMap(int XRowValue, int YRowValue){
 
@@ -29,8 +32,11 @@ public class BackEndMap implements SystemBord {
         array[0][4] = "s";
         array[0][5] = "s";
     }
+
+
     // MS,FK,AR
     public void hitInput (String input){
+        fire.fireRandom(XRowValue, YRowValue);
         XRow = Character.getNumericValue(input.charAt(0));
         YRowChar = input.charAt(1);
         covertYCharToYint(YRowChar);

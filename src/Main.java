@@ -8,7 +8,7 @@ public class Main {
         //my.runBackEnd();
         Player player1 = new Player();
         Fire fire = new Fire();
-        System.out.println(fire.fireRandom());
+
 
 
 

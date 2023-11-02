@@ -1,5 +1,6 @@
 package FrontEnd;
 
+import BackEnd.SystemBord;
 import com.sun.xml.internal.ws.commons.xmlutil.Converter;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -18,20 +19,42 @@ import javafx.scene.text.FontWeight;
 
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
-public class Fire {
-    String idX;
-    String idY;
-    String idCell;
-    int randomNumber;
-    public String fireRandom (){
-        Random random = new Random();
+public class Fire implements SystemBord {
+    List<String> shotList = new ArrayList<>();
 
-        idX = String.valueOf(randomNumber = random.nextInt(8));
-        idY = String.valueOf(randomNumber = random.nextInt(8));
-        idCell = String.join("",idX,idY);
-        return idCell;
+    String shotId;
+    int indexX;
+    int indexY;
+    int randomNumber;
+    public void fireRandom (int x, int y){
+        Random random = new Random();
+        indexX = randomNumber = random.nextInt(x);
+        indexY = randomNumber = random.nextInt(y);
+        if (array[indexX][indexY].equals("s")) {
+            System.out.println("Hit!");
+
+            array[indexX][indexY] = "h";
+        }
+            else if (array[indexX][indexY].equals("h") || array[indexX][indexY].equals("m")) {
+            fireRandom(x, y);
+        }
+        else{
+                System.out.println("Miss!");
+                array[indexX][indexY] = "m";
+            }
+
+
+    }
+
+    public void shotsFired (int x, int y){
+        String IdX = String.valueOf(x);
+        String IdY = String.valueOf(y);
+        shotId = String.join("",IdX,IdY);
+        shotList.add(shotId);
     }
 
 
