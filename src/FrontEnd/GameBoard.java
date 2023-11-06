@@ -1,5 +1,6 @@
 package FrontEnd;
 
+import BackEnd.BackEndMap;
 import BackEnd.SystemBord;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -19,9 +20,11 @@ public class GameBoard extends Application implements SystemBord {
     public static final int Y_ROW_VALUE = YRowValue;
     private static final String SPELARE1 = "Spelare 1";
     private static final String SPELARE2 = "Spelare 2";
+    private BackEndMap backEndMap2;
 
     @Override
     public void start(Stage stage) {
+        this.backEndMap2 = new BackEndMap();
         GridPane gridPane = new GridPane();
         Scene scene = new Scene(gridPane, X_ROW_VALUE * CELL_SIZE, Y_ROW_VALUE * CELL_SIZE);
         setupWindow(stage);
@@ -56,8 +59,8 @@ public class GameBoard extends Application implements SystemBord {
     }
 
     private void setupGamePanes(GridPane gridPane) {
-        GamePane gamePane1 = new GamePane("Spelplan 1", Y_ROW_VALUE, X_ROW_VALUE);
-        GamePane gamePane2 = new GamePane("Spelplan 2", Y_ROW_VALUE, X_ROW_VALUE);
+        GamePane gamePane1 = new GamePane("Spelplan 1", Y_ROW_VALUE, X_ROW_VALUE,this.backEndMap2);
+        GamePane gamePane2 = new GamePane("Spelplan 2", Y_ROW_VALUE, X_ROW_VALUE, this.backEndMap2);
         HBox letterHBox1 = createLetterHBox();
         HBox letterHBox2 = createLetterHBox();
         VBox numVBox1 = createNumberVBox();
