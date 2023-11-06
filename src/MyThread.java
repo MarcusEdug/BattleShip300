@@ -5,7 +5,7 @@ public class MyThread implements Runnable {
 
     @Override
     public void run() {
-        //Här kan metoden för att starta upp spelplan #1 finnas
+        //Här kan metoden för att starta upp spelplan #1 finnas.
 
         for (int i = 1; i <= 5; i++) {
             System.out.println("Tråd nr 1: " + i);
