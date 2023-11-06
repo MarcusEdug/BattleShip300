@@ -25,7 +25,7 @@ public class GamePane extends Pane {
         /*cells = new GameCell[rows][columns]; // testar med en array för cellerna istället
         createGameCells(rows, columns);*/
     }
-
+//Hej
     private void createGameCells(int rows, int columns) { //Hämta input från
         for (int y = 0; y < rows; y++) {
             for (int x = 0; x < columns; x++) {
