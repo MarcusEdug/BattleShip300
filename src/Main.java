@@ -1,8 +1,9 @@
 
-import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 import BackEnd.BackBord;
 import FrontEnd.Fire;
+import javafx.application.Application;
+
+
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
@@ -12,6 +13,7 @@ public class Main {
 
         MyThread runnable1 = new MyThread();
         Thread thread1 = new Thread(runnable1);
+
 
         MyThread2 runnable2 = new MyThread2();
         Thread thread2 = new Thread(runnable2);

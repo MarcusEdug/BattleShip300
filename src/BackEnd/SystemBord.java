@@ -13,5 +13,4 @@ public interface SystemBord {
     List<Integer> lifeOnBoat = new ArrayList<>();
 
 
-
 }
