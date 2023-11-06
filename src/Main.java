@@ -18,8 +18,9 @@ public class Main {
 
         thread1.setPriority(10); //thread1 kommer alltid att köras först (ex client)
         thread1.start();
-        thread1.join(2000); //Skapar en delay för thread2. Kommer att avslutas 2 sekunder efter thread1 är klar.
+        //thread1.join(2000); //Skapar en delay för thread2. Kommer att avslutas 2 sekunder efter thread1 är klar.
         thread2.start();
+
 
     }
 
