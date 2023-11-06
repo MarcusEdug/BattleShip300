@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 public class MyThread implements Runnable {
     //Kan "extend" en annan klass om det behövs
 

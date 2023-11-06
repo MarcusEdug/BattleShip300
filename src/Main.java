@@ -16,9 +16,9 @@ public class Main {
         MyThread2 runnable2 = new MyThread2();
         Thread thread2 = new Thread(runnable2);
 
-        thread1.setPriority(10); //thread1 kommer alltid att köras först (client)
+        thread1.setPriority(10); //thread1 kommer alltid att köras först (ex client)
         thread1.start();
-        thread1.join(2000); //Skapar en delay för thread2. Kommer att avslutas 2 sekunder efter thread1
+        thread1.join(2000); //Skapar en delay för thread2. Kommer att avslutas 2 sekunder efter thread1 är klar
         thread2.start();
 
     }
