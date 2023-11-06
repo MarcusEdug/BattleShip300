@@ -6,6 +6,7 @@ import FrontEnd.GameBoard;
 import FrontEnd.GameCell;
 import javafx.scene.layout.Pane;
 import FrontEnd.Fire;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
@@ -22,10 +23,10 @@ public class GamePane extends Pane {
         this.columns = columns;
         this.backEndMap = backEndMap;
         setPrefSize(columns * GameBoard.CELL_SIZE, rows * GameBoard.CELL_SIZE);
-        /*cells = new GameCell[rows][columns]; // testar med en array för cellerna istället
-        createGameCells(rows, columns);*/
+        /*cells = new GameCell[rows][columns]; // testar med en array för cellerna istället*/
+        createGameCells(rows, columns);
     }
-//Hej
+
     private void createGameCells(int rows, int columns) { //Hämta input från
         for (int y = 0; y < rows; y++) {
             for (int x = 0; x < columns; x++) {
@@ -37,7 +38,17 @@ public class GamePane extends Pane {
                 cell.setOnMouseClicked(e -> {
                     //anropa backendmap
                     System.out.println(this.backEndMap.checkValue(finalX, finalY));
+                    String result = this.backEndMap.checkValue(finalX, finalY);
+                    switch (result) {
+                        case "s":
+                            System.out.println("träff");
+                            cell.hit();
+                            break;
+                        case "m":
+                             System.out.println("miss");
+                             break;
 
+                    }
 
                 });
                 double cellWidth = GameBoard.CELL_SIZE;

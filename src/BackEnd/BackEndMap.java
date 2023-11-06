@@ -38,7 +38,7 @@ public class BackEndMap implements SystemBord {
     public String checkValue(int x, int y){
         //dennes uppgift blir att kolla om det är en träff eller inte,
         // Antingen returnerar vi träff/miss,
-        return array[x][y];
+        return (array[x][y] != null) ?array[x][y]:"m"; //kollar om värdet är S annars null (miss)
     }
 
 

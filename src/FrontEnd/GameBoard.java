@@ -25,6 +25,7 @@ public class GameBoard extends Application implements SystemBord {
     @Override
     public void start(Stage stage) {
         this.backEndMap2 = new BackEndMap();
+        this.backEndMap2.bout51(); //tänk på att vi behöver eventuellt 2 st backendmaps.
         GridPane gridPane = new GridPane();
         Scene scene = new Scene(gridPane, X_ROW_VALUE * CELL_SIZE, Y_ROW_VALUE * CELL_SIZE);
         setupWindow(stage);
