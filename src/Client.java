@@ -37,14 +37,14 @@ public class Client {
                 if(reader.ready()){
                     String incomingMessage = reader.readLine();
                     System.out.println("Servern skjuter på " + incomingMessage);
-                    String outoutText = checkIfHitAndCreateReply(incomingMessage);
+                    String outputText = checkIfHitAndCreateReply(incomingMessage);
                     try {
                         Thread.sleep(3000);
                     } catch (InterruptedException e) {
                         System.out.println("Kunde inte pausa på grund av: " + e.getMessage());
                     }
-                    System.out.println(outoutText);
-                    writer.println(outoutText);
+                    System.out.println(outputText);
+                    writer.println(outputText);
                 }
             }
         }
