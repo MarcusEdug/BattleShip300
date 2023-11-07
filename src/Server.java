@@ -25,9 +25,8 @@ public class Server {
             writer = new PrintWriter(socket.getOutputStream(), true);
             writer.println("Välkommen till servern!"); //Skickas till klienten
 
-
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Kunde inte ansluta på grund av: " + e.getMessage());
         }
         while (gameIsRunning) {
             if (reader.ready()) {
@@ -37,15 +36,14 @@ public class Server {
                 try {
                     Thread.sleep(3000);
                 } catch (InterruptedException e) {
-                    System.out.println("Kunde inte pausa på grund av " + e.getMessage());
+                    System.out.println("Kunde inte pausa på grund av: " + e.getMessage());
                 }
                 System.out.println(outputText);
                 writer.println(outputText);
-
             }
         }
     }
-
+    //Metod för att kolla om spelet är igång
     public String checkIfHitAndCreateReply(String input) {
         if (input.equals("Jag förlorade")) {
             gameIsRunning = false;
@@ -57,7 +55,7 @@ public class Server {
                 return "Jag förlorade";*/
 
             } else {
-                     return "Snyggt! Du träffade en *TypAvBåt*";
+                     return "Tusan! Du träffade en båt!";
             }
         }
     }
