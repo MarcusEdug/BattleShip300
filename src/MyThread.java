@@ -17,4 +17,14 @@ public class MyThread implements Runnable {
         }
         System.out.println("Tråd nr 1 är klar");
     }
+    public void Synchronized(int x, int y) {
+        for (int i = 0; i < x; i++) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                System.out.println(e.getMessage());
+            }
+            System.out.println("Synkroniserar trådarna...");
+        }
+    }
 }
