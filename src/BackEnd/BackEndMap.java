@@ -55,9 +55,10 @@ public class BackEndMap implements SystemBord {
     }
 
 
-    //Fixar med Fire metod (AR)
+    //För att spela själv (AR
     public void fire (){
-            fire.fireRandom(XRowValue, YRowValue);
+            String soloPlay = fire.fireOutput(XRowValue, YRowValue);
+            fire.fireInput(soloPlay);
 
     }
     // MS,FK,AR

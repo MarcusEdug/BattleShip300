@@ -28,21 +28,39 @@ public class Fire implements SystemBord {
     int indexY;
     int randomNumber;
     Random random = new Random();
-        //Skjutt metod. Justera om de är hit/miss eller om redan har skjut där
-        public void fireRandom (int x, int y) {
-        indexX = randomNumber = random.nextInt(x);
-        indexY = randomNumber = random.nextInt(y);
-            if (array[indexX][indexY].equals("s")) {
-                System.out.println("Hit!");
-                array[indexX][indexY] = "h";
-                lifeOnBoat.remove(0);
+    String shotFire;
+    int count = 0;
+    //en lista på alla skot som har skjutis (AR)
+    List<String> listOfShot = new ArrayList<>();
+
+    // Skapar en random Sträng av två int värden som har en ett random värde. (AR , FK)
+    public String fireOutput(int x, int y) {
+        boolean isFiring = true;
+        while (isFiring) {
+            indexX = randomNumber = random.nextInt(x);
+            indexY = randomNumber = random.nextInt(y);
+            shotFire = String.join("", String.valueOf(indexX), String.valueOf(indexY));
+            if (!listOfShot.contains(shotFire)) {
+                listOfShot.add(shotFire);
+                count++;
+                isFiring = false;
             }
-            else if (array[indexX][indexY].equals("h") || array[indexX][indexY].equals("m")){
-                fireRandom(x,y);
-            }
-            else {
-                System.out.println("Miss!");
-                array[indexX][indexY] = "m";
-            }
+        }
+        return shotFire;
+    }
+
+    //Tar emot ett sträng värde och bryter upp de till två int värden som sätts in i array[][] som blir kordinater.
+    public void fireInput(String shotInput) {
+        int valueX = Character.getNumericValue(shotInput.charAt(0));
+        int valueY =Character.getNumericValue(shotInput.charAt(1));
+        if (array[valueX][valueY].equals("s")) {
+            System.out.println("Hit!");
+            array[valueX][valueY] = "h";
+            lifeOnBoat.remove(0);
+        }
+        else {
+            System.out.println("Miss!");
+            array[valueX][valueY] = "m";
+        }
     }
 }
