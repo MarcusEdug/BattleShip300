@@ -24,7 +24,7 @@ public class GamePane extends Pane {
         this.backEndMap = backEndMap;
         setPrefSize(columns * GameBoard.CELL_SIZE, rows * GameBoard.CELL_SIZE);
         /*cells = new GameCell[rows][columns]; // testar med en array för cellerna istället*/
-        createGameCells(rows, columns);
+        createGameCells(rows, columns); //Ny funktion för att skapa cellerna, gentemot hur det såg ut tidigare. (för min del av koden FK)/
     }
 
     private void createGameCells(int rows, int columns) { //Hämta input från
@@ -34,31 +34,42 @@ public class GamePane extends Pane {
                 int finalX = x;
                 int finalY = y;
 
-                //Anonym funktion = lambda
-                cell.setOnMouseClicked(e -> {
-                    //anropa backendmap
-                    System.out.println(this.backEndMap.checkValue(finalX, finalY));
-                    String result = this.backEndMap.checkValue(finalX, finalY);
-                    switch (result) {
-                        case "s":
-                            System.out.println("träff");
-                            cell.hit();
-                            break;
-                        case "m":
-                             System.out.println("miss");
-                             break;
-
-                    }
-
-                });
                 double cellWidth = GameBoard.CELL_SIZE;
                 double cellHeight = GameBoard.CELL_SIZE;
                 cell.setTranslateX(finalX * cellWidth);
                 cell.setTranslateY(finalY * cellHeight);
                 getChildren().add(cell);
+
+                String result = backEndMap.checkValue(finalX, finalY);
+                switch (result) {
+                    case "s":
+                        System.out.println("träff");
+                        cell.hit();
+                        break;
+                    case "m":
+                        System.out.println("miss");
+                        break;
+                    //Anonym funktion = lambda
+               /* cell.setOnMouseClicked(e -> {
+                    //anropa backendmap
+                    System.out.println(this.backEndMap.checkValue(finalX, finalY));
+                    String result = this.backEndMap.checkValue(finalX, finalY);
+                switch (result) {
+                    case "s":
+                        System.out.println("träff");
+                        cell.hit();
+                        break;
+                    case "m":
+                        System.out.println("miss");
+                        break;
+
+                }
+
+                });*/
+
+                }
             }
         }
-    }
 
   /* private void createGameCells(int rows, int columns) {
         for (int y = 0; y < rows; y++) {
@@ -81,4 +92,5 @@ public class GamePane extends Pane {
         }
     }
     */
+    }
 }
