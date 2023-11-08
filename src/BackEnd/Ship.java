@@ -24,13 +24,13 @@ public class Ship {
     private List<ShipUnit> shipList = new ArrayList<>(); // Lista med skeppsobjekt
 
 
-    // Tom konstruktor
+    // Tom konstruktor (Evelina Daun)
     public Ship(){}
 
 
     // Metoder
 
-    // Metod: Skapa skeppobjekten
+    // Metod: Skapa skeppobjekten (Evelina Daun)
     public void createShipUnits(){
 
         /*
@@ -48,13 +48,15 @@ public class Ship {
         }
     }
 
-    // Placera ut skeppen på kartan
+    // Metod: Placera ut skeppen på kartan  (Evelina Daun)
+    // @param: Backend array för kartan
+    // @return: Backend array för kartan inkl utplacerade skeppen
     public String[][] placeShipsOnMap(String[][] array){
         Random random = new Random();
         int size = array.length;
 
         for (ShipUnit shipUnit : shipList) {    // Gå igenom alla skeppsobjekt
-            while (!shipUnit.isTest()) {        // Tills att skeppet är utplacerat på kartan
+            while (!shipUnit.isTestPlace()) {        // Tills att skeppet är utplacerat på kartan
 
                 int startX = random.nextInt(size);
                 int startY = random.nextInt(size);
@@ -120,6 +122,8 @@ public class Ship {
                                 colAfter = endY + 1;
                             }
 
+                            // Metod - skicka in boolean, row col före och efter
+
 
                             for (int a = colBefore; a <= colAfter; a++) {
                                 if (array[rowBefore][a].equals("s")) { // Raden före + en kolumn före och efter
@@ -131,7 +135,7 @@ public class Ship {
                                 }
                             }
 
-                            if (array[startX][colBefore].equals("s") || array[startX][colAfter].equals("S")) {
+                            if (array[startX][colBefore].equals("s") || array[startX][colAfter].equals("s")) {
                                 testSpaceAround = true;
                             }
 
@@ -190,7 +194,7 @@ public class Ship {
                             }
 
 
-                            if (array[rowBefore][startY].equals("s") || array[rowAfter][startY].equals("S")) {
+                            if (array[rowBefore][startY].equals("s") || array[rowAfter][startY].equals("s")) {
                                 testSpaceAround = true;
                             }
 
@@ -220,18 +224,18 @@ public class Ship {
     }
 
 
-    // Metod: Kontrollera området runt skeppet
-    public boolean testSpace(){
+    // Metod: Kontrollera området runt skeppet (Evelina Daun)
+    public boolean testSpace(boolean horizontal, int rowBefore, int rowAfter, int colBefore, int colAfter){
 
-
+        // Om Horisontell
+        // Om Vertikal
 
         return true;
     }
 
 
-    // Metod: Kontrollera om det är något skepp som inte är träffat
-    // True - Om skepp har liv kvar
-    // False - Om skepp inte har liv kvar
+    // Metod: Kontrollera om det är något skepp som inte är träffat (Evelina Daun)
+    // @return: True = Skepp har liv kvar  False = Skepp har inte liv kvar
     public boolean checkActiveShips(){
         for(ShipUnit s : shipList){
             if(s.isActive()){
@@ -241,19 +245,17 @@ public class Ship {
         return false;
     }
 
-    // Metod: Förändra livet på det skepp som är träffat
+    // Metod: Förändra livet på det skepp som är träffat (Evelina Daun)
+    // @param: x och y koordinater för träffade skeppet
     public void hitShipCoordinate(int x, int y){
         ShipUnit temp = findShipUnit(x, y); // Hitta rätt skeppobjekt
         temp.hitShip(); // Förändra skeppobjektet
 
-        /*
-        if(!temp.equals(null)){
-            temp.hitShip();
-        }
-         */
+        // Lägga till att skicka tillbaka skeppets namn om skeppet är träffat helt?
+
     }
 
-    // Metod: Hitta rätt skepp utifrån x och y koordinat
+    // Metod: Hitta rätt skepp utifrån x och y koordinat (Evelina Daun)
     // Returnerar skeppobjekt  eller  null om det inte finns något
     public ShipUnit findShipUnit(int x, int y){
         for(ShipUnit ship : shipList){
@@ -273,11 +275,12 @@ public class Ship {
                 }
             }
         }
-        return null;
+        return null; // Ändra detta
     }
 
 
     // Metod: Återställa spelet och köra igen  ???  // Lägga till om tid ?
+
 
 
 

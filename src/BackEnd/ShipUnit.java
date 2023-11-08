@@ -3,51 +3,34 @@ package BackEnd;/*  Klasskommentar:
 
 public class ShipUnit {
 
-    // Variabler
     private String name;
-    private boolean active;
     private int life;
+    private boolean active; // True = Skeppet har liv kvar.   False = Skeppet har inget liv kvar
     private int shipLenght;
-    private boolean test;
-    private boolean horizontal;
+    private boolean testPlace;  // För utplacering på kartan, true = placerats & false = inte utplacerat
+    private boolean horizontal; // True = Horisontellt skepp.  False =  Vertikalt skepp.
 
+    // Koordinaterna för skeppet
     private int xStart;
     private int yStart;
     private int xEnd;
     private int yEnd;
 
 
-    // Konstruktor
-    public ShipUnit(String name, int shipLenght){
+    public ShipUnit(String name, int shipLength){
         this.name = name;
-        this.shipLenght = shipLenght;
+        this.shipLenght = shipLength;
         life = shipLenght;
-        test = false;
+        testPlace = false;
     }
 
-    // Getters & Setters
+
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public boolean isActive() {
         return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
-    public int getLife() {
-        return life;
-    }
-
-    public void setLife(int life) {
-        this.life = life;
     }
 
     public int getShipLenght() {
@@ -58,12 +41,12 @@ public class ShipUnit {
         this.shipLenght = shipLenght;
     }
 
-    public boolean isTest() {
-        return test;
+    public boolean isTestPlace() {
+        return testPlace;
     }
 
     public void setTest(boolean test) {
-        this.test = test;
+        this.testPlace = test;
     }
 
     public boolean isHorizontal() {
