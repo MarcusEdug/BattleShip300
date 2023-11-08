@@ -1,14 +1,18 @@
-package BackEnd;/*  Klasskommentar:
-*      */
+package BackEnd;
+
+/*  Klasskommentar:
+*   Innehåller variabler och metod för att hantera enskilda skeppobjekt.
+*   Evelina Daun
+* */
 
 public class ShipUnit {
 
     private String name;
-    private int life;
-    private boolean active; // True = Skeppet har liv kvar.   False = Skeppet har inget liv kvar
+    private int lifeCounter;
+    private boolean active;      // True = Skeppet har liv kvar.   False = Skeppet har inget liv kvar
     private int shipLenght;
-    private boolean testPlace;  // För utplacering på kartan, true = placerats & false = inte utplacerat
-    private boolean horizontal; // True = Horisontellt skepp.  False =  Vertikalt skepp.
+    private boolean testPlace;   // För utplacering på kartan, true = placerats & false = inte utplacerat
+    private boolean horizontal;  // True = Horisontellt skepp.  False =  Vertikalt skepp.
 
     // Koordinaterna för skeppet
     private int xStart;
@@ -17,17 +21,19 @@ public class ShipUnit {
     private int yEnd;
 
 
+    // Konstruktor (Evelina Daun)
     public ShipUnit(String name, int shipLength){
         this.name = name;
         this.shipLenght = shipLength;
-        life = shipLenght;
+        lifeCounter = shipLenght;
         testPlace = false;
     }
 
 
+    // Getters & Setters (Evelina Daun)
     public String getName() {
         return name;
-    }
+    } // Ta bort ? Använda för att skriva ut vilket skepp som är träffat när hela skeppet är träffat?
 
     public boolean isActive() {
         return active;
@@ -37,15 +43,11 @@ public class ShipUnit {
         return shipLenght;
     }
 
-    public void setShipLenght(int shipLenght) {
-        this.shipLenght = shipLenght;
-    }
-
     public boolean isTestPlace() {
         return testPlace;
     }
 
-    public void setTest(boolean test) {
+    public void setTestPlace(boolean test) {
         this.testPlace = test;
     }
 
@@ -92,18 +94,12 @@ public class ShipUnit {
 
     // Metoder
 
+    // Metod: När ett skeppobjekt blir träffat (Evelina Daun)
     public void hitShip(){
-        life--;
-        if(life == 0){
-            deactivateShip();
+        --lifeCounter; // -1 på livräknaren
+        if(lifeCounter == 0){ // Om hela skeppet är träffat
+            active = false; // Skeppet är inte längre vid "liv"
         }
     }
-
-    public void deactivateShip(){
-        active = false;
-    }
-
-
-
 
 }

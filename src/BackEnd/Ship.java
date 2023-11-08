@@ -5,15 +5,16 @@ import java.util.List;
 import java.util.Random;
 
 /*  Klasskommentar:
-*   Innehåller lista med skepp för spelet samt metoder för att hantera skeppobjekten
- */
+*   Innehåller lista med skepp för spelet samt metoder för att hantera skeppobjekten.
+*   Evelina Daun
+*/
 
- /*
-     ***   Båtar i Spelet:  ***
-       1 - Hangarfartyg   (5x1)
-       2 - Slagskepp      (4x1)
-       3 - Kryssare       (3x1)
-       4 - Ubåtar         (2x1)
+ /*        SKEPP I SPELET:
+    Antal:  Namn:          Storlek:
+    1       Hangarfartyg   (5x1)
+    2       Slagskepp      (4x1)
+    3       Kryssare       (3x1)
+    4       Ubåtar         (2x1)
   */
 
 public class Ship {
@@ -29,6 +30,9 @@ public class Ship {
 
 
     // Metoder
+
+    // Metod: Återställa spelet och köra igen  ???  // Lägga till om tid ?
+    // Metod: Dela upp sökandet av koordinaterna i mindre delar  // Om tid när spelet är kopplat så det syns att det fungerar
 
     // Metod: Skapa skeppobjekten (Evelina Daun)
     public void createShipUnits(){
@@ -48,6 +52,7 @@ public class Ship {
         }
     }
 
+
     // Metod: Placera ut skeppen på kartan  (Evelina Daun)
     // @param: Backend array för kartan
     // @return: Backend array för kartan inkl utplacerade skeppen
@@ -55,21 +60,19 @@ public class Ship {
         Random random = new Random();
         int size = array.length;
 
-        for (ShipUnit shipUnit : shipList) {    // Gå igenom alla skeppsobjekt
-            while (!shipUnit.isTestPlace()) {        // Tills att skeppet är utplacerat på kartan
+        for (ShipUnit shipUnit : shipList) {         // Gå igenom alla skeppsobjekt
+            while (!shipUnit.isTestPlace()) {        // Tills att skeppobjektet är utplacerat på kartan
 
+                // Random placering för skeppet
                 int startX = random.nextInt(size);
                 int startY = random.nextInt(size);
                 int endX = 0;
                 int endY = 0;
 
-
                 // För att kontrollera området runt skeppet
-                /*
-                     |*                    rowBefore(x-1)                    *|
+                /*   |                     rowBefore(x-1)                     |
                      |colBefore(y-1)     (sx/sy)SKEPP(ex/ey)     colAfter(y+1)|
-                     |*                     rowAfter(x+1)                    *|
-                 */
+                     |                     rowAfter(x+1)                      |   */
 
                 int rowBefore;
                 int rowAfter;
@@ -88,13 +91,12 @@ public class Ship {
                     colBefore = startY - 1;
                 }
 
-
                 boolean horizontal = random.nextBoolean();  // True = Horisontell  &  False = Vertikal
                 boolean testContainsS = false;              // Inom koordinaterna.  True: Om s finns    False: Om s inte finns
                 boolean testSpaceAround = false;            // Runt koordinaterna.  True: Om s finns    False: Om s inte finns
 
 
-                if (horizontal) {  // Horisontella skepp  Y -> Y  ( x ändras inte )
+                if (horizontal) {  // Horisontella skepp  Y -> Y
                     if (startY + shipUnit.getShipLenght() <= size) { // Om skeppet får plats
                         endX = startX;
                         endY = startY + shipUnit.getShipLenght() - 1;
@@ -107,9 +109,7 @@ public class Ship {
                             }
                         }
 
-                        // Om s inte finns // Kontrollera avståndet runt skeppen
-                        if (!testContainsS) {
-
+                        if (!testContainsS) { // Om koordinaterna inte innehåller s
                             if (endX == (size - 1)) {
                                 rowAfter = endX;
                             } else {
@@ -122,41 +122,39 @@ public class Ship {
                                 colAfter = endY + 1;
                             }
 
-                            // Metod - skicka in boolean, row col före och efter
-
-
+                            // Raderna runt skeppet
                             for (int a = colBefore; a <= colAfter; a++) {
-                                if (array[rowBefore][a].equals("s")) { // Raden före + en kolumn före och efter
+                                if (array[rowBefore][a].equals("s")) {
                                     testSpaceAround = true;
                                     break;
-                                } else if (array[rowAfter][a].equals("s")) { // Raden efter + en kolumn före och efter
+                                } else if (array[rowAfter][a].equals("s")) {
                                     testSpaceAround = true;
                                     break;
                                 }
                             }
 
+                            // Kolumnerna före och efter
                             if (array[startX][colBefore].equals("s") || array[startX][colAfter].equals("s")) {
                                 testSpaceAround = true;
                             }
 
                             if (!testSpaceAround) {
-                                // Lägga till skeppet i arrayen
-                                for (int j = startY; j <= endY; j++) {
+                                for (int j = startY; j <= endY; j++) { // Lägga till skeppet i arrayen
                                     array[startX][j] = "s";
                                 }
 
-                                // Lägga till koordinaterna i skeppet
+                                // Lägga till koordinaterna i skeppobjektet
                                 shipUnit.setxStart(startX);
                                 shipUnit.setyStart(startY);
                                 shipUnit.setxEnd(endX);
                                 shipUnit.setyEnd(endY);
 
                                 shipUnit.setHorizontal(true);
-                                shipUnit.setTest(true); // Att skeppet är tillagt
+                                shipUnit.setTestPlace(true); // Att skeppet är tillagt
                             }
                         }
                     }
-                } else { // Vertikala skepp  X -> X  (y ändras inte)
+                } else { // Vertikala skepp  X -> X
                     if (startX + shipUnit.getShipLenght() <= size) { // Om Skeppet får plats
                         endX = startX + shipUnit.getShipLenght() - 1;
                         endY = startY;
@@ -169,8 +167,7 @@ public class Ship {
                             }
                         }
 
-                        if (!testContainsS) {
-
+                        if (!testContainsS) { // Om koordinaterna inte innehåller s
                             if (endY == (size - 1)) {
                                 colAfter = endY;
                             } else {
@@ -183,24 +180,24 @@ public class Ship {
                                 rowAfter = endX + 1;
                             }
 
+                            // Kolumnerna runt skeppet
                             for (int a = rowBefore; a <= rowAfter; a++) {
-                                if (array[a][colBefore].equals("s")) { // Raden före + en kolumn före och efter
+                                if (array[a][colBefore].equals("s")) {
                                     testSpaceAround = true;
                                     break;
-                                } else if (array[a][colAfter].equals("s")) { // Raden efter + en kolumn före och efter
+                                } else if (array[a][colAfter].equals("s")) {
                                     testSpaceAround = true;
                                     break;
                                 }
                             }
 
-
+                            // Raden före och efter skeppet
                             if (array[rowBefore][startY].equals("s") || array[rowAfter][startY].equals("s")) {
                                 testSpaceAround = true;
                             }
 
-
                             if (!testSpaceAround) {
-                                for (int j = startX; j <= endX; j++) {
+                                for (int j = startX; j <= endX; j++) { // Lägga till skeppet i arrayen
                                     array[j][startY] = "s";
                                 }
 
@@ -211,31 +208,19 @@ public class Ship {
                                 shipUnit.setyEnd(endY);
 
                                 shipUnit.setHorizontal(false);
-                                shipUnit.setTest(true); // Ändra så att skeppet är tillagt
+                                shipUnit.setTestPlace(true); // Ändra så att skeppet är tillagt
                             }
-
                         }
                     }
                 }
-            } // While loop
-        } // For loop
-
+            }
+        }
         return array;
     }
 
 
-    // Metod: Kontrollera området runt skeppet (Evelina Daun)
-    public boolean testSpace(boolean horizontal, int rowBefore, int rowAfter, int colBefore, int colAfter){
-
-        // Om Horisontell
-        // Om Vertikal
-
-        return true;
-    }
-
-
-    // Metod: Kontrollera om det är något skepp som inte är träffat (Evelina Daun)
-    // @return: True = Skepp har liv kvar  False = Skepp har inte liv kvar
+    // Metod: Kontrollera om det finns skeppobjekt med liv kvar (Evelina Daun)
+    // @return: True = Skepp har liv kvar  False = Inget skeppobjekt har inte liv kvar
     public boolean checkActiveShips(){
         for(ShipUnit s : shipList){
             if(s.isActive()){
@@ -245,18 +230,24 @@ public class Ship {
         return false;
     }
 
+
     // Metod: Förändra livet på det skepp som är träffat (Evelina Daun)
-    // @param: x och y koordinater för träffade skeppet
+    // @param: X och y koordinater för träffade skeppet
     public void hitShipCoordinate(int x, int y){
         ShipUnit temp = findShipUnit(x, y); // Hitta rätt skeppobjekt
-        temp.hitShip(); // Förändra skeppobjektet
+
+        if(!temp.getName().isEmpty()){
+            temp.hitShip(); // Förändra skeppobjektet
+        }
 
         // Lägga till att skicka tillbaka skeppets namn om skeppet är träffat helt?
-
+        // Om skeppet är helt träffat skicka - getName
+        // Om skeppet inte är helt träffat -
     }
 
+
     // Metod: Hitta rätt skepp utifrån x och y koordinat (Evelina Daun)
-    // Returnerar skeppobjekt  eller  null om det inte finns något
+    // @return: skeppobjekt  eller  null om det inte finns något
     public ShipUnit findShipUnit(int x, int y){
         for(ShipUnit ship : shipList){
             boolean horizontal = ship.isHorizontal(); // True = Horisontell, False = Vertikal
@@ -275,13 +266,7 @@ public class Ship {
                 }
             }
         }
-        return null; // Ändra detta
+        return new ShipUnit("", 0); // Skicka tomt objekt ifall skeppet inte finns
     }
 
-
-    // Metod: Återställa spelet och köra igen  ???  // Lägga till om tid ?
-
-
-
-
-} // Slut på Ship Klassen
+}
