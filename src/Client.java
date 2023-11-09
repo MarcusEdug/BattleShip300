@@ -13,22 +13,19 @@ public class Client {
     //samt skapar utrymme för att ha kontakt med servern genom strängdata
     public void connect() throws IOException {
         try {
-
-            Socket socket = new Socket("localhost", 8080); //Skapar koppling till ip-adressen
+            Socket socket = new Socket("localhost", 8080); //Skapar koppling till en port
             System.out.println("Ansluten till servern");
-
 
             InputStream inputStream = socket.getInputStream();
 
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
             reader = new BufferedReader(inputStreamReader);
 
-
             writer = new PrintWriter(socket.getOutputStream(),true);
-            writer.println("connected..."); //Skickas till servern
+            writer.println("client connected..."); //Skickas till servern
 
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Kunde inte ansluta på grund av: " + e.getMessage());
         }
         while (gameIsRunning) {
             if(firstShot) {
@@ -40,18 +37,19 @@ public class Client {
                 if(reader.ready()){
                     String incomingMessage = reader.readLine();
                     System.out.println("Servern skjuter på " + incomingMessage);
-                    String outoutText = checkIfHitAndCreateReply(incomingMessage);
+                    String outputText = checkIfHitAndCreateReply(incomingMessage);
                     try {
                         Thread.sleep(3000);
                     } catch (InterruptedException e) {
-                        System.out.println("Kunde inte pause på grund av " + e.getMessage());
+                        System.out.println("Kunde inte pausa på grund av: " + e.getMessage());
                     }
-                    System.out.println(outoutText);
-                    writer.println(outoutText);
+                    System.out.println(outputText);
+                    writer.println(outputText);
                 }
             }
         }
     }
+    //Metod för att kolla om spelet är igång
     public String checkIfHitAndCreateReply(String input) {
         if (input.equals("Jag förlorade")) {
             gameIsRunning = false;
@@ -63,7 +61,7 @@ public class Client {
                 return "Jag förlorade";*/
 
             } else {
-                return "Tusan! Du träffade en *TypAvBåt*";
+                return "Tusan! Du träffade en båt!";
             }
         }
     }

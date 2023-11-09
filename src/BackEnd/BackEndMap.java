@@ -42,6 +42,7 @@ public class BackEndMap implements SystemBord {
     }
 
 
+
     // MS,FK,AR
     public void hitInput (String input){
         fire.fireRandom(XRowValue, YRowValue);
