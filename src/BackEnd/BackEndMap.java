@@ -8,7 +8,6 @@ public class BackEndMap implements SystemBord {
     private int YRowInt;
     Fire fire = new Fire();
 
-    //Skapar back end kartan (AR)
     public void createEndMap(int XRowValue, int YRowValue){
 
             for (int y = 0; y < XRowValue; y++) {
@@ -17,8 +16,6 @@ public class BackEndMap implements SystemBord {
                 }
             }
     }
-
-    // Vissar hur back end kartan ser ut just nu (AR)
     public void showEndMap(int XRowValue, int YRowValue){
         for (int y = 0; y < XRowValue; y++) {
             for (int x = 0; x < YRowValue; x++) {
@@ -28,61 +25,43 @@ public class BackEndMap implements SystemBord {
 
         }
     }
-
-    //test båt (AR)
     public void bout51 (){
-        array[0][0] = "s";
         array[0][1] = "s";
         array[0][2] = "s";
         array[0][3] = "s";
         array[0][4] = "s";
-        lifeOnBoat.add(5);
-        lifeOnBoat.add(5);
-        lifeOnBoat.add(5);
-        lifeOnBoat.add(5);
-        lifeOnBoat.add(5);
-
+        array[0][5] = "s";
+        array[0][6] = "s";
+        array[0][7] = "s";
+        array[0][8] = "s";
     }
-
-    //test båt (AR)
-    public void bout52 (){
-        array[4][2] = "s";
-        array[5][2] = "s";
-        array[6][2] = "s";
-        lifeOnBoat.add(3);
-        lifeOnBoat.add(3);
-        lifeOnBoat.add(3);
+    public String checkValue(int x, int y){
+        //dennes uppgift blir att kolla om det är en träff eller inte,
+        // Antingen returnerar vi träff/miss,
+        return (array[x][y] != null) ?array[x][y]:"m"; //kollar om värdet är S annars null (miss)
     }
 
 
-    //För att spela själv (AR
-    public void fire (){
-            String soloPlay = fire.fireOutput(XRowValue, YRowValue);
-            fire.fireInput(soloPlay);
 
-    }
     // MS,FK,AR
-    //SKjuter på kooriderna som kommer in / oklar om vi behöver. Används inte
     public void hitInput (String input){
+        fire.fireRandom(XRowValue, YRowValue);
         XRow = Character.getNumericValue(input.charAt(0));
         YRowChar = input.charAt(1);
         covertYCharToYint(YRowChar);
 
-        if (array[XRow][YRowInt].equals("s")) {
+
+        if (array[XRow][YRowInt].equals("s")){
             System.out.println("Hit!");
+
             array[XRow][YRowInt] = "h";
-            lifeOnBoat.remove(0);
-        }
-        else if (array[XRow][YRowInt].equals("h") || array[XRow][YRowInt].equals("m")){
-            hitInput(input);
         }
         else {
             System.out.println("Miss!");
             array[XRow][YRowInt] = "m";
         }
     }
-
-    //Omvanlar Char till int (AR)
+    //AR
     public int covertYCharToYint(char y){
         if (y == 'a'){
             YRowInt = 0;

@@ -11,8 +11,7 @@ public class Main {
         Player player1 = new Player();
         //Fire fire = new Fire();
 
-       /* MyThread runnable1 = new MyThread();
-        Thread thread1 = new Thread(runnable1);
+
 
 
         MyThread2 runnable2 = new MyThread2();
@@ -22,6 +21,7 @@ public class Main {
         thread1.start();
         //thread1.join(2000); //Skapar en delay för thread2. Kommer att avslutas 2 sekunder efter thread1 är klar.
         thread2.start();*/
+
 
 
     }
