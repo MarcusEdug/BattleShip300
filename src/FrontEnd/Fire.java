@@ -56,7 +56,7 @@ public class Fire implements SystemBord {
         if (array[valueX][valueY].equals("s")) {
             System.out.println("Hit!");
             array[valueX][valueY] = "h";
-            lifeOnBoat.remove(0);
+            //lifeOnBoat.remove(0);
         }
         else {
             System.out.println("Miss!");

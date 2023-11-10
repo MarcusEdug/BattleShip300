@@ -1,17 +1,22 @@
-public class MyThread2 implements Runnable{
+import FrontEnd.GameBoard;
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+public class MyThread2 extends Application implements Runnable{
     //Kan "extend" en annan klass om det behövs.
+    Stage window;
+    GameBoard gameBoard = new GameBoard();
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        window = primaryStage;
+    }
     @Override
     public void run() {
-        //Här kan metoden för att starta spelplan #2 finnas.
-
-        for (int i = 5; i >= 1 ; i--) {
-            System.out.println("Tråd nr 2: " + i);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                System.out.println(e.getMessage());
-            }
+        try {
+            gameBoard.start(window);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
-        System.out.println("Tråd nr 2 är klar");
     }
 }

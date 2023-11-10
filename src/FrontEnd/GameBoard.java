@@ -24,8 +24,8 @@ public class GameBoard extends Application implements SystemBord {
 
     @Override
     public void start(Stage stage) {
-        this.backEndMap2 = new BackEndMap();
-        this.backEndMap2.bout51(); //tänk på att vi behöver eventuellt 2 st backendmaps.
+        //this.backEndMap2 = new BackEndMap();
+        //this.backEndMap2.bout51(); //tänk på att vi behöver eventuellt 2 st backendmaps.
         GridPane gridPane = new GridPane();
         Scene scene = new Scene(gridPane, X_ROW_VALUE * CELL_SIZE, Y_ROW_VALUE * CELL_SIZE);
         setupWindow(stage);
@@ -35,7 +35,7 @@ public class GameBoard extends Application implements SystemBord {
         stage.show();
     }
     //Fönstrets inställningar
-    private void setupWindow(Stage stage) {
+    public void setupWindow(Stage stage) {
         double windowWidth = 1300;
         double windowHeight = 550;
         stage.setMinWidth(1100);
@@ -46,7 +46,7 @@ public class GameBoard extends Application implements SystemBord {
         stage.setHeight(windowHeight);
     }
 
-    private void setupPlayerLabels(GridPane gridPane) {
+    public void setupPlayerLabels(GridPane gridPane) {
         Label player1Label = new Label(SPELARE1);
         player1Label.setFont(Font.font("Arial", FontWeight.BOLD, 16));
         player1Label.setTextFill(Color.BLACK);
@@ -59,7 +59,7 @@ public class GameBoard extends Application implements SystemBord {
         gridPane.add(player2Label, X_ROW_VALUE + 1, 0, 1, 1);
     }
 
-    private void setupGamePanes(GridPane gridPane) {
+    public void setupGamePanes(GridPane gridPane) {
         GamePane gamePane1 = new GamePane("Spelplan 1", Y_ROW_VALUE, X_ROW_VALUE,this.backEndMap2);
         GamePane gamePane2 = new GamePane("Spelplan 2", Y_ROW_VALUE, X_ROW_VALUE, this.backEndMap2); //Behöver en till backendmap.
         HBox letterHBox1 = createLetterHBox();

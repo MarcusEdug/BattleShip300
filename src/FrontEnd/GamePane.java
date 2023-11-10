@@ -2,15 +2,17 @@ package FrontEnd;
 
 import BackEnd.BackBord;
 import BackEnd.BackEndMap;
+import BackEnd.SystemBord;
 import FrontEnd.GameBoard;
 import FrontEnd.GameCell;
 import javafx.scene.layout.Pane;
 import FrontEnd.Fire;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
 
-public class GamePane extends Pane {
+public class GamePane extends Pane implements SystemBord {
     private String name;
     private int rows;
     private int columns;
@@ -30,7 +32,10 @@ public class GamePane extends Pane {
     private void createGameCells(int rows, int columns) { //Hämta input från
         for (int y = 0; y < rows; y++) {
             for (int x = 0; x < columns; x++) {
-                GameCell cell = new GameCell();
+                Rectangle cell = new Rectangle(CELL_SIZE,CELL_SIZE);
+                FXarray[y][x]= cell;
+                cell.setFill(Color.WHITE);
+                cell.setStroke(Color.BLACK);
                 int finalX = x;
                 int finalY = y;
 
@@ -40,17 +45,17 @@ public class GamePane extends Pane {
                 cell.setTranslateY(finalY * cellHeight);
                 getChildren().add(cell);
 
-                String result = backEndMap.checkValue(finalX, finalY);
+              /* String result = backEndMap.checkValue(finalX, finalY);
                 switch (result) {
                     case "s":
                         System.out.println("träff");
-                        cell.hit();
+                        //cell.hit();
                         break;
                     case "m":
                         System.out.println("miss");
                         break;
                     //Anonym funktion = lambda
-               /* cell.setOnMouseClicked(e -> {
+                cell.setOnMouseClicked(e -> {
                     //anropa backendmap
                     System.out.println(this.backEndMap.checkValue(finalX, finalY));
                     String result = this.backEndMap.checkValue(finalX, finalY);
@@ -93,4 +98,3 @@ public class GamePane extends Pane {
     }
     */
     }
-}

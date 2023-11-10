@@ -8,6 +8,8 @@ public class BackEndMap implements SystemBord {
     private int YRowInt;
     Fire fire = new Fire();
 
+    Ship ship = new Ship();
+
     public void createEndMap(int XRowValue, int YRowValue){
 
             for (int y = 0; y < XRowValue; y++) {
@@ -45,21 +47,12 @@ public class BackEndMap implements SystemBord {
 
     // MS,FK,AR
     public void hitInput (String input){
-        fire.fireRandom(XRowValue, YRowValue);
-        XRow = Character.getNumericValue(input.charAt(0));
-        YRowChar = input.charAt(1);
-        covertYCharToYint(YRowChar);
+        String shotFire = fire.fireOutput(XRowValue,YRowValue);
+        int valueX = Character.getNumericValue(shotFire.charAt(0));
+        int valueY =Character.getNumericValue(shotFire.charAt(1));
+        ship.hitShipCoordinate(valueX,valueY);
+        fire.fireInput(shotFire);
 
-
-        if (array[XRow][YRowInt].equals("s")){
-            System.out.println("Hit!");
-
-            array[XRow][YRowInt] = "h";
-        }
-        else {
-            System.out.println("Miss!");
-            array[XRow][YRowInt] = "m";
-        }
     }
     //AR
     public int covertYCharToYint(char y){
