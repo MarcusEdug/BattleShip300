@@ -26,14 +26,17 @@ public class GamePane extends Pane implements SystemBord {
         this.backEndMap = backEndMap;
         setPrefSize(columns * GameBoard.CELL_SIZE, rows * GameBoard.CELL_SIZE);
         /*cells = new GameCell[rows][columns]; // testar med en array för cellerna istället*/
-        createGameCells(rows, columns); //Ny funktion för att skapa cellerna, gentemot hur det såg ut tidigare. (för min del av koden FK)/
+        //createGameCells(rows, columns); //Ny funktion för att skapa cellerna, gentemot hur det såg ut tidigare. (för min del av koden FK)/
     }
 
-    private void createGameCells(int rows, int columns) { //Hämta input från
+    public void createGameCells(int rows, int columns,int f) { //Hämta input från
         for (int y = 0; y < rows; y++) {
             for (int x = 0; x < columns; x++) {
                 Rectangle cell = new Rectangle(CELL_SIZE,CELL_SIZE);
-                FXarray[y][x]= cell;
+                if(f == 2) {
+                    FXarrayServer[y][x] = cell;
+                }
+                else FXarrayClient[y][x] = cell;
                 cell.setFill(Color.WHITE);
                 cell.setStroke(Color.BLACK);
                 int finalX = x;

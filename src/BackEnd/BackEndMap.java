@@ -14,14 +14,14 @@ public class BackEndMap implements SystemBord {
 
             for (int y = 0; y < XRowValue; y++) {
                 for (int x = 0; x < YRowValue; x++) {
-                    array[x][y] = "i";
+                    array[y][x] = "i";
                 }
             }
     }
     public void showEndMap(int XRowValue, int YRowValue){
         for (int y = 0; y < XRowValue; y++) {
             for (int x = 0; x < YRowValue; x++) {
-                System.out.print(array[x][y] + " " );
+                System.out.print(array[y][x] + " " );
             }
             System.out.println(" ");
 

@@ -24,24 +24,27 @@ public class Server {
 
             writer = new PrintWriter(socket.getOutputStream(), true);
             writer.println("Välkommen till servern!"); //Skickas till klienten
+            System.out.println("nu är jag ansluten");
+            writer.println("01"); //Skickas till klienten
+            System.out.println("Jag har skjuttigt");
+            String incomingMessage = reader.readLine();
+            System.out.println("Klienten skjuter på: " + incomingMessage);
 
         } catch (IOException e) {
             System.out.println("Kunde inte ansluta på grund av: " + e.getMessage());
         }
-        while (gameIsRunning) {
+        /*while (gameIsRunning) {
             if (reader.ready()) {
                 String incomingMessage = reader.readLine();
                 System.out.println("Klienten skjuter på: " + incomingMessage);
-                String outputText = checkIfHitAndCreateReply(incomingMessage);
+                //String outputText = checkIfHitAndCreateReply(incomingMessage);
                 try {
                     Thread.sleep(3000);
                 } catch (InterruptedException e) {
                     System.out.println("Kunde inte pausa på grund av: " + e.getMessage());
                 }
-                System.out.println(outputText);
-                writer.println(outputText);
             }
-        }
+        }*/
     }
     //Metod för att kolla om spelet är igång
     public String checkIfHitAndCreateReply(String input) {

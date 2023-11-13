@@ -12,7 +12,8 @@ public interface SystemBord {
     //2D array for 2d kartan (AR)
     String[][] array = new String[XRowValue][YRowValue];
 
-    Rectangle[][] FXarray = new Rectangle[XRowValue][YRowValue];
+    Rectangle[][] FXarrayServer = new Rectangle[XRowValue][YRowValue];
+    Rectangle[][] FXarrayClient = new Rectangle[XRowValue][YRowValue];
 
     //liv för båtnarna (AR)
     List<Integer> lifeOnBoat = new ArrayList<>();

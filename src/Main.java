@@ -14,8 +14,6 @@ public class Main extends Application{
     MyThread myThread = new MyThread();
     Thread backendThread = new Thread(myThread);
 
-    MyThread2 myThread2 = new MyThread2();
-    Thread FXThread = new Thread(myThread2);
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -34,6 +32,7 @@ public class Main extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        //myThread.connect();
         Stage stage = primaryStage;
         GridPane gridPane = new GridPane();
         Scene scene = new Scene(gridPane, gameBoard.X_ROW_VALUE * gameBoard.CELL_SIZE, gameBoard.Y_ROW_VALUE * gameBoard.CELL_SIZE);

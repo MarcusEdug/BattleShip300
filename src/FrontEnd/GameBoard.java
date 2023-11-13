@@ -18,8 +18,8 @@ public class GameBoard extends Application implements SystemBord {
     public static final int CELL_SIZE = SystemBord.CELL_SIZE;
     public static final int X_ROW_VALUE = XRowValue;
     public static final int Y_ROW_VALUE = YRowValue;
-    private static final String SPELARE1 = "Spelare 1";
-    private static final String SPELARE2 = "Spelare 2";
+    private static final String SPELARE1 = "Client";
+    private static final String SPELARE2 = "Server";
     private BackEndMap backEndMap2;
 
     @Override
@@ -61,7 +61,9 @@ public class GameBoard extends Application implements SystemBord {
 
     public void setupGamePanes(GridPane gridPane) {
         GamePane gamePane1 = new GamePane("Spelplan 1", Y_ROW_VALUE, X_ROW_VALUE,this.backEndMap2);
+        gamePane1.createGameCells(XRowValue,YRowValue, 1);
         GamePane gamePane2 = new GamePane("Spelplan 2", Y_ROW_VALUE, X_ROW_VALUE, this.backEndMap2); //Behöver en till backendmap.
+        gamePane2.createGameCells(XRowValue,YRowValue,2);
         HBox letterHBox1 = createLetterHBox();
         HBox letterHBox2 = createLetterHBox();
         VBox numVBox1 = createNumberVBox();
