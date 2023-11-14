@@ -13,16 +13,24 @@ public class ChangeColor implements SystemBord {
 
      */
 
-    public void colorChanges(int x, int y){
-        if (array[x][y].equals("i")){
-            FXarrayServer[x][y].setFill(Color.GREEN);
-        } else if (array[x][y].equals("s")) {
-            FXarrayServer[x][y].setFill(Color.BLUE);
-        }else if (array[x][y].equals("h")) {
-            FXarrayServer[x][y].setFill(Color.DARKRED);
+    public void colorChangesEnemy(String input){
+        int valueX = Character.getNumericValue(input.charAt(0));
+        int valueY =Character.getNumericValue(input.charAt(1));
+        if (array[valueX][valueY].equals("h")) {
+            FXarrayServer[valueX][valueY].setFill(Color.GREEN);
         }
         else {
-            FXarrayServer[x][y].setFill(Color.OLIVEDRAB);
+            FXarrayServer[valueX][valueY].setFill(Color.OLIVEDRAB);
+        }
+    }
+    public void colorChangesYour(String input){
+        int valueX = Character.getNumericValue(input.charAt(0));
+        int valueY =Character.getNumericValue(input.charAt(1));
+        if (array[valueX][valueY].equals("h")) {
+            FXarrayClient[valueX][valueY].setFill(Color.GREEN);
+        }
+        else {
+            FXarrayClient[valueX][valueY].setFill(Color.OLIVEDRAB);
         }
     }
 

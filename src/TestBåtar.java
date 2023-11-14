@@ -1,7 +1,7 @@
 import java.util.concurrent.TimeUnit;
 
 public class TestBåtar {
-    private final char[][] board = {
+   /* private final char[][] board = {
             {1, 0, 0, 0, 0}, //2 = liten båt
             {1, 0, 0, 1, 1}, //3 = mellanstor båt
             {1, 0, 0, 0, 0}, //4 = stor båt
@@ -36,4 +36,6 @@ public class TestBåtar {
     public char[][] getBoard() {
         return board;
     }
+
+    */
 }

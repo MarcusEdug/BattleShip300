@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Random;
 
 /*  Klasskommentar:
-*   Innehåller lista med skepp för spelet samt metoder för att hantera skeppobjekten.
-*   Evelina Daun
-*/
+ *   Innehåller lista med skepp för spelet samt metoder för att hantera skeppobjekten.
+ *   Evelina Daun
+ */
 
  /*        SKEPP I SPELET:
     Antal:  Namn:          Storlek:
@@ -56,7 +56,7 @@ public class Ship {
     // Metod: Placera ut skeppen på kartan  (Evelina Daun)
     // @param: Backend array för kartan
     // @return: Backend array för kartan inkl utplacerade skeppen
-    public String[][] placeShipsOnMap(String[][] array){ /*
+    public String[][] placeShipsOnMap(String[][] array){
         Random random = new Random();
         int size = array.length;
 
@@ -72,7 +72,7 @@ public class Ship {
                 // För att kontrollera området runt skeppet
                 /*   |                     rowBefore(x-1)                     |
                      |colBefore(y-1)     (sx/sy)SKEPP(ex/ey)     colAfter(y+1)|
-                     |                     rowAfter(x+1)                      |
+                     |                     rowAfter(x+1)                      |   */
 
                 int rowBefore;
                 int rowAfter;
@@ -214,8 +214,7 @@ public class Ship {
                     }
                 }
             }
-        }*/
-        array[0][0]="s";
+        }
         return array;
     }
 

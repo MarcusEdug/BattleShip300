@@ -23,11 +23,12 @@ public class MyThread implements Runnable, SystemBord {
     Socket socket;
     InputStream inputStream;
     InputStreamReader inputStreamReader;
-
     String test ="s";
     Scanner myScanner = new Scanner(System.in);
-
     Ship ship;
+    int gameDelay;
+
+    boolean gamePlay = true;
 
     public void connect() throws IOException {
         try {
@@ -48,20 +49,23 @@ public class MyThread implements Runnable, SystemBord {
     }
     @Override
     public void run()  {
+        System.out.println("Hur lång delay vill du ha? (i sec 1-5)");
+        gameDelay = myScanner.nextInt();
         backEndMap.createEndMap(XRowValue,YRowValue);
         ship = new Ship();
         ship.createShipUnits();
         System.out.println("båtar skapade");
         ship.placeShipsOnMap(array);
-        changeColor.clientColor();
+        //changeColor.clientColor();
         System.out.println("Nu är dom placerade");
         backEndMap.showEndMap(XRowValue,YRowValue);
-        while (!ship.checkActiveShips()) {
+        while (gamePlay) {
             String shipFire = shotFire.fireOutput(XRowValue,YRowValue);
             writer.println(shipFire);
             System.out.println("De har skjutist");
             try {
                 incomingMessage = reader.readLine();
+                System.out.println(incomingMessage);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -70,9 +74,15 @@ public class MyThread implements Runnable, SystemBord {
             //System.out.println("nu har fireinput tagit emot skottet");
             ship.hitShipCoordinate(valueX,valueY);
             System.out.println("nu har ship tagit emot skottet");
-            changeColor.colorChanges(valueX,valueY);
+           // changeColor.colorChanges(valueX,valueY);
             //System.out.println("nu ändras färgen");
             backEndMap.showEndMap(XRowValue,YRowValue);
+            delyTheGame(gameDelay);
+            System.out.println("väljer s/n");
+            test = myScanner.next();
+            if(test.equals("s")){
+                gamePlay = false;
+            }
         }
         System.out.println("Won");
         //Kör  hela BackEnd programet (AR)
@@ -100,7 +110,7 @@ public class MyThread implements Runnable, SystemBord {
             //System.out.println("nu har ship tagit emot skottet");
             shotFire.fireInput(shipFire);
             //System.out.println("nu har fireinput tagit emot skottet");
-            changeColor.colorChanges(valueX,valueY);
+            //changeColor.colorChanges(valueX,valueY);
             //System.out.println("nu ändras färgen");
             backEndMap.showEndMap(XRowValue,YRowValue);
         }
@@ -115,7 +125,7 @@ public class MyThread implements Runnable, SystemBord {
         int valueY = Character.getNumericValue(shipFire.charAt(1));
         ship.hitShipCoordinate(valueX,valueY);
         shotFire.fireInput(shipFire);
-        changeColor.colorChanges(valueX,valueY);
+        //changeColor.colorChanges(valueX,valueY);
 
 
     }
@@ -133,6 +143,14 @@ public class MyThread implements Runnable, SystemBord {
 
         } else {
             return "Tusan! Du träffade en båt!";
+        }
+    }
+
+    public void delyTheGame(int delyInSec){
+        try {
+            Thread.sleep(delyInSec * 1000);
+        } catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
         }
     }
 }

@@ -27,6 +27,7 @@ public class Fire implements SystemBord {
     int indexX;
     int indexY;
     int randomNumber;
+    ChangeColor changeColor = new ChangeColor();
     Random random = new Random();
     String shotFire;
     int count = 0;
@@ -62,5 +63,6 @@ public class Fire implements SystemBord {
             System.out.println("Miss!");
             array[valueX][valueY] = "m";
         }
+
     }
 }

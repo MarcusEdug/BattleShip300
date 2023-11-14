@@ -3,12 +3,12 @@ package BackEnd;
 import FrontEnd.Fire;
 
 public class BackEndMap implements SystemBord {
-    private int XRow;
-    private char YRowChar;
-    private int YRowInt;
-    Fire fire = new Fire();
+    //private int XRow;
+    //private char YRowChar;
+    //private int YRowInt;
+    //Fire fire = new Fire();
 
-    Ship ship = new Ship();
+    //Ship ship = new Ship();
 
     public void createEndMap(int XRowValue, int YRowValue){
 
@@ -27,6 +27,14 @@ public class BackEndMap implements SystemBord {
 
         }
     }
+    public void delyTheGame(){
+        try {
+            Thread.sleep(delayTime.get(0) * 1000);
+        } catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
+        }
+    }
+    /*
     public void bout51 (){
         array[0][1] = "s";
         array[0][2] = "s";
@@ -42,6 +50,8 @@ public class BackEndMap implements SystemBord {
         // Antingen returnerar vi träff/miss,
         return (array[x][y] != null) ?array[x][y]:"m"; //kollar om värdet är S annars null (miss)
     }
+
+
 
 
 
@@ -98,6 +108,8 @@ public class BackEndMap implements SystemBord {
         }
     }
 
+
+
     //AR
     public int getXRow() {
         return XRow;
@@ -124,5 +136,7 @@ public class BackEndMap implements SystemBord {
     public void setYRowInt(int YRowInt) {
         this.YRowInt = YRowInt;
     }
+
+     */
 }
 

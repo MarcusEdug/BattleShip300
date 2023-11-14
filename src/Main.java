@@ -33,16 +33,17 @@ public class Main extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         //myThread.connect();
-        Stage stage = primaryStage;
+        /*Stage stage = primaryStage;
         GridPane gridPane = new GridPane();
         Scene scene = new Scene(gridPane, gameBoard.X_ROW_VALUE * gameBoard.CELL_SIZE, gameBoard.Y_ROW_VALUE * gameBoard.CELL_SIZE);
         gameBoard.setupWindow(stage);
         gameBoard.setupPlayerLabels(gridPane);
         gameBoard.setupGamePanes(gridPane);
         stage.setScene(scene);
-        stage.show();
+        stage.show();*/
+        gameBoard.start(primaryStage);
 
-        backendThread.start();
+        //backendThread.start();
     }
 }
 
