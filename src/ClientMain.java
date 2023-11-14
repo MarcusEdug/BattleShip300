@@ -1,15 +1,19 @@
+import BackEnd.BackEndMap;
+import BackEnd.SystemBord;
 import FrontEnd.GameBoard;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ClientMain extends Application {
+public class ClientMain extends Application implements SystemBord {
 
-
+    Client client = new Client();
     public static void main (String[] args) throws IOException {
-        Client client = new Client();
-        client.connect();
+        BackEndMap backEndMap = new BackEndMap();
+        backEndMap.createEndMap(XRowValue,YRowValue);
+
+
 
 
         launch(args);
@@ -21,6 +25,7 @@ public class ClientMain extends Application {
 
 
         gameBoard.start(primaryStage);
+        client.connect();
 
 
     }

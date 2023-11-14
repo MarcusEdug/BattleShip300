@@ -19,11 +19,11 @@ public class GamePane extends Pane implements SystemBord {
     private GameCell[][] cells;// testar med en array för cellerna istället
     private BackEndMap backEndMap;
 
-    public GamePane(String name, int rows, int columns, BackEndMap backEndMap) {
+    public GamePane(String name, int rows, int columns) {
         this.name = name;
         this.rows = rows;
         this.columns = columns;
-        this.backEndMap = backEndMap;
+        //this.backEndMap = backEndMap;
         setPrefSize(columns * GameBoard.CELL_SIZE, rows * GameBoard.CELL_SIZE);
     }
 

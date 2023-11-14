@@ -15,6 +15,7 @@ public class BackEndMap implements SystemBord {
             for (int y = 0; y < XRowValue; y++) {
                 for (int x = 0; x < YRowValue; x++) {
                     array[y][x] = "i";
+                    arrayEnemy[y][x] = "i";
                 }
             }
     }

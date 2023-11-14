@@ -42,13 +42,13 @@ public class Client implements SystemBord {
             reader = new BufferedReader(inputStreamReader);
 
             writer = new PrintWriter(socket.getOutputStream(),true);
-
+            System.out.println(reader.readLine());
             clinetTread = new ClientThread(writer, reader);
         } catch (IOException e) {
             System.out.println("Kunde inte ansluta på grund av: " + e.getMessage());
         }
 
-        backEndMap.createEndMap(XRowValue,YRowValue);
+        //backEndMap.createEndMap(XRowValue,YRowValue);
 
         ship.createShipUnits();
         System.out.println("har jag fastnat!");

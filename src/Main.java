@@ -16,15 +16,16 @@ public class Main extends Application{
 
 
     public static void main(String[] args) throws InterruptedException {
-
+        Fire fire = new Fire();
         /*//System.out.println("Hello world!");
-        //Fire fire = new Fire();
+
         MyThread2 runnable2 = new MyThread2();
         Thread thread2 = new Thread(runnable2);
         thread1.setPriority(10); //thread1 kommer alltid att köras först (ex client)
         thread1.start();
         //thread1.join(2000); //Skapar en delay för thread2. Kommer att avslutas 2 sekunder efter thread1 är klar.
         thread2.start();*/
+        System.out.println(fire.fireOutput(10,10));
         launch(args);
 
     }
@@ -41,7 +42,7 @@ public class Main extends Application{
         gameBoard.setupGamePanes(gridPane);
         stage.setScene(scene);
         stage.show();*/
-        gameBoard.start(primaryStage);
+        //gameBoard.start(primaryStage);
 
         //backendThread.start();
     }

@@ -82,9 +82,9 @@ public class GameBoard extends Application implements SystemBord {
     }
 
     public void setupGamePanes(GridPane gridPane) {
-        GamePane gamePane1 = new GamePane("Spelplan 1", Y_ROW_VALUE, X_ROW_VALUE,this.backEndMap2);
+        GamePane gamePane1 = new GamePane("Spelplan 1", Y_ROW_VALUE, X_ROW_VALUE);
         gamePane1.createGameCells(XRowValue,YRowValue, 1);
-        GamePane gamePane2 = new GamePane("Spelplan 2", Y_ROW_VALUE, X_ROW_VALUE, this.backEndMap2); //Behöver en till backendmap.
+        GamePane gamePane2 = new GamePane("Spelplan 2", Y_ROW_VALUE, X_ROW_VALUE); //Behöver en till backendmap.
         gamePane2.createGameCells(XRowValue,YRowValue,2);
         HBox letterHBox1 = createLetterHBox();
         HBox letterHBox2 = createLetterHBox();
