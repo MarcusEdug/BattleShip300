@@ -1,9 +1,9 @@
 package BackEnd;
 
 /*  Klasskommentar:
-*   Innehåller variabler och metod för att hantera enskilda skeppobjekt.
-*   Evelina Daun
-* */
+ *   Innehåller variabler och metod för att hantera enskilda skeppobjekt.
+ *   Evelina Daun
+ * */
 
 public class ShipUnit {
 

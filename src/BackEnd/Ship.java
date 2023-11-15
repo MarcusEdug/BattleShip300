@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Random;
 
 /*  Klasskommentar:
-*   Innehåller lista med skepp för spelet samt metoder för att hantera skeppobjekten.
-*   Evelina Daun
-*/
+ *   Innehåller lista med skepp för spelet samt metoder för att hantera skeppobjekten.
+ *   Evelina Daun
+ */
 
  /*        SKEPP I SPELET:
     Antal:  Namn:          Storlek:

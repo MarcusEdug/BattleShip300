@@ -12,16 +12,40 @@ public class ChangeColor implements SystemBord {
 
 
      */
-    public void colorChanges(int x, int y){
-        if (array[x][y].equals("i")){
-            FXarray[x][y].setFill(Color.GREEN);
-        } else if (array[x][y].equals("s")) {
-            FXarray[x][y].setFill(Color.BLUE);
-        }else if (array[x][y].equals("h")) {
-            FXarray[x][y].setFill(Color.YELLOW);
+
+    public void colorChangesEnemy(String input){
+        int valueX = Character.getNumericValue(input.charAt(0));
+        int valueY =Character.getNumericValue(input.charAt(1));
+        if (arrayEnemy[valueX][valueY].equals("h")) {
+            FXarrayServer[valueX][valueY].setFill(Color.GREEN);
         }
         else {
-            FXarray[x][y].setFill(Color.RED);
+            FXarrayServer[valueX][valueY].setFill(Color.ORANGERED);
+        }
+        System.out.println(arrayEnemy[valueX][valueY]);
+    }
+    public void colorChangesYour(String input){
+        int valueX = Character.getNumericValue(input.charAt(7));
+        int valueY =Character.getNumericValue(input.charAt(8));
+        if (array[valueX][valueY].equals("h")) {
+            FXarrayClient[valueX][valueY].setFill(Color.GREEN);
+        }
+        else {
+            FXarrayClient[valueX][valueY].setFill(Color.LIGHTGRAY);
+        }
+    }
+
+    public void clientColor(){
+        for (int i = 0; i < XRowValue; i++){
+            for (int j = 0; j < YRowValue; j++){
+                if (array[i][j].equals("s")) {
+                    FXarrayClient[i][j].setFill(Color.GREY);
+                }
+                else {
+                    FXarrayClient[i][j].setFill(Color.NAVY);
+                }
+            }
+
         }
     }
 }

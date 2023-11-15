@@ -1,13 +1,33 @@
+import BackEnd.BackEndMap;
+import BackEnd.Ship;
+import BackEnd.SystemBord;
+import FrontEnd.ChangeColor;
+import FrontEnd.Fire;
+
 import java.io.*;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
-public class Client {
+public class Client implements SystemBord {
+
+
     private BufferedReader reader;
     private PrintWriter writer;
-    private boolean gameIsRunning;
-    private boolean firstShot;
-    private String outGoingMessage;
+    private boolean gameIsRunning = true;
+    BackEndMap backEndMap = new BackEndMap();
+    Fire fire = new Fire();
+    ChangeColor changeColor = new ChangeColor();
+    //MyThread2 myThread2 = new MyThread2();
+
+    //Thread mainThread = new Thread(myThread2);
+    ClientThread clinetTread;
+    Thread clientMainThread;
+    //ServerThread myThread3 = new ServerThread();
+    //Thread Thread2 = new Thread(myThread3);
+
+    String shotOut;
+    String shotIn;
+
+    Ship ship = new Ship();
 
     //Skapar en socket för att koppla upp till servern
     //samt skapar utrymme för att ha kontakt med servern genom strängdata
@@ -22,12 +42,48 @@ public class Client {
             reader = new BufferedReader(inputStreamReader);
 
             writer = new PrintWriter(socket.getOutputStream(),true);
-            writer.println("client connected..."); //Skickas till servern
-
+            System.out.println(reader.readLine());
+            clinetTread = new ClientThread(writer, reader);
         } catch (IOException e) {
             System.out.println("Kunde inte ansluta på grund av: " + e.getMessage());
         }
-        while (gameIsRunning) {
+
+        //backEndMap.createEndMap(XRowValue,YRowValue);
+
+        ship.createShipUnits();
+        System.out.println("har jag fastnat!");
+        ship.placeShipsOnMap(array);
+
+        System.out.println("Vi har skapa ship och 2d array");
+
+        clientMainThread = new Thread(clinetTread);
+        clientMainThread.start();
+       /* while (gameIsRunning) {
+
+
+
+            shotOut = fire.fireOutput(XRowValue, YRowValue);
+            System.out.println("out " + shotOut);
+
+
+            if (reader.ready()){
+                shotIn = reader.readLine();
+                System.out.println("In " + shotIn);
+            }
+
+
+            //backEndMap.delyTheGame();
+            Scanner my = new Scanner(System.in);
+            System.out.println("skriv");
+            int test = my.nextInt();
+            if (test == 1){
+                gameIsRunning = false;
+            }
+        }*/
+    }
+    //Metod för att kolla om spelet är igång
+    /*
+     while (gameIsRunning) {
             if(firstShot) {
                 outGoingMessage = "Jag skjuter på + *koordinat*";
                 System.out.println(outGoingMessage);
@@ -46,11 +102,9 @@ public class Client {
                     System.out.println(outputText);
                     writer.println(outputText);
                 }
-            }
-        }
-    }
-    //Metod för att kolla om spelet är igång
     public String checkIfHitAndCreateReply(String input) {
+
+
         if (input.equals("Jag förlorade")) {
             gameIsRunning = false;
             return "Yes! Jag vann!";
@@ -58,11 +112,12 @@ public class Client {
             //Här ska det in en metod som gäller om alla båtar är sänkta
             if (allShipsSunken) {
                 gameIsRunning = false;
-                return "Jag förlorade";*/
+                return "Jag förlorade";
 
             } else {
                 return "Tusan! Du träffade en båt!";
             }
         }
+
+     */
     }
-//}

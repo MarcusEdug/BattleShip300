@@ -5,7 +5,10 @@ import BackEnd.SystemBord;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -14,13 +17,17 @@ import javafx.stage.Stage;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+import java.util.Scanner;
+
 public class GameBoard extends Application implements SystemBord {
     public static final int CELL_SIZE = SystemBord.CELL_SIZE;
     public static final int X_ROW_VALUE = XRowValue;
     public static final int Y_ROW_VALUE = YRowValue;
-    private static final String SPELARE1 = "Spelare 1";
-    private static final String SPELARE2 = "Spelare 2";
+    private static final String SPELARE1 = "Client";
+    private static final String SPELARE2 = "Server";
     private BackEndMap backEndMap2;
+    private String sceneState;
+    private boolean changeScene = true;
 
     @Override
     public void start(Stage stage) {
@@ -31,8 +38,23 @@ public class GameBoard extends Application implements SystemBord {
         setupWindow(stage);
         setupPlayerLabels(gridPane);
         setupGamePanes(gridPane);
+        /*while (changeScene) {
+            Scanner my = new Scanner(System.in);
+            sceneState = my.next();
+            if (sceneState.equals("Start")) {
+                stage.setScene(startScene());
+                stage.show();
+
+            }
+            else {
+                changeScene = false;
+            }
+        }
+
+         */
         stage.setScene(scene);
         stage.show();
+
     }
     //Fönstrets inställningar
     public void setupWindow(Stage stage) {
@@ -60,19 +82,26 @@ public class GameBoard extends Application implements SystemBord {
     }
 
     public void setupGamePanes(GridPane gridPane) {
-        GamePane gamePane1 = new GamePane("Spelplan 1", Y_ROW_VALUE, X_ROW_VALUE,this.backEndMap2);
-        GamePane gamePane2 = new GamePane("Spelplan 2", Y_ROW_VALUE, X_ROW_VALUE, this.backEndMap2); //Behöver en till backendmap.
+        GamePane gamePane1 = new GamePane("Spelplan 1", Y_ROW_VALUE, X_ROW_VALUE);
+        gamePane1.createGameCells(XRowValue,YRowValue, 1);
+        GamePane gamePane2 = new GamePane("Spelplan 2", Y_ROW_VALUE, X_ROW_VALUE); //Behöver en till backendmap.
+        gamePane2.createGameCells(XRowValue,YRowValue,2);
         HBox letterHBox1 = createLetterHBox();
         HBox letterHBox2 = createLetterHBox();
         VBox numVBox1 = createNumberVBox();
         VBox numVBox2 = createNumberVBox();
+        Button buttonDelay = new Button("Change Delay");
 
         gridPane.add(letterHBox1, 1, 0);
         gridPane.add(numVBox1, 0, 1);
         gridPane.add(gamePane1, 1, 1);
         gridPane.add(letterHBox2, X_ROW_VALUE + 2, 0);
+        gridPane.add(buttonDelay, 13,1);
         gridPane.add(numVBox2, Y_ROW_VALUE + 1, 1);
         gridPane.add(gamePane2, X_ROW_VALUE + 2, 1);
+
+        buttonDelay.setOnAction(e-> GameAlert.display());
+
     }
 
     private HBox createLetterHBox() {
@@ -106,4 +135,5 @@ public class GameBoard extends Application implements SystemBord {
     public static void main(String[] args) {
         launch(args);
     }
+
 }
