@@ -22,7 +22,7 @@ public class ChangeColor implements SystemBord {
         else {
             FXarrayServer[valueX][valueY].setFill(Color.ORANGERED);
         }
-        System.out.println(arrayEnemy[valueX][valueY]);
+        //System.out.println(arrayEnemy[valueX][valueY]);
     }
     public void colorChangesYour(String input){
         int valueX = Character.getNumericValue(input.charAt(7));

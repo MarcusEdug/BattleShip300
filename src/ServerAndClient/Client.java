@@ -1,8 +1,11 @@
+package ServerAndClient;
+
 import BackEnd.BackEndMap;
 import BackEnd.Ship;
 import BackEnd.SystemBord;
 import FrontEnd.ChangeColor;
 import FrontEnd.Fire;
+import ServerAndClient.ClientThread;
 
 import java.io.*;
 import java.net.Socket;
@@ -13,8 +16,8 @@ public class Client implements SystemBord {
     private BufferedReader reader;
     private PrintWriter writer;
     private boolean gameIsRunning = true;
-    BackEndMap backEndMap = new BackEndMap();
-    Fire fire = new Fire();
+    //BackEndMap backEndMap = new BackEndMap();
+    //Fire fire = new Fire();
     ChangeColor changeColor = new ChangeColor();
     //MyThread2 myThread2 = new MyThread2();
 
@@ -24,10 +27,10 @@ public class Client implements SystemBord {
     //ServerThread myThread3 = new ServerThread();
     //Thread Thread2 = new Thread(myThread3);
 
-    String shotOut;
-    String shotIn;
+    //String shotOut;
+    //String shotIn;
 
-    Ship ship = new Ship();
+    //Ship ship = new Ship();
 
     //Skapar en socket för att koppla upp till servern
     //samt skapar utrymme för att ha kontakt med servern genom strängdata
@@ -50,11 +53,13 @@ public class Client implements SystemBord {
 
         //backEndMap.createEndMap(XRowValue,YRowValue);
 
-        ship.createShipUnits();
+       /* ship.createShipUnits();
         System.out.println("har jag fastnat!");
         ship.placeShipsOnMap(array);
 
         System.out.println("Vi har skapa ship och 2d array");
+
+        */
 
         clientMainThread = new Thread(clinetTread);
         clientMainThread.start();

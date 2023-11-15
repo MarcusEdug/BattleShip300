@@ -1,6 +1,8 @@
 package FrontEnd;
-
+import java.io.*;
 import BackEnd.SystemBord;
+import ServerAndClient.ClientThread;
+import ServerAndClient.ServerThread;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -17,12 +19,16 @@ import javax.swing.*;
 
 public class GameAlert implements SystemBord {
 
-    public static void display (){
-        Stage window = new Stage();
+
+
+    public static Scene display (Stage stage,Scene scene){
+        /*Stage window = new Stage();
 
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Delay windows!");
         window.setMinWidth(250);
+
+         */
 
         Label label = new Label();
         label.setText("hej");
@@ -30,10 +36,22 @@ public class GameAlert implements SystemBord {
         choiceBox.getItems().addAll(1,2,3,4,5);
         choiceBox.setValue(3);
         Button closeButton = new Button("Set");
+
+        ServerThread serverThread = new ServerThread();
+        Thread serverMainTread = new Thread(serverThread);
+
+        ClientThread clinetTread = new ClientThread();
+        Thread clientMainThread = new Thread(clinetTread);
+
         closeButton.setOnAction(e-> {
             delayTime.add(choiceBox.getValue());
             System.out.println(delayTime.get(0));
-            window.close();
+            stage.setScene(scene);
+
+
+            clientMainThread.start();
+            serverMainTread.start();
+            //window.close();
         });
 
 
@@ -41,11 +59,12 @@ public class GameAlert implements SystemBord {
         layout.getChildren().addAll(label,choiceBox,closeButton);
         layout.setAlignment(Pos.CENTER);
 
-        Scene scene = new Scene(layout);
+        Scene scene1 = new Scene(layout);
+        /*
         window.setScene(scene);
-        window.showAndWait();
+        window.showAndWait();*/
+        return scene1;
     }
-
 
 }
 

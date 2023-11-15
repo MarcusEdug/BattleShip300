@@ -1,8 +1,11 @@
+package ServerAndClient;
+
 import BackEnd.BackEndMap;
 import BackEnd.Ship;
 import BackEnd.SystemBord;
 import FrontEnd.ChangeColor;
 import FrontEnd.Fire;
+import ServerAndClient.ServerThread;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -14,17 +17,17 @@ public class Server implements SystemBord {
     private BufferedReader reader;
     private PrintWriter writer;
     private boolean gameIsRunning = true;
-    BackEndMap backEndMap = new BackEndMap();
-    Fire fire = new Fire();
-    ChangeColor changeColor = new ChangeColor();
+    //BackEndMap backEndMap = new BackEndMap();
+    //Fire fire = new Fire();
+    //ChangeColor changeColor = new ChangeColor();
     //MyThread2 myThread2 = new MyThread2();
 
     //Thread mainThread = new Thread(myThread2);
     ServerThread serverThread;
     Thread serverMainTread;
-    String shotOut;
-    String shotIn;
-    Ship ship = new Ship();
+    //String shotOut;
+    //String shotIn;
+    //Ship ship = new Ship();
 
     //Skapar en serverSocket för klienten att koppla upp sig till
     //samt skapar utrymme för att skapa och läsa in svar från klient med strängdata
@@ -49,7 +52,7 @@ public class Server implements SystemBord {
         } catch (IOException e) {
             System.out.println("Kunde inte ansluta på grund av: " + e.getMessage());
         }
-        backEndMap.createEndMap(XRowValue,YRowValue);
+        /*backEndMap.createEndMap(XRowValue,YRowValue);
 
         ship.createShipUnits();
         System.out.println("har jag fastnat!");
@@ -57,11 +60,13 @@ public class Server implements SystemBord {
 
         System.out.println("Vi har skapa ship och 2d array");
 
+         */
 
-        //shotIn = reader.readLine();
-        //System.out.println("In " + shotIn);
         serverMainTread = new Thread(serverThread);
         serverMainTread.start();
+        //shotIn = reader.readLine();
+        //System.out.println("In " + shotIn);
+
         /*while (gameIsRunning) {
             if (reader.ready()){
                 shotIn = reader.readLine();

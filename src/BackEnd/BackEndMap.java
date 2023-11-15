@@ -28,9 +28,9 @@ public class BackEndMap implements SystemBord {
 
         }
     }
-    public void delyTheGame(){
+    public void delyTheGame(int delay){
         try {
-            Thread.sleep(delayTime.get(0) * 1000);
+            Thread.sleep(delay * 1000);
         } catch (InterruptedException ie) {
             Thread.currentThread().interrupt();
         }

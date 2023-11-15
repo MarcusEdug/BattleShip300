@@ -95,11 +95,9 @@ public class ShipUnit {
     // Metoder
 
     // Metod: När ett skeppobjekt blir träffat (Evelina Daun)
-    public void hitShip(){
+    public int hitShip(){
         --lifeCounter; // -1 på livräknaren
-        if(lifeCounter == 0){ // Om hela skeppet är träffat
-            active = false; // Skeppet är inte längre vid "liv"
-        }
+        return lifeCounter;
     }
 
 }
