@@ -1,5 +1,6 @@
 package FrontEnd;
 
+import BackEnd.Ship;
 import BackEnd.SystemBord;
 import com.sun.xml.internal.ws.commons.xmlutil.Converter;
 import javafx.application.Application;
@@ -24,6 +25,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Fire implements SystemBord {
+    Ship ship = new Ship();
     String YRow;
     int indexX;
     int indexY;
@@ -45,10 +47,11 @@ public class Fire implements SystemBord {
             indexY= random.nextInt(y);
 
             convertIntToString(indexY);
+            String shotCoordinat = String.join("",String.valueOf(indexX), String.valueOf(indexY));
 
-            shotFire = String.join("",shotStatus, " shot ", String.valueOf(indexX), String.valueOf(indexY));
-            if (!listOfShot.contains(shotFire)) {
-                listOfShot.add(shotFire);
+            shotFire = String.join("",shotStatus, " shot ", shotCoordinat);
+            if (!listOfShot.contains(shotCoordinat)) {
+                listOfShot.add(shotCoordinat);
                 count++;
                 isFiring = false;
             }
@@ -56,31 +59,51 @@ public class Fire implements SystemBord {
         return shotFire;
     }
 
+    public Ship getShip(){
+        return ship;
+    }
     //Tar emot ett sträng värde och bryter upp de till två int värden som sätts in i array[][] som blir kordinater.
+
+
     public void fireInput(String shotInput) {
         int valueX = Character.getNumericValue(shotInput.charAt(7));
-        int valueY =Character.getNumericValue(shotInput.charAt(8));
+        int valueY = Character.getNumericValue(shotInput.charAt(8));
+        String tom = "";
         if (array[valueX][valueY].equals("s")) {
-            System.out.println("Jag har blivt Hit!");
+            //System.out.println("Jag har blivt Hit!");
+            String bajs = ship.hitShipCoordinate(valueX,valueY);
             array[valueX][valueY] = "h";
-            //lifeOnBoat.remove(0);
+            tom = "h";
+            //shotStatus = "h";
+            if (!bajs.equals("v")){
+                tom = "s";
+                System.out.println("Ett helt sjäp har träffas");
+                // Namn på båten skickas hitt!
+            }
         }
         else {
-            System.out.println("Jag har blivt Miss!");
+            //System.out.println("Jag har blivt Miss!");
             array[valueX][valueY] = "m";
+            tom = "m";
+            //shotStatus = "m";
+            //String temp = ship.hitShipCoordinate(valueX,valueY);
         }
-        shotStatus = array[valueX][valueY];
+         shotStatus = tom;
     }
     public void changeArray(String shotCoordinat, String temp){
-        int valueX = Character.getNumericValue(shotCoordinat.charAt(0));
-        int valueY = Character.getNumericValue(shotCoordinat.charAt(1));
-        if (temp.equals("h")) {
-            arrayEnemy[valueX][valueY] = "h";
-            //FXarrayServer[valueX][valueY].setFill(Color.GREEN);
+        if ( shotCoordinat == null){
+
         }
         else {
-            arrayEnemy[valueX][valueY] = "m";
-            //FXarrayServer[valueX][valueY].setFill(Color.OLIVEDRAB);
+            int valueX = Character.getNumericValue(shotCoordinat.charAt(0));
+            int valueY = Character.getNumericValue(shotCoordinat.charAt(1));
+            if (temp.equals("h") || temp.equals("s")) {
+                arrayEnemy[valueX][valueY] = "h";
+                //FXarrayServer[valueX][valueY].setFill(Color.GREEN);
+            } else if (temp.equals("m")) {
+                arrayEnemy[valueX][valueY] = "m";
+                //FXarrayServer[valueX][valueY].setFill(Color.OLIVEDRAB);
+            }
         }
 
     }

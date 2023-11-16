@@ -6,9 +6,7 @@ import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -17,24 +15,25 @@ import javafx.stage.Stage;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-import java.util.Scanner;
-
 public class GameBoard extends Application implements SystemBord {
     public static final int CELL_SIZE = SystemBord.CELL_SIZE;
     public static final int X_ROW_VALUE = XRowValue;
     public static final int Y_ROW_VALUE = YRowValue;
     private static final String SPELARE1 = "Client";
-    private static final String SPELARE2 = "Server";
+    private static final String SPELARE2 = "ServerAndClient";
     private BackEndMap backEndMap2;
     private String sceneState;
     private boolean changeScene = true;
+    Scene scene1;
+    Scene scene2;
 
     @Override
     public void start(Stage stage) {
         //this.backEndMap2 = new BackEndMap();
         //this.backEndMap2.bout51(); //tänk på att vi behöver eventuellt 2 st backendmaps.
         GridPane gridPane = new GridPane();
-        Scene scene = new Scene(gridPane, X_ROW_VALUE * CELL_SIZE, Y_ROW_VALUE * CELL_SIZE);
+        scene1 = new Scene(gridPane, X_ROW_VALUE * CELL_SIZE, Y_ROW_VALUE * CELL_SIZE);
+        //scene2 = GameAlert.display(stage,scene1);
         setupWindow(stage);
         setupPlayerLabels(gridPane);
         setupGamePanes(gridPane);
@@ -52,10 +51,11 @@ public class GameBoard extends Application implements SystemBord {
         }
 
          */
-        stage.setScene(scene);
+        stage.setScene(scene1);
         stage.show();
 
     }
+
     //Fönstrets inställningar
     public void setupWindow(Stage stage) {
         double windowWidth = 1300;
@@ -100,7 +100,7 @@ public class GameBoard extends Application implements SystemBord {
         gridPane.add(numVBox2, Y_ROW_VALUE + 1, 1);
         gridPane.add(gamePane2, X_ROW_VALUE + 2, 1);
 
-        buttonDelay.setOnAction(e-> GameAlert.display());
+        //buttonDelay.setOnAction(e-> GameAlert.display());
 
     }
 
@@ -135,5 +135,7 @@ public class GameBoard extends Application implements SystemBord {
     public static void main(String[] args) {
         launch(args);
     }
+
+
 
 }

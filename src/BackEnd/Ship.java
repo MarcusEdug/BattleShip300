@@ -233,16 +233,24 @@ public class Ship {
 
     // Metod: Förändra livet på det skepp som är träffat (Evelina Daun)
     // @param: X och y koordinater för träffade skeppet
-    public void hitShipCoordinate(int x, int y){
+    public String hitShipCoordinate(int x, int y){
         ShipUnit temp = findShipUnit(x, y); // Hitta rätt skeppobjekt
+        int test = -1;
 
         if(!temp.getName().isEmpty()){
-            temp.hitShip(); // Förändra skeppobjektet
+            test = temp.hitShip(); // Förändra skeppobjektet
+
+
+
+        }
+        if ( test == 0 ){
+            return temp.getName();
+        }
+        else {
+            return "v";
         }
 
-        // Lägga till att skicka tillbaka skeppets namn om skeppet är träffat helt?
-        // Om skeppet är helt träffat skicka - getName
-        // Om skeppet inte är helt träffat -
+
     }
 
 
