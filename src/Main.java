@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 
 public class Main extends Application{
-    GameBoard gameBoard = new GameBoard();
+    //GameBoard gameBoard = new GameBoard();
     MyThread myThread = new MyThread();
     Thread backendThread = new Thread(myThread);
 

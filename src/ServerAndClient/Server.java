@@ -13,6 +13,7 @@ import java.net.Socket;
 
 public class Server implements SystemBord {
 
+    private int delay;
 
     private BufferedReader reader;
     private PrintWriter writer;
@@ -31,6 +32,11 @@ public class Server implements SystemBord {
 
     //Skapar en serverSocket för klienten att koppla upp sig till
     //samt skapar utrymme för att skapa och läsa in svar från klient med strängdata
+   /* public Server(int delay){
+        this.delay = delay;
+    }
+
+    */
     public void connect() throws IOException {
         try {
             ServerSocket serverSocket = new ServerSocket(8080);
@@ -46,7 +52,7 @@ public class Server implements SystemBord {
             writer = new PrintWriter(socket.getOutputStream(), true);
             writer.println("Välkommen till servern!"); //Skickas till klienten
 
-            serverThread = new ServerThread(writer, reader);
+            //serverThread = new ServerThread(writer, reader, delay);
 
 
         } catch (IOException e) {
@@ -62,8 +68,8 @@ public class Server implements SystemBord {
 
          */
 
-        serverMainTread = new Thread(serverThread);
-        serverMainTread.start();
+        //serverMainTread = new Thread(serverThread);
+       // serverMainTread.start();
         //shotIn = reader.readLine();
         //System.out.println("In " + shotIn);
 
@@ -104,6 +110,22 @@ public class Server implements SystemBord {
             }
         }*/
          }
+
+    public BufferedReader getReader() {
+        return reader;
+    }
+
+    public void setReader(BufferedReader reader) {
+        this.reader = reader;
+    }
+
+    public PrintWriter getWriter() {
+        return writer;
+    }
+
+    public void setWriter(PrintWriter writer) {
+        this.writer = writer;
+    }
     //Metod för att kolla om spelet är igång
     /*public String checkIfHitAndCreateReply(String input) {
         if (input.equals("Jag förlorade")) {

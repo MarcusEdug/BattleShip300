@@ -27,6 +27,7 @@ import java.util.Random;
 public class Fire implements SystemBord {
     Ship ship = new Ship();
     String YRow;
+    int YRowInt;
     int indexX;
     int indexY;
     int randomNumber;
@@ -49,7 +50,7 @@ public class Fire implements SystemBord {
             convertIntToString(indexY);
             String shotCoordinat = String.join("",String.valueOf(indexX), String.valueOf(indexY));
 
-            shotFire = String.join("",shotStatus, " shot ", shotCoordinat);
+            shotFire = String.join("",shotStatus, " shot ", String.valueOf(indexX), YRow);
             if (!listOfShot.contains(shotCoordinat)) {
                 listOfShot.add(shotCoordinat);
                 count++;
@@ -67,7 +68,7 @@ public class Fire implements SystemBord {
 
     public void fireInput(String shotInput) {
         int valueX = Character.getNumericValue(shotInput.charAt(7));
-        int valueY = Character.getNumericValue(shotInput.charAt(8));
+        int valueY = covertYCharToYint((shotInput.charAt(8)));
         String tom = "";
         if (array[valueX][valueY].equals("s")) {
             //System.out.println("Jag har blivt Hit!");
@@ -147,6 +148,48 @@ public class Fire implements SystemBord {
         else {
             YRow = "j";
             return YRow;
+        }
+    }
+    public int covertYCharToYint(char y){
+        if (y == 'a'){
+            YRowInt = 0;
+            return YRowInt;
+        }
+        else if (y == 'b'){
+            YRowInt = 1;
+            return YRowInt;
+        }
+        else if (y == 'c'){
+            YRowInt = 2;
+            return YRowInt;
+        }
+        else if (y == 'd'){
+            YRowInt = 3;
+            return YRowInt;
+        }
+        else if (y == 'e'){
+            YRowInt = 4;
+            return YRowInt;
+        }
+        else if (y == 'f'){
+            YRowInt = 5;
+            return YRowInt;
+        }
+        else if (y == 'g'){
+            YRowInt = 6;
+            return YRowInt;
+        }
+        else if (y == 'h'){
+            YRowInt = 7;
+            return YRowInt;
+        }
+        else if (y == 'i'){
+            YRowInt = 8;
+            return YRowInt;
+        }
+        else {
+            YRowInt = 9;
+            return YRowInt;
         }
     }
     public String breakOut (String breakOut){

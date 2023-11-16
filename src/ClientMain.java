@@ -21,12 +21,11 @@ public class ClientMain extends Application implements SystemBord {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        GameBoard gameBoard = new GameBoard();
-
-
+        client.connect();
+        GameBoard gameBoard = new GameBoard(client.getReader(),client.getWriter());
+        gameBoard.name = "client";
         gameBoard.start(primaryStage);
 
-        client.connect();
 
 
     }

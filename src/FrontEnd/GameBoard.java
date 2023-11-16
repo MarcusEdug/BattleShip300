@@ -2,6 +2,8 @@ package FrontEnd;
 
 import BackEnd.BackEndMap;
 import BackEnd.SystemBord;
+import ServerAndClient.ClientThread;
+import ServerAndClient.ServerThread;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -15,25 +17,43 @@ import javafx.stage.Stage;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+import java.io.BufferedReader;
+import java.io.PrintWriter;
+
 public class GameBoard extends Application implements SystemBord {
     public static final int CELL_SIZE = SystemBord.CELL_SIZE;
     public static final int X_ROW_VALUE = XRowValue;
     public static final int Y_ROW_VALUE = YRowValue;
-    private static final String SPELARE1 = "Client";
-    private static final String SPELARE2 = "ServerAndClient";
+    private static final String SPELARE1 = "Min spelplan";
+    private static final String SPELARE2 = "Fiendens spelplan";
     private BackEndMap backEndMap2;
     private String sceneState;
     private boolean changeScene = true;
+    public String name;
     Scene scene1;
     Scene scene2;
+    Scene scene3;
+
+    String ship;
+
+    BufferedReader reader;
+    PrintWriter writer;
+
+    public GameBoard(BufferedReader reader, PrintWriter writer){
+        this.reader = reader;
+        this.writer = writer;
+    }
 
     @Override
     public void start(Stage stage) {
+        GridPane gridPane = new GridPane();
+        ClientThread clinetTread = new ClientThread(writer,reader,stage);
+        ServerThread serverThread = new ServerThread(writer,reader,stage);
+        StartSkärm startSkärm = new StartSkärm(clinetTread, serverThread);
         //this.backEndMap2 = new BackEndMap();
         //this.backEndMap2.bout51(); //tänk på att vi behöver eventuellt 2 st backendmaps.
-        GridPane gridPane = new GridPane();
         scene1 = new Scene(gridPane, X_ROW_VALUE * CELL_SIZE, Y_ROW_VALUE * CELL_SIZE);
-        //scene2 = GameAlert.display(stage,scene1);
+        scene2 = startSkärm.display(name,scene1, stage);
         setupWindow(stage);
         setupPlayerLabels(gridPane);
         setupGamePanes(gridPane);
@@ -51,10 +71,11 @@ public class GameBoard extends Application implements SystemBord {
         }
 
          */
-        stage.setScene(scene1);
+        stage.setScene(scene2);
         stage.show();
 
     }
+
 
     //Fönstrets inställningar
     public void setupWindow(Stage stage) {
@@ -90,15 +111,17 @@ public class GameBoard extends Application implements SystemBord {
         HBox letterHBox2 = createLetterHBox();
         VBox numVBox1 = createNumberVBox();
         VBox numVBox2 = createNumberVBox();
-        Button buttonDelay = new Button("Change Delay");
+        //Button buttonDelay = new Button("Change Delay");
+        Label label = new Label(ship);
 
         gridPane.add(letterHBox1, 1, 0);
         gridPane.add(numVBox1, 0, 1);
         gridPane.add(gamePane1, 1, 1);
         gridPane.add(letterHBox2, X_ROW_VALUE + 2, 0);
-        gridPane.add(buttonDelay, 13,1);
+        //gridPane.add(buttonDelay, 13,1);
         gridPane.add(numVBox2, Y_ROW_VALUE + 1, 1);
         gridPane.add(gamePane2, X_ROW_VALUE + 2, 1);
+        gridPane.add(label,13,1 );
 
         //buttonDelay.setOnAction(e-> GameAlert.display());
 

@@ -4,6 +4,8 @@ import BackEnd.BackEndMap;
 import BackEnd.SystemBord;
 import FrontEnd.ChangeColor;
 import FrontEnd.Fire;
+import FrontEnd.StartSkärm;
+import javafx.stage.Stage;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,6 +18,10 @@ public class ClientThread extends Fire implements Runnable, SystemBord {
     PrintWriter writer;
     BufferedReader reader;
 
+    private int delay;
+
+    Stage stage;
+
     ChangeColor changeColor = new ChangeColor();
 
     BackEndMap backEndMap = new BackEndMap();
@@ -25,9 +31,11 @@ public class ClientThread extends Fire implements Runnable, SystemBord {
 
     private boolean gameIsRunning = true;
 
-    public ClientThread(PrintWriter writer, BufferedReader reader){
+    public ClientThread(PrintWriter writer, BufferedReader reader, Stage stage){
         this.writer = writer;
         this.reader = reader;
+        //this.delay = delay;
+        this.stage = stage;
     }
 
     public ClientThread(){
@@ -39,6 +47,7 @@ public class ClientThread extends Fire implements Runnable, SystemBord {
             gameIsRunning = false;
             writer.println("game over");
             System.out.println("You won");
+            StartSkärm.endplay(win, stage);
             //ändra JavaFX
         }
     }
@@ -46,29 +55,34 @@ public class ClientThread extends Fire implements Runnable, SystemBord {
         win = false;
         gameIsRunning = false;
         System.out.println("You lost");
+        StartSkärm.endplay(win, stage);
         //ändra JavaFX
     }
 
     @Override
     public void run() {
+        String shotOut = "";
+        String shotIn = "";
+
         backEndMap.createEndMap(XRowValue,YRowValue);
+        if(gameIsRunning) {
+            getShip().createShipUnits();
+            getShip().placeShipsOnMap(array);
 
-        getShip().createShipUnits();
-        System.out.println("har jag fastnat!");
-        getShip().placeShipsOnMap(array);
+            System.out.println("Vi har skapa ship och 2d array");
+            changeColor.clientColor();
 
-        System.out.println("Vi har skapa ship och 2d array");
-        changeColor.clientColor();
+            shotOut = fireOutput(XRowValue, YRowValue);
+            writer.println(shotOut);
+            System.out.println("Client skicka : " + shotOut);
+            System.out.println(" ");
 
-        String shotOut = fireOutput(XRowValue,YRowValue);
-        writer.println(shotOut);
-
-        coordinat = breakOut(shotOut);
-        //Spara koordinater för skottet som skjötts
+            coordinat = breakOut(shotOut);
+            //Spara koordinater för skottet som skjötts
+        }
 
         while (gameIsRunning) {
 
-            String shotIn = null;
             try {
                 shotIn = reader.readLine();
             } catch (IOException e) {
@@ -79,6 +93,7 @@ public class ClientThread extends Fire implements Runnable, SystemBord {
             }
             else {
                 fireInput(shotIn);
+                System.out.println("Server skicka : " + shotIn);
                 //Läser av skott som kom in
                 //Ändra sin egna karta
                 //skapar en status på skottet
@@ -95,7 +110,11 @@ public class ClientThread extends Fire implements Runnable, SystemBord {
                 changeColor.colorChangesEnemy(coordinat);
                 //Ändra FX kartan för fienden
 
+                backEndMap.delyTheGame(0);
+
                 shotOut = fireOutput(XRowValue, YRowValue);
+                System.out.println("Client skicka : " + shotOut);
+                System.out.println(" ");
                 writer.println(shotOut);
                 //Skjutter iväg ett skott
                 // som innehåller resultat på skottet som fienden skött och koordinater på mitt egna skott
