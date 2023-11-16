@@ -5,6 +5,8 @@ import BackEnd.Ship;
 import BackEnd.SystemBord;
 import FrontEnd.ChangeColor;
 import FrontEnd.Fire;
+import FrontEnd.StartSkärm;
+import javafx.stage.Stage;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,6 +15,9 @@ import java.io.PrintWriter;
 public class ServerThread extends Fire implements Runnable, SystemBord {
     PrintWriter writer;
     BufferedReader reader;
+
+    private int delay;
+    Stage stage;
 
     ChangeColor changeColor = new ChangeColor();
 
@@ -28,9 +33,11 @@ public class ServerThread extends Fire implements Runnable, SystemBord {
 
 
 
-    public ServerThread(PrintWriter writer, BufferedReader reader){
+    public ServerThread(PrintWriter writer, BufferedReader reader, Stage stage){
         this.writer = writer;
         this.reader = reader;
+        //this.delay = delay;
+        this.stage = stage;
     }
     public ServerThread(){
 
@@ -38,10 +45,12 @@ public class ServerThread extends Fire implements Runnable, SystemBord {
 
     public void controllIfwin(){
         if(conuter == 30){
+
             win = true;
             gameIsRunning = false;
             writer.println("game over");
             System.out.println("You won");
+            StartSkärm.endplay(win, stage);
             //ändra JavaFX
         }
     }
@@ -49,44 +58,52 @@ public class ServerThread extends Fire implements Runnable, SystemBord {
         win = false;
         gameIsRunning = false;
         System.out.println("You lost");
+        StartSkärm.endplay(win, stage);
         //ändra JavaFX
     }
 
+
+
     @Override
     public void run() {
+        String shotOut = "";
+        String shotIn = "";
         backEndMap.createEndMap(XRowValue,YRowValue);
 
-        getShip().createShipUnits();
-        System.out.println("har jag fastnat!");
-        getShip().placeShipsOnMap(array);
+        if (gameIsRunning) {
+            getShip().createShipUnits();
+            getShip().placeShipsOnMap(array);
 
-        System.out.println("Vi har skapa ship och 2d array");
-        changeColor.clientColor();
+            System.out.println("Vi har skapa ship och 2d array");
+            changeColor.clientColor();
 
-        String shotIn = null;
-        try {
-            shotIn = reader.readLine();
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            try {
+                shotIn = reader.readLine();
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            fireInput(shotIn);
+            //Här får vi ett status
+            //Här ändras våra egna karta efter vad som hände av skottet
+            //Status på vad som hände av de här skottet
+
         }
-        fireInput(shotIn);
-        //Här får vi ett status
-        //Här ändras våra egna karta efter vad som hände av skottet
-        //Status på vad som hände av de här skottet
-
-
         while (gameIsRunning) {
             changeColor.colorChangesYour(shotIn);
+            System.out.println("Client skicka : " + shotIn);
             //Här uppdattera vi våra egna FX karta efter skottet som kom in
 
-            String shotOut = fireOutput(XRowValue,YRowValue);
+            backEndMap.delyTheGame(0);
+
+            shotOut = fireOutput(XRowValue,YRowValue);
+            System.out.println("Server skicka : " + shotOut);
             writer.println(shotOut);
             //Här Skjutter vi på en sluppmässig punkt
 
             coordinat = breakOut(shotOut);
             //Här spara vi punkten som vi skött på
-
 
             try {
                 shotIn = reader.readLine();
@@ -107,8 +124,6 @@ public class ServerThread extends Fire implements Runnable, SystemBord {
                 String tempStatu = shotIn.substring(0, 1);
                 //här tar vi ut vad för status våra skott hade
 
-
-
                 //Här håller vi koll på hur oftas vi träffar
 
                 changeArray(coordinat, tempStatu);
@@ -121,9 +136,8 @@ public class ServerThread extends Fire implements Runnable, SystemBord {
                     conuter++;
                     System.out.println(conuter);
                 }
+                //backEndMap.delyTheGame(0);
                 controllIfwin();
-                backEndMap.delyTheGame(1);
-
             }
             //här en delay
 

@@ -13,6 +13,7 @@ public class ChangeColor implements SystemBord {
 
      */
 
+    int YRowInt;
     public void colorChangesEnemy(String input){
         int valueX = Character.getNumericValue(input.charAt(0));
         int valueY =Character.getNumericValue(input.charAt(1));
@@ -26,7 +27,7 @@ public class ChangeColor implements SystemBord {
     }
     public void colorChangesYour(String input){
         int valueX = Character.getNumericValue(input.charAt(7));
-        int valueY =Character.getNumericValue(input.charAt(8));
+        int valueY = covertYCharToYint((input.charAt(8)));
         if (array[valueX][valueY].equals("h")) {
             FXarrayClient[valueX][valueY].setFill(Color.GREEN);
         }
@@ -46,6 +47,48 @@ public class ChangeColor implements SystemBord {
                 }
             }
 
+        }
+    }
+    public int covertYCharToYint(char y){
+        if (y == 'a'){
+            YRowInt = 0;
+            return YRowInt;
+        }
+        else if (y == 'b'){
+            YRowInt = 1;
+            return YRowInt;
+        }
+        else if (y == 'c'){
+            YRowInt = 2;
+            return YRowInt;
+        }
+        else if (y == 'd'){
+            YRowInt = 3;
+            return YRowInt;
+        }
+        else if (y == 'e'){
+            YRowInt = 4;
+            return YRowInt;
+        }
+        else if (y == 'f'){
+            YRowInt = 5;
+            return YRowInt;
+        }
+        else if (y == 'g'){
+            YRowInt = 6;
+            return YRowInt;
+        }
+        else if (y == 'h'){
+            YRowInt = 7;
+            return YRowInt;
+        }
+        else if (y == 'i'){
+            YRowInt = 8;
+            return YRowInt;
+        }
+        else {
+            YRowInt = 9;
+            return YRowInt;
         }
     }
 }

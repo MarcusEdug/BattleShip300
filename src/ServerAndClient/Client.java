@@ -12,7 +12,7 @@ import java.net.Socket;
 
 public class Client implements SystemBord {
 
-
+    private int delay;
     private BufferedReader reader;
     private PrintWriter writer;
     private boolean gameIsRunning = true;
@@ -34,6 +34,11 @@ public class Client implements SystemBord {
 
     //Skapar en socket för att koppla upp till servern
     //samt skapar utrymme för att ha kontakt med servern genom strängdata
+    /*public Client(int delay){
+        this.delay = delay;
+    }
+
+     */
     public void connect() throws IOException {
         try {
             Socket socket = new Socket("localhost", 8080); //Skapar koppling till en port
@@ -46,7 +51,7 @@ public class Client implements SystemBord {
 
             writer = new PrintWriter(socket.getOutputStream(),true);
             System.out.println(reader.readLine());
-            clinetTread = new ClientThread(writer, reader);
+            //clinetTread = new ClientThread(writer, reader, delay);
         } catch (IOException e) {
             System.out.println("Kunde inte ansluta på grund av: " + e.getMessage());
         }
@@ -61,8 +66,8 @@ public class Client implements SystemBord {
 
         */
 
-        clientMainThread = new Thread(clinetTread);
-        clientMainThread.start();
+        //clientMainThread = new Thread(clinetTread);
+        //clientMainThread.start();
        /* while (gameIsRunning) {
 
 
@@ -125,4 +130,20 @@ public class Client implements SystemBord {
         }
 
      */
+
+    public BufferedReader getReader() {
+        return reader;
     }
+
+    public void setReader(BufferedReader reader) {
+        this.reader = reader;
+    }
+
+    public PrintWriter getWriter() {
+        return writer;
+    }
+
+    public void setWriter(PrintWriter writer) {
+        this.writer = writer;
+    }
+}

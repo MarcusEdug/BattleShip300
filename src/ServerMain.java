@@ -20,11 +20,12 @@ public class ServerMain extends Application implements SystemBord {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        GameBoard gameBoard = new GameBoard();
-
+        server.connect();
+        GameBoard gameBoard = new GameBoard(server.getReader(),server.getWriter());
+        gameBoard.name = "server";
         gameBoard.start(primaryStage);
 
-        server.connect();
+
     }
 
 
