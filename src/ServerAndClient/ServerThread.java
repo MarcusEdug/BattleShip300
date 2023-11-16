@@ -122,7 +122,7 @@ public class ServerThread extends Fire implements Runnable, SystemBord {
                     System.out.println(conuter);
                 }
                 controllIfwin();
-                backEndMap.delyTheGame(0);
+                backEndMap.delyTheGame(1);
 
             }
             //här en delay
