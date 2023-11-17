@@ -10,6 +10,7 @@ public class Server implements SystemBoard {
     private BufferedReader reader;
     private PrintWriter writer;
 
+    //Metod: Skapa en koppling till Clienten (MS)
     public void connect() throws IOException {
         try {
             ServerSocket serverSocket = new ServerSocket(8080);
@@ -24,9 +25,6 @@ public class Server implements SystemBoard {
 
             writer = new PrintWriter(socket.getOutputStream(), true);
             writer.println("Välkommen till servern!"); //Skickas till klienten
-
-            //serverThread = new ServerThread(writer, reader, delay);
-
 
         }
         catch (IOException e) {

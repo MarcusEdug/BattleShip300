@@ -1,14 +1,10 @@
 package BackEnd;
 
-import BackEnd.Ship;
-import BackEnd.SystemBoard;
-
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Fire implements SystemBoard {
+public class BackEndControl implements SystemBoard {
     private Ship ship = new Ship();
     private Random random = new Random();
     private String YRow;
@@ -17,14 +13,11 @@ public class Fire implements SystemBoard {
     private int indexY;
     private String shotFire;
     private int count = 0;
-    //en lista på alla skot som har skjutis (AR)
     private List<String> listOfShot = new ArrayList<>();
     private String shotStatus = "i";
     private String coordinat;
 
-    public String shipUnder = " hej";
-
-    // Skapar en random Sträng av två int värden som har en ett random värde. (AR , FK)
+    //Metod:Slumpar en koordinat och skickar iväg en sträng. Den kontrollerar att man skickar ut en unik sträng varje gång (AR, FK, MS, ED)
     public String fireOutput(int x, int y) {
         boolean isFiring = true;
         while (isFiring) {
@@ -44,37 +37,38 @@ public class Fire implements SystemBoard {
         return shotFire;
     }
 
-
+    //Metod: Tar in sträng värde och ändra sin egna karta och spara status på tidigare skjott (ED, FK, MS, AR)
     public void fireInput(String shotInput) {
         int valueX = Character.getNumericValue(shotInput.charAt(7));
         int valueY = covertYCharToYint((shotInput.charAt(8)));
         String tom = "";
-        if (array[valueX][valueY].equals("s")) {
+        if (arrayYours[valueX][valueY].equals("s")) {
             String shipControl = ship.hitShipCoordinate(valueX,valueY);
-            array[valueX][valueY] = "h";
+            arrayYours[valueX][valueY] = "h";
             tom = "h";
             if (!shipControl.equals("v")){
                 tom = "s";
-                shipUnder = "Ett helt sjäp har träffas";
                 //System.out.println("Ett helt sjäp har träffas");
             }
         }
         else {
-            array[valueX][valueY] = "m";
+            arrayYours[valueX][valueY] = "m";
             tom = "m";
         }
          shotStatus = tom;
     }
 
+    //Metod: Upprättar backend karta för fienden och för sig själv (AR)
     public void createEndMap(int XRowValue, int YRowValue){
         for (int y = 0; y < XRowValue; y++) {
             for (int x = 0; x < YRowValue; x++) {
-                array[y][x] = "i";
+                arrayYours[y][x] = "i";
                 arrayEnemy[y][x] = "i";
             }
         }
     }
-    //Kanske flyttas!
+
+    //Metod: Skapar en delay (FK, MS, ED, AR, FN)
     public void delyTheGame(int delay){
         if(delay == 0){
             try {
@@ -92,25 +86,25 @@ public class Fire implements SystemBoard {
         }
     }
 
-    public Ship getShip(){
-        return ship;
-    }
-    public void changeEnemyArray(String shotCoordinat, String temp){
+    //Metod: Ändra fiendens karta efter skott koordinat och status på sitt tidigare skott (MS, ED, AR, FK)
+    public void changeEnemyArray(String shotCoordinat, String status){
         if ( shotCoordinat == null){
 
         }
         else {
             int valueX = Character.getNumericValue(shotCoordinat.charAt(0));
             int valueY = Character.getNumericValue(shotCoordinat.charAt(1));
-            if (temp.equals("h") || temp.equals("s")) {
+            if (status.equals("h") || status.equals("s")) {
                 arrayEnemy[valueX][valueY] = "h";
-            } else if (temp.equals("m")) {
+            } else if (status.equals("m")) {
                 arrayEnemy[valueX][valueY] = "m";
 
             }
         }
 
     }
+
+    //Metod: Omvanlar int till string (AR, ED, MS, FK)
     public String convertIntToString(int y){
         if (y == 0){
             YRow = "a";
@@ -154,6 +148,7 @@ public class Fire implements SystemBoard {
         }
     }
 
+    //Metod: Omvanlar char till int (FK, MS, ED, AR)
     public int covertYCharToYint(char y){
         if (y == 'a'){
             YRowInt = 0;
@@ -197,6 +192,7 @@ public class Fire implements SystemBoard {
         }
     }
 
+    //Metod Tar ut kooridnater utfrån en sträng (AR, MS, ED FK)
     public String breakOut (String breakOut){
         String temp;
         int valueX = Character.getNumericValue(breakOut.charAt(7));
@@ -204,6 +200,7 @@ public class Fire implements SystemBoard {
         temp = String.join("", String.valueOf(valueX), String.valueOf(valueY));
         return temp;
     }
+
 
     public String getCoordinat() {
         return coordinat;
@@ -215,5 +212,9 @@ public class Fire implements SystemBoard {
 
     public String getShotStatus() {
         return shotStatus;
+    }
+
+    public Ship getShip(){
+        return ship;
     }
 }

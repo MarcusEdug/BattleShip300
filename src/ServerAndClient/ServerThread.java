@@ -2,7 +2,7 @@ package ServerAndClient;
 
 import BackEnd.SystemBoard;
 import FrontEnd.ChangeColor;
-import BackEnd.Fire;
+import BackEnd.BackEndControl;
 import FrontEnd.GameBoardLayout;
 import FrontEnd.StartEndScreens;
 import javafx.stage.Stage;
@@ -11,14 +11,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class ServerThread extends Fire implements Runnable, SystemBoard {
+public class ServerThread extends BackEndControl implements Runnable, SystemBoard {
     private PrintWriter writer;
     private BufferedReader reader;
     private GameBoardLayout gameBoardLayout = new GameBoardLayout();
     private Stage stage;
     private ChangeColor changeColor = new ChangeColor();
 
-    private int conuter;
+    private int counter;
     private boolean win;
     private int delay;
     private boolean gameIsRunning = true;
@@ -31,8 +31,9 @@ public class ServerThread extends Fire implements Runnable, SystemBoard {
     }
     public ServerThread(){}
 
+    //Metod: Gör att spelet slutar och visar vinnst i end fönstret som kommer upp (ED)
     public void controllIfwin(){
-        if(conuter == 30){
+        if(counter == 30){
 
             win = true;
             gameIsRunning = false;
@@ -41,6 +42,7 @@ public class ServerThread extends Fire implements Runnable, SystemBoard {
             StartEndScreens.endplay(win, stage);
         }
     }
+    //Metod: Gör att spelet slutar och vissar förlust i end fönstret som kommer upp (ED)
     public void controllIflose(){
         win = false;
         gameIsRunning = false;
@@ -56,21 +58,23 @@ public class ServerThread extends Fire implements Runnable, SystemBoard {
 
         if (gameIsRunning) {
             getShip().createShipUnits();
-            getShip().placeShipsOnMap(array);
+            getShip().placeShipsOnMap(arrayYours);
+            //Skapa och sätt ut skepp på din backend karta
 
-            System.out.println("Vi har skapa ship och 2d array");
-            changeColor.clientColor();
+            changeColor.clientYourMapsColor();
+            //Sätt ut skeppen på din egna FX karta
 
             try {
                 shotIn = reader.readLine();
+                //Ta emot ett skott från Clienten
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
             fireInput(shotIn);
-            //Här får vi ett status
-            //Här ändras våra egna karta efter vad som hände av skottet
-            //Status på vad som hände av de här skottet
+            //Här får vi en status på tidigare skott
+            //Här ändras våra egna karta efter skottet
+
 
         }
         while (gameIsRunning) {
@@ -81,54 +85,52 @@ public class ServerThread extends Fire implements Runnable, SystemBoard {
             //Här uppdattera vi våra egna FX karta efter skottet som kom in
 
             delyTheGame(delay);
+            //Sätt en delay på spelet
 
             shotOut = fireOutput(XRowValue,YRowValue);
             System.out.println("Server skicka : " + shotOut);
             writer.println(shotOut);
-            //Här Skjutter vi på en sluppmässig punkt
+            //Här skjutter vi på Clienten och vi skickar iväg status på skottet som vi tidigare fick
 
             setCoordinat(breakOut(shotOut));
-
-
-            //Här spara vi punkten som vi skött på
+            //Vi spara koordinaterna på skott
 
             try {
                 shotIn = reader.readLine();
+                //Ta emot ett skott från Clienten
+
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
             if ( shotIn.equals("game over")){
+                //vi kollar ifall man har förlorat
                 controllIflose();
                 break;
             }
             else {
-                //här ta vi emot skottet
-
                 fireInput(shotIn);
                 gameBoardLayout.changeText(getShotStatus());
 
                 //Här får vi status på våra skott som vi skött
-                //Våra egna karta ändra efter skottet
+                //Sin egna karta ändra efter skottet
 
                 String tempStatu = shotIn.substring(0, 1);
-
-
                 //här tar vi ut vad för status våra skott hade
 
-                //Här håller vi koll på hur oftas vi träffar
-
                 changeEnemyArray(getCoordinat(), tempStatu);
-                //här ändra vi våran fiende karta
+                //här ändra vi våran fiende backend karta
 
                 changeColor.colorChangesEnemy(getCoordinat());
                 //Här uppdatar vi FX kartan för fienden
 
 
                 if (tempStatu.equals("h")||tempStatu.equals("s")) {
-                    conuter++;
+                    counter++;
+                    //Håller räkningen på hur många gånger vi träffar
                 }
                 controllIfwin();
+                //kollar ifall vi har vunnit
             }
         }
     }

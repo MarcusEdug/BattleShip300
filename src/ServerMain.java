@@ -1,4 +1,4 @@
-import BackEnd.Fire;
+import BackEnd.BackEndControl;
 import BackEnd.SystemBoard;
 import FrontEnd.GameBoardLayout;
 import ServerAndClient.Server;
@@ -13,8 +13,9 @@ public class ServerMain extends Application implements SystemBoard {
     private GameBoardLayout gameBoardLayout;
 
     public static void main(String[]args) throws IOException {
-        Fire backEndMap = new Fire();
+        BackEndControl backEndMap = new BackEndControl();
         backEndMap.createEndMap(XRowValue,YRowValue);
+        //Här upp rättar vi sin egna backend karta
 
 
         launch(args);
@@ -25,6 +26,7 @@ public class ServerMain extends Application implements SystemBoard {
         server.connect();
         gameBoardLayout = new GameBoardLayout();
         ServerThread serverThread = new ServerThread(server.getWriter(),server.getReader(), gameBoardLayout, primaryStage);
+        //Här skpara vi en client tråd och den behöver en reader, writer, gameboardlayout och stagen. För att funka
         gameBoardLayout.setServerThread(serverThread);
         gameBoardLayout.name = "server";
         gameBoardLayout.start(primaryStage);

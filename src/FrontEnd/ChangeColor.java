@@ -4,50 +4,49 @@ import BackEnd.SystemBoard;
 import javafx.scene.paint.Color;
 
 public class ChangeColor implements SystemBoard {
-    /*
-
-    Metoden tar in 2 int värden
-    Sedan så kollar vad de står på string element i 2D arrayen "array[][]"
-    och beroende på vad som står så ändra den färg på FX borden i genom att utnjuta 2D arrayen "array3d [][]"
-
-
-     */
 
     private int YRowInt;
+
+    //Metod: Ändra färgen på FX kartan för fienden ifrån skott (AR, FK, MS, ED)
     public void colorChangesEnemy(String input){
         int valueX = Character.getNumericValue(input.charAt(0));
         int valueY =Character.getNumericValue(input.charAt(1));
         if (arrayEnemy[valueX][valueY].equals("h")||arrayEnemy[valueX][valueY].equals("s")) {
-            FXarrayServer[valueX][valueY].setFill(Color.valueOf("6A994E"));
+            FXarrayEnemy[valueX][valueY].setFill(Color.valueOf("6A994E"));
         }
         else {
-            FXarrayServer[valueX][valueY].setFill(Color.valueOf("BC4749"));
-        }
-    }
-    public void colorChangesYour(String input){
-        int valueX = Character.getNumericValue(input.charAt(7));
-        int valueY = covertYCharToYint((input.charAt(8)));
-        if (array[valueX][valueY].equals("h")) {
-            FXarrayClient[valueX][valueY].setFill(Color.valueOf("#6A994E"));
-        }
-        else {
-            FXarrayClient[valueX][valueY].setFill(Color.valueOf("E8DAB2"));
+            FXarrayEnemy[valueX][valueY].setFill(Color.valueOf("BC4749"));
         }
     }
 
-    public void clientColor(){
+    //Metod: Ändra färgen på sin egna FX karta utfrån skott (ED, FK, MS, AR)
+    public void colorChangesYour(String input){
+        int valueX = Character.getNumericValue(input.charAt(7));
+        int valueY = covertYCharToYint((input.charAt(8)));
+        if (arrayYours[valueX][valueY].equals("h")) {
+            FXarrayYours[valueX][valueY].setFill(Color.valueOf("#6A994E"));
+        }
+        else {
+            FXarrayYours[valueX][valueY].setFill(Color.valueOf("E8DAB2"));
+        }
+    }
+
+    //Metod: Ändra start färgerna på din egna FX karta (FK, ED, MS, AR)
+    public void clientYourMapsColor(){
         for (int i = 0; i < XRowValue; i++){
             for (int j = 0; j < YRowValue; j++){
-                if (array[i][j].equals("s")) {
-                    FXarrayClient[i][j].setFill(Color.valueOf("6B6B5B"));
+                if (arrayYours[i][j].equals("s")) {
+                    FXarrayYours[i][j].setFill(Color.valueOf("6B6B5B"));
                 }
                 else {
-                    FXarrayClient[i][j].setFill(Color.valueOf("023E8A"));
+                    FXarrayYours[i][j].setFill(Color.valueOf("023E8A"));
                 }
             }
 
         }
     }
+
+    //Metod: Omvanla char till int ( FK, ED, AR, MS
     public int covertYCharToYint(char y){
         if (y == 'a'){
             YRowInt = 0;

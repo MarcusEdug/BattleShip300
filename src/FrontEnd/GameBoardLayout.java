@@ -51,51 +51,26 @@ public class GameBoardLayout extends Application implements SystemBoard {
     }
 
 
-    //Fönstrets inställningar
+    //Metod: Ändra storlek på fönstret utefrån sin egen dator skärm (FK, AR, MS, ED)
     public void setupWindow(Stage stage) {
         Screen screen = Screen.getPrimary();
         Rectangle2D bonus = screen.getVisualBounds();
 
         double windowWidth = bonus.getWidth()*0.7;
         double windowHeight = bonus.getHeight()*0.57;
-        /*
-        stage.setMinWidth(1100);
-        stage.setMaxWidth(2000);
-         */
         stage.setWidth(windowWidth);
-        /*
-        stage.setMinHeight(550);
-        stage.setMaxHeight(1000);
-
-         */
         stage.setHeight(windowHeight);
 
 
     }
 
-    /*public void setupPlayerLabels(GridPane gridPane) {
-        Label player1Label = new Label(SPELARE1);
-        player1Label.setFont(Font.font("Arial", FontWeight.BOLD, 16));
-        player1Label.setTextFill(Color.BLACK);
-
-        Label player2Label = new Label(SPELARE2);
-        player2Label.setFont(Font.font("Arial", FontWeight.BOLD, 16));
-        player2Label.setTextFill(Color.BLACK);
-
-        gridPane.add(player1Label, 0, 0, 1, 1);
-        gridPane.add(player2Label, X_ROW_VALUE + 1, 0, 1, 1);
-    }
-
-     */
-
+    //Upprättar vad som finns i våran FX karta (ED, MS, AR, FK)
     public void setupGamePanes(GridPane gridPane) {
         Text player1Label = new Text(SPELARE1);
         player1Label.setFont(Font.font("Arial", FontWeight.BOLD, 16));
-        //player1Label.setTextFill(Color.BLACK);
 
         Text player2Label = new Text (SPELARE2);
         player2Label.setFont(Font.font("Arial", FontWeight.BOLD, 16));
-        //player2Label.setTextFill(Color.BLACK);
 
         shipText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
 
@@ -126,6 +101,7 @@ public class GameBoardLayout extends Application implements SystemBoard {
 
     }
 
+    //Metod: Skapar en HBox med Y koordinater (FK)
     private HBox createLetterHBox() {
         HBox letterHBox = new HBox();
         letterHBox.setPrefSize(X_ROW_VALUE * CELL_SIZE, CELL_SIZE*0.5);
@@ -140,6 +116,7 @@ public class GameBoardLayout extends Application implements SystemBoard {
         return letterHBox;
     }
 
+    //Metod: Skapar en VBox med X koordinater (FK)
     private VBox createNumberVBox() {
         VBox numVBox = new VBox();
         numVBox.setPrefSize(CELL_SIZE*0.5, Y_ROW_VALUE * CELL_SIZE);
@@ -154,6 +131,7 @@ public class GameBoardLayout extends Application implements SystemBoard {
         return numVBox;
     }
 
+    //Metod: Gör så att de kommer upp en text på FX kartan att ett skepp
     public void changeText(String temp){
         if(temp.equals("s")){
             shipText.setText("Ett helt sjäp har träffas");

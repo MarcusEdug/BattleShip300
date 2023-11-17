@@ -1,5 +1,4 @@
 package FrontEnd;
-import BackEnd.SystemBoard;
 import ServerAndClient.ClientThread;
 import ServerAndClient.ServerThread;
 import javafx.application.Platform;
@@ -13,7 +12,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-public class StartEndScreens implements SystemBoard {
+public class StartEndScreens {
 
     private ClientThread clientThread;
     private ServerThread serverThread;
@@ -21,6 +20,8 @@ public class StartEndScreens implements SystemBoard {
         this.clientThread = clientThread;
         this.serverThread = serverThread;
     }
+
+    //Metod: Upprättar en start fönster (AR, ED, MS, FK)
     public Scene display(String name, Scene scene, Stage stage){
         Label label = new Label();
         label.setFont(Font.font("Arial", FontWeight.BOLD,80));
@@ -61,7 +62,7 @@ public class StartEndScreens implements SystemBoard {
         return scene1;
     }
 
-
+    //Metod: Upprättar en end fönster (ED, AR, FK, MS)
     public static void endplay (boolean winOrLose, Stage stage){
         Label label = new Label();
         label.setFont(Font.font("Arial", FontWeight.BOLD,100));

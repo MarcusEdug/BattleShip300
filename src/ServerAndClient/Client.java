@@ -11,6 +11,7 @@ public class Client implements SystemBoard {
     private BufferedReader reader;
     private PrintWriter writer;
 
+    //Metod: Skapar en koppling med Serven (MS)
     public void connect() throws IOException {
         try {
             Socket socket = new Socket("localhost", 8080); //Skapar koppling till en port

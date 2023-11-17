@@ -18,18 +18,19 @@ public class CellLayout extends Pane implements SystemBoard {
         setPrefSize(columns * GameBoardLayout.CELL_SIZE, rows * GameBoardLayout.CELL_SIZE);
     }
 
+    //Metod: FX kartor för sig själv och fienden (FK, AR, MS, ED)
     public void createGameCells(int rows, int columns,int f) {
         for (int y = 0; y < rows; y++) {
             for (int x = 0; x < columns; x++) {
                 Rectangle cell = new Rectangle(CELL_SIZE, CELL_SIZE);
                 if (f == 2) {
-                    FXarrayServer[y][x] = cell;
-                } else FXarrayClient[y][x] = cell;
+                    FXarrayEnemy[y][x] = cell;
+                } else FXarrayYours[y][x] = cell;
 
-                if (array[y][x].equals("s")) {
-                    FXarrayClient[y][x].setFill(Color.GREY);
+                if (arrayYours[y][x].equals("s")) {
+                    FXarrayYours[y][x].setFill(Color.GREY);
                 } else {
-                    FXarrayClient[y][x].setFill(Color.valueOf("023E8A"));
+                    FXarrayYours[y][x].setFill(Color.valueOf("023E8A"));
 
                 }
 

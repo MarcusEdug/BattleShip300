@@ -1,4 +1,4 @@
-import BackEnd.Fire;
+import BackEnd.BackEndControl;
 import BackEnd.SystemBoard;
 import FrontEnd.GameBoardLayout;
 import ServerAndClient.Client;
@@ -15,8 +15,9 @@ public class ClientMain extends Application implements SystemBoard {
     private ClientThread clinetTread;
 
     public static void main (String[] args) throws IOException {
-        Fire backEndMap = new Fire();
+        BackEndControl backEndMap = new BackEndControl();
         backEndMap.createEndMap(XRowValue,YRowValue);
+        //Upprättar sin egna backend karta
 
 
         launch(args);
@@ -27,6 +28,7 @@ public class ClientMain extends Application implements SystemBoard {
         client.connect();
         gameBoardLayout = new GameBoardLayout();
         clinetTread = new ClientThread(client.getWriter(),client.getReader(), gameBoardLayout, primaryStage);
+        //Här skpara vi en client tråd och den behöver en reader, writer, gameboardlayout och stagen. För att funka
         gameBoardLayout.setClientThread(clinetTread);
         gameBoardLayout.name = "client";
         gameBoardLayout.start(primaryStage);

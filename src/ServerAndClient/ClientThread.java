@@ -2,7 +2,7 @@ package ServerAndClient;
 
 import BackEnd.SystemBoard;
 import FrontEnd.ChangeColor;
-import BackEnd.Fire;
+import BackEnd.BackEndControl;
 import FrontEnd.GameBoardLayout;
 import FrontEnd.StartEndScreens;
 import javafx.stage.Stage;
@@ -11,13 +11,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class ClientThread extends Fire implements Runnable, SystemBoard {
+public class ClientThread extends BackEndControl implements Runnable, SystemBoard {
     private PrintWriter writer;
     private BufferedReader reader;
     private GameBoardLayout gameBoardLayout = new GameBoardLayout();
     private Stage stage;
     private ChangeColor changeColor = new ChangeColor();
-    //private BackEndMap backEndMap = new BackEndMap();
 
     private int counter;
     private boolean win;
@@ -34,6 +33,7 @@ public class ClientThread extends Fire implements Runnable, SystemBoard {
     public ClientThread(){
     }
 
+    //Metod: Gör att spelet slutar och visar vinnst i end fönstret som kommer upp (ED)
     public void controllIfwin(){
         if(counter == 30){
             win = true;
@@ -43,6 +43,7 @@ public class ClientThread extends Fire implements Runnable, SystemBoard {
             StartEndScreens.endplay(win, stage);
         }
     }
+    //Metod: Gör att spelet slutar och vissar förlust i end fönstret som kommer upp (ED)
     public void controllIflose(){
         win = false;
         gameIsRunning = false;
@@ -58,15 +59,17 @@ public class ClientThread extends Fire implements Runnable, SystemBoard {
 
         if(gameIsRunning) {
             getShip().createShipUnits();
-            getShip().placeShipsOnMap(array);
+            getShip().placeShipsOnMap(arrayYours);
+            //Skapar och sätter ut skepp
 
-            System.out.println("Vi har skapa ship och 2d array");
-            changeColor.clientColor();
+            changeColor.clientYourMapsColor();
+            //Ändra din FX karta
 
             shotOut = fireOutput(XRowValue, YRowValue);
             writer.println(shotOut);
             System.out.println("Client skicka : " + shotOut);
             System.out.println(" ");
+            //Skjutter iväg ett skott mot Serven
 
             setCoordinat(breakOut(shotOut));
             //Spara koordinater för skottet som skjötts
@@ -76,36 +79,41 @@ public class ClientThread extends Fire implements Runnable, SystemBoard {
 
             try {
                 shotIn = reader.readLine();
+                //tar in info från Serven
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
             if ( shotIn.equals("game over")){
                 controllIflose();
+                //Kollar om man har förlorat
                 break;
             }
             else {
                 fireInput(shotIn);
-
-                gameBoardLayout.changeText(getShotStatus());
-
-                System.out.println("Server skicka : " + shotIn);
                 //Läser av skott som kom in
                 //Ändra sin egna karta
                 //skapar en status på skottet
+
+                gameBoardLayout.changeText(getShotStatus());
+                //Om en båt har gått ner så skriv ut de på FX kartan
+
+                System.out.println("Server skicka : " + shotIn);
+
 
                 changeColor.colorChangesYour(shotIn);
                 //ändra färg på din egna FX karta
 
                 String tempStatu = shotIn.substring(0, 1);
-                //Bryter ut statusen
+                //Bryter ut statusen ifrån inkommand skott och spara den
 
                 changeEnemyArray(getCoordinat(), tempStatu);
-                // Ändra kartan för fienden
+                // Ändra backend kartan för fienden
 
                 changeColor.colorChangesEnemy(getCoordinat());
                 //Ändra FX kartan för fienden
 
                 delyTheGame(delay);
+                //Sätt en delay på spelet
 
                 shotOut = fireOutput(XRowValue, YRowValue);
                 System.out.println("Client skicka : " + shotOut);
@@ -115,11 +123,14 @@ public class ClientThread extends Fire implements Runnable, SystemBoard {
                 // som innehåller resultat på skottet som fienden skött och koordinater på mitt egna skott
 
                 setCoordinat(breakOut(shotOut));
+                //Ta ut koordinaterna för skottet som skickades iväg och spara den
 
                 if (tempStatu.equals("h")||tempStatu.equals("s")) {
                     counter++;
+                    //räkna hur många träffa som man har gjort
                 }
                 controllIfwin();
+                //Kolla ifall man har vunnit
             }
         }
     }
