@@ -11,9 +11,9 @@ import java.io.IOException;
 
 public class ClientMain extends Application implements SystemBoard {
 
-    Client client = new Client();
-    GameBoardLayout gameBoard;
-    ClientThread clinetTread;
+    private Client client = new Client();
+    private GameBoardLayout gameBoard;
+    private ClientThread clinetTread;
 
     public static void main (String[] args) throws IOException {
         BackEndMap backEndMap = new BackEndMap();

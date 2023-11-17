@@ -14,43 +14,25 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class ServerThread extends Fire implements Runnable, SystemBoard {
-    PrintWriter writer;
-    BufferedReader reader;
+    private PrintWriter writer;
+    private BufferedReader reader;
+    private GameBoardLayout gameBoardLayout = new GameBoardLayout();
+    private Stage stage;
+    private ChangeColor changeColor = new ChangeColor();
+    private BackEndMap backEndMap = new BackEndMap();
 
-    GridPane gridPane = new GridPane();
-    GameBoardLayout gameBoardLayout = new GameBoardLayout();
-
+    private int conuter;
+    private boolean win;
     private int delay;
-    Stage stage;
-
-    ChangeColor changeColor = new ChangeColor();
-
-    BackEndMap backEndMap = new BackEndMap();
-
-    int conuter;
-    boolean win;
-
     private boolean gameIsRunning = true;
-    //Ship ship = new Ship();
 
-    //BackEndMap backEndMap = new BackEndMap();
-
-
-
-    public ServerThread(PrintWriter writer, BufferedReader reader, Stage stage){
-        this.writer = writer;
-        this.reader = reader;
-        //this.delay = delay;
-        this.stage = stage;
-        //this.gridPane = gridPane;
-        this.gameBoardLayout = gameBoardLayout;
-    }
     public ServerThread(PrintWriter writer, BufferedReader reader, GameBoardLayout gameBoardLayout, Stage stage){
         this.writer = writer;
         this.reader = reader;
         this.gameBoardLayout = gameBoardLayout;
         this.stage = stage;
     }
+    public ServerThread(){}
 
     public void controllIfwin(){
         if(conuter == 30){
@@ -60,7 +42,6 @@ public class ServerThread extends Fire implements Runnable, SystemBoard {
             writer.println("game over");
             System.out.println("You won");
             StartEndScreens.endplay(win, stage);
-            //ändra JavaFX
         }
     }
     public void controllIflose(){
@@ -68,10 +49,7 @@ public class ServerThread extends Fire implements Runnable, SystemBoard {
         gameIsRunning = false;
         System.out.println("You lost");
         StartEndScreens.endplay(win, stage);
-        //ändra JavaFX
     }
-
-
 
     @Override
     public void run() {
@@ -79,15 +57,12 @@ public class ServerThread extends Fire implements Runnable, SystemBoard {
         String shotIn = "";
         backEndMap.createEndMap(XRowValue,YRowValue);
 
-
-
         if (gameIsRunning) {
             getShip().createShipUnits();
             getShip().placeShipsOnMap(array);
 
             System.out.println("Vi har skapa ship och 2d array");
             changeColor.clientColor();
-
 
             try {
                 shotIn = reader.readLine();
@@ -114,7 +89,7 @@ public class ServerThread extends Fire implements Runnable, SystemBoard {
             System.out.println("Server skicka : " + shotOut);
             writer.println(shotOut);
             //Här Skjutter vi på en sluppmässig punkt
-            //gameBoardLayout.changeText("s");
+
             setCoordinat(breakOut(shotOut));
 
 
@@ -156,52 +131,9 @@ public class ServerThread extends Fire implements Runnable, SystemBoard {
                     conuter++;
                     System.out.println(conuter);
                 }
-                //backEndMap.delyTheGame(0);
                 controllIfwin();
             }
-            //här en delay
-
-
-
-            /*
-            System.out.println("jag skicka ut  " + shotOut);
-            coordinat = breakOut(shotOut);
-            String tempStatu = shotIn.substring(0,1);
-
-            try {
-                shotIn = reader.readLine();
-
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            if (shotIn.equals("game over")){
-                controllIflose();
-                break;
-            }
-
-            System.out.println("jag tog in " + shotIn);
-
-            backEndMap.delyTheGame(2);
-
-
-
-            if (tempStatu.equals("h")){
-                conuter++;
-            }
-
-
-            changeColor.colorChangesEnemy(coordinat);
-            System.out.println("Jag har ändra enemy kart till C: " + coordinat + " Stats: " + tempStatu );
-
-
-            changeColor.colorChangesYour(shotIn);
-
-             */
-
-
-
         }
-
     }
 
     public int getDelay() {

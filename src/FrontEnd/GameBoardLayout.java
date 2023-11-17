@@ -22,44 +22,28 @@ import java.io.BufferedReader;
 import java.io.PrintWriter;
 
 public class GameBoardLayout extends Application implements SystemBoard {
-    public static final int CELL_SIZE = SystemBoard.CELL_SIZE;
-    public static final int X_ROW_VALUE = XRowValue;
-    public static final int Y_ROW_VALUE = YRowValue;
+    //public static final int CELL_SIZE = SystemBoard.CELL_SIZE;
+    private static final int X_ROW_VALUE = XRowValue;
+    private static final int Y_ROW_VALUE = YRowValue;
     private static final String SPELARE1 = "Min spelplan";
     private static final String SPELARE2 = "Fiendens spelplan";
     public String name;
     private Scene scene1;
     private Scene scene2;
-    public Text shipText = new Text("here");
-    private BufferedReader reader;
-    private PrintWriter writer;
-
+    private Text shipText = new Text("here");
     private ClientThread clientThread;
     private ServerThread serverThread;
-    public GameBoardLayout(BufferedReader reader, PrintWriter writer){
-        this.reader = reader;
-        this.writer = writer;
-    }
-
-
-
-
 
     public GameBoardLayout(){}
     @Override
     public void start(Stage stage) {
         GridPane gridPane = new GridPane();
-
-        //ClientThread clinetTread = new ClientThread(writer,reader,stage);
-        //ServerThread serverThread = new ServerThread(writer,reader,stage);
-
         StartEndScreens StartEndScreens = new StartEndScreens(clientThread, serverThread);
         scene1 = new Scene(gridPane, X_ROW_VALUE * CELL_SIZE, Y_ROW_VALUE * CELL_SIZE);
         scene2 = StartEndScreens.display(name,scene1, stage);
         setupWindow(stage);
         setupPlayerLabels(gridPane);
         setupGamePanes(gridPane);
-
         stage.setScene(scene2);
         stage.show();
 
@@ -130,7 +114,7 @@ public class GameBoardLayout extends Application implements SystemBoard {
     private VBox createNumberVBox() {
         VBox numVBox = new VBox();
         numVBox.setPrefSize(CELL_SIZE, Y_ROW_VALUE * CELL_SIZE);
-        for (int i = 1; i <= Y_ROW_VALUE; i++) {
+        for (int i = 0; i < Y_ROW_VALUE; i++) {
             Label numLabel = new Label(String.valueOf(i));
             numLabel.setFont(Font.font("Arial", FontWeight.BOLD, CELL_SIZE * 0.5));
             numLabel.setTextFill(Color.BLACK);
@@ -141,12 +125,6 @@ public class GameBoardLayout extends Application implements SystemBoard {
         return numVBox;
     }
 
-
-    /*public Label getShipText() {
-        return shipText;
-    }
-
-     */
     public void changeText(String temp){
         if(temp.equals("s")){
             shipText.setText("Ett helt sjäp har träffas");
@@ -155,24 +133,6 @@ public class GameBoardLayout extends Application implements SystemBoard {
             shipText.setText("");
         }
     }
-
-    public void setShipText() {
-        shipText.setText("Ett helt sjäp har träffas");
-    }
-    public void RemovLabel() {
-        shipText.setText(" ");
-    }
-
-    /*public Label setLabel() {
-        shipText.setText("");
-    }
-
-    public Label RemovLabel() {
-        shipText = new Label("Ett helt sjäp har träffas");
-        return shipText;
-    }
-
-     */
 
     public void setClientThread(ClientThread clientThread) {
         this.clientThread = clientThread;

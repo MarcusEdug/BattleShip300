@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Random;
 
 public class Fire implements SystemBoard {
-    Ship ship = new Ship();
-    Random random = new Random();
+    private Ship ship = new Ship();
+    private Random random = new Random();
     private String YRow;
     private int YRowInt;
     private int indexX;
