@@ -89,6 +89,7 @@ public class ServerThread extends BackEndControl implements Runnable, SystemBoar
 
             shotOut = fireOutput(XRowValue,YRowValue);
             System.out.println("Server skicka : " + shotOut);
+            System.out.println(" ");
             writer.println(shotOut);
             //Här skjutter vi på Clienten och vi skickar iväg status på skottet som vi tidigare fick
 

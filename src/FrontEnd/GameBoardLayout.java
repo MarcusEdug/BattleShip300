@@ -83,7 +83,7 @@ public class GameBoardLayout extends Application implements SystemBoard {
         HBox letterHBox2 = createLetterHBox();
         VBox numVBox1 = createNumberVBox();
         VBox numVBox2 = createNumberVBox();
-        gridPane.setGridLinesVisible(true);
+        //gridPane.setGridLinesVisible(true);
 
         Text extraColum = new Text("                                               ");
         gridPane.add(player1Label, 2, 0, 1, 1);
