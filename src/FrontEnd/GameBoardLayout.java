@@ -5,12 +5,15 @@ import ServerAndClient.ClientThread;
 import ServerAndClient.ServerThread;
 import javafx.application.Application;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -27,34 +30,30 @@ public class GameBoardLayout extends Application implements SystemBoard {
     public String name;
     private Scene scene1;
     private Scene scene2;
-    public String shipDown = " hej";
+    public Text shipText = new Text("here");
     private BufferedReader reader;
     private PrintWriter writer;
 
-    //ClientThread clientThread;
-   // ServerThread serverThread;
+    private ClientThread clientThread;
+    private ServerThread serverThread;
     public GameBoardLayout(BufferedReader reader, PrintWriter writer){
         this.reader = reader;
         this.writer = writer;
     }
 
 
-    /*public GameBoardLayout(ClientThread clientThread){
-        this.clientThread = clientThread;
 
-    }
-    public GameBoardLayout(ServerThread serverThread){
-        this.serverThread = serverThread;
-    }
 
-     */
+
     public GameBoardLayout(){}
     @Override
     public void start(Stage stage) {
         GridPane gridPane = new GridPane();
-        ClientThread clinetTread = new ClientThread(writer,reader,stage);
-        ServerThread serverThread = new ServerThread(writer,reader,stage);
-        StartEndScreens StartEndScreens = new StartEndScreens(clinetTread, serverThread);
+
+        //ClientThread clinetTread = new ClientThread(writer,reader,stage);
+        //ServerThread serverThread = new ServerThread(writer,reader,stage);
+
+        StartEndScreens StartEndScreens = new StartEndScreens(clientThread, serverThread);
         scene1 = new Scene(gridPane, X_ROW_VALUE * CELL_SIZE, Y_ROW_VALUE * CELL_SIZE);
         scene2 = StartEndScreens.display(name,scene1, stage);
         setupWindow(stage);
@@ -101,7 +100,7 @@ public class GameBoardLayout extends Application implements SystemBoard {
         HBox letterHBox2 = createLetterHBox();
         VBox numVBox1 = createNumberVBox();
         VBox numVBox2 = createNumberVBox();
-        Label label = new Label(shipDown);
+
 
         gridPane.add(letterHBox1, 1, 0);
         gridPane.add(numVBox1, 0, 1);
@@ -109,7 +108,7 @@ public class GameBoardLayout extends Application implements SystemBoard {
         gridPane.add(letterHBox2, X_ROW_VALUE + 2, 0);
         gridPane.add(numVBox2, Y_ROW_VALUE + 1, 1);
         gridPane.add(gamePane2, X_ROW_VALUE + 2, 1);
-        gridPane.add(label,13,1 );
+        gridPane.add(shipText,13,1 );
 
 
     }
@@ -142,17 +141,45 @@ public class GameBoardLayout extends Application implements SystemBoard {
         return numVBox;
     }
 
-    public String getShipDown() {
-        return shipDown;
+
+    /*public Label getShipText() {
+        return shipText;
     }
 
-    public void setShipDown(String shipDown) {
-        if (shipDown == null){
-            this.shipDown = "..";
+     */
+    public void changeText(String temp){
+        if(temp.equals("s")){
+            shipText.setText("Ett helt sjäp har träffas");
         }
         else {
-            this.shipDown = shipDown;
+            shipText.setText("");
         }
+    }
+
+    public void setShipText() {
+        shipText.setText("Ett helt sjäp har träffas");
+    }
+    public void RemovLabel() {
+        shipText.setText(" ");
+    }
+
+    /*public Label setLabel() {
+        shipText.setText("");
+    }
+
+    public Label RemovLabel() {
+        shipText = new Label("Ett helt sjäp har träffas");
+        return shipText;
+    }
+
+     */
+
+    public void setClientThread(ClientThread clientThread) {
+        this.clientThread = clientThread;
+    }
+
+    public void setServerThread(ServerThread serverThread) {
+        this.serverThread = serverThread;
     }
 
     public static void main(String[] args) {

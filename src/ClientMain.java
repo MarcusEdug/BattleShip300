@@ -26,7 +26,9 @@ public class ClientMain extends Application implements SystemBoard {
     @Override
     public void start(Stage primaryStage) throws Exception {
         client.connect();
-        gameBoard = new GameBoardLayout(client.getReader(),client.getWriter());
+        gameBoard = new GameBoardLayout();
+        clinetTread = new ClientThread(client.getWriter(),client.getReader(), gameBoard, primaryStage);
+        gameBoard.setClientThread(clinetTread);
         gameBoard.name = "client";
         gameBoard.start(primaryStage);
 

@@ -45,8 +45,11 @@ public class ServerThread extends Fire implements Runnable, SystemBoard {
         //this.gridPane = gridPane;
         this.gameBoardLayout = gameBoardLayout;
     }
-    public ServerThread(){
-
+    public ServerThread(PrintWriter writer, BufferedReader reader, GameBoardLayout gameBoardLayout, Stage stage){
+        this.writer = writer;
+        this.reader = reader;
+        this.gameBoardLayout = gameBoardLayout;
+        this.stage = stage;
     }
 
     public void controllIfwin(){
@@ -99,8 +102,10 @@ public class ServerThread extends Fire implements Runnable, SystemBoard {
 
         }
         while (gameIsRunning) {
+
             changeColor.colorChangesYour(shotIn);
             System.out.println("Client skicka : " + shotIn);
+
             //Här uppdattera vi våra egna FX karta efter skottet som kom in
 
             backEndMap.delyTheGame(delay);
@@ -109,8 +114,10 @@ public class ServerThread extends Fire implements Runnable, SystemBoard {
             System.out.println("Server skicka : " + shotOut);
             writer.println(shotOut);
             //Här Skjutter vi på en sluppmässig punkt
-
+            //gameBoardLayout.changeText("s");
             setCoordinat(breakOut(shotOut));
+
+
             //Här spara vi punkten som vi skött på
 
             try {
@@ -126,11 +133,14 @@ public class ServerThread extends Fire implements Runnable, SystemBoard {
                 //här ta vi emot skottet
 
                 fireInput(shotIn);
+                gameBoardLayout.changeText(getShotStatus());
 
                 //Här får vi status på våra skott som vi skött
                 //Våra egna karta ändra efter skottet
 
                 String tempStatu = shotIn.substring(0, 1);
+
+
                 //här tar vi ut vad för status våra skott hade
 
                 //Här håller vi koll på hur oftas vi träffar
@@ -140,6 +150,7 @@ public class ServerThread extends Fire implements Runnable, SystemBoard {
 
                 changeColor.colorChangesEnemy(getCoordinat());
                 //Här uppdatar vi FX kartan för fienden
+
 
                 if (tempStatu.equals("h")||tempStatu.equals("s")) {
                     conuter++;

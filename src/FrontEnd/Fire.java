@@ -56,7 +56,7 @@ public class Fire implements SystemBoard {
             if (!shipControl.equals("v")){
                 tom = "s";
                 shipUnder = "Ett helt sjäp har träffas";
-                System.out.println("Ett helt sjäp har träffas");
+                //System.out.println("Ett helt sjäp har träffas");
             }
         }
         else {
@@ -65,6 +65,7 @@ public class Fire implements SystemBoard {
         }
          shotStatus = tom;
     }
+
     public Ship getShip(){
         return ship;
     }
@@ -184,5 +185,9 @@ public class Fire implements SystemBoard {
 
     public void setCoordinat(String coordinat) {
         this.coordinat = coordinat;
+    }
+
+    public String getShotStatus() {
+        return shotStatus;
     }
 }

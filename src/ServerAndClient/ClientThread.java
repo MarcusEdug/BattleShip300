@@ -19,6 +19,8 @@ public class ClientThread extends Fire implements Runnable, SystemBoard {
     PrintWriter writer;
     BufferedReader reader;
 
+
+
     GridPane gridPane = new GridPane();
     GameBoardLayout gameBoardLayout = new GameBoardLayout();
 
@@ -35,7 +37,7 @@ public class ClientThread extends Fire implements Runnable, SystemBoard {
 
     private boolean gameIsRunning = true;
 
-    public ClientThread(PrintWriter writer, BufferedReader reader, Stage stage){
+    /*public ClientThread(PrintWriter writer, BufferedReader reader, Stage stage){
         this.writer = writer;
         this.reader = reader;
         //this.delay = delay;
@@ -43,8 +45,17 @@ public class ClientThread extends Fire implements Runnable, SystemBoard {
         this.gameBoardLayout = gameBoardLayout;
     }
 
+     */
 
 
+
+    public ClientThread(PrintWriter writer, BufferedReader reader,GameBoardLayout gameBoardLayout, Stage stage){
+        this.writer = writer;
+        this.reader = reader;
+        this.gameBoardLayout = gameBoardLayout;
+        this.stage = stage;
+
+    }
     public ClientThread(){
 
     }
@@ -99,7 +110,11 @@ public class ClientThread extends Fire implements Runnable, SystemBoard {
                 controllIflose();
             }
             else {
+
                 fireInput(shotIn);
+
+                gameBoardLayout.changeText(getShotStatus());
+
                 System.out.println("Server skicka : " + shotIn);
                 //Läser av skott som kom in
                 //Ändra sin egna karta
@@ -110,6 +125,9 @@ public class ClientThread extends Fire implements Runnable, SystemBoard {
 
                 String tempStatu = shotIn.substring(0, 1);
                 //Bryter ut statusen
+
+
+
 
                 changeEnemyArray(getCoordinat(), tempStatu);
                 // Ändra kartan för fienden

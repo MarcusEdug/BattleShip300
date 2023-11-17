@@ -24,8 +24,9 @@ public class ServerMain extends Application implements SystemBoard {
     @Override
     public void start(Stage primaryStage) throws Exception {
         server.connect();
-        //ServerThread serverThread = new ServerThread(server.getWriter(),server.getReader(),primaryStage,gameBoard );
-        gameBoard = new GameBoardLayout(server.getReader(),server.getWriter());
+        gameBoard = new GameBoardLayout();
+        ServerThread serverThread = new ServerThread(server.getWriter(),server.getReader(), gameBoard, primaryStage);
+        gameBoard.setServerThread(serverThread);
         gameBoard.name = "server";
         gameBoard.start(primaryStage);
 
