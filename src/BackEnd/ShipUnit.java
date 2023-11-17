@@ -9,7 +9,6 @@ public class ShipUnit {
 
     private String name;
     private int lifeCounter;
-    private boolean active;      // True = Skeppet har liv kvar.   False = Skeppet har inget liv kvar
     private int shipLenght;
     private boolean testPlace;   // För utplacering på kartan, true = placerats & false = inte utplacerat
     private boolean horizontal;  // True = Horisontellt skepp.  False =  Vertikalt skepp.
@@ -33,12 +32,7 @@ public class ShipUnit {
     // Getters & Setters (Evelina Daun)
     public String getName() {
         return name;
-    } // Ta bort ? Använda för att skriva ut vilket skepp som är träffat när hela skeppet är träffat?
-
-    public boolean isActive() {
-        return active;
     }
-
     public int getShipLenght() {
         return shipLenght;
     }
@@ -91,8 +85,6 @@ public class ShipUnit {
         this.yEnd = yEnd;
     }
 
-
-    // Metoder
 
     // Metod: När ett skeppobjekt blir träffat (Evelina Daun)
     public int hitShip(){

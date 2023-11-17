@@ -1,19 +1,23 @@
-import BackEnd.BackEndMap;
-import BackEnd.SystemBord;
-import FrontEnd.GameBoard;
+import BackEnd.BackEndControl;
+import BackEnd.SystemBoard;
+import FrontEnd.GameBoardLayout;
 import ServerAndClient.Client;
+import ServerAndClient.ClientThread;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ClientMain extends Application implements SystemBord {
+public class ClientMain extends Application implements SystemBoard {
 
-    Client client = new Client();
+    private Client client = new Client();
+    private GameBoardLayout gameBoardLayout;
+    private ClientThread clinetTread;
 
     public static void main (String[] args) throws IOException {
-        BackEndMap backEndMap = new BackEndMap();
+        BackEndControl backEndMap = new BackEndControl();
         backEndMap.createEndMap(XRowValue,YRowValue);
+        //Upprättar sin egna backend karta
 
 
         launch(args);
@@ -22,9 +26,12 @@ public class ClientMain extends Application implements SystemBord {
     @Override
     public void start(Stage primaryStage) throws Exception {
         client.connect();
-        GameBoard gameBoard = new GameBoard(client.getReader(),client.getWriter());
-        gameBoard.name = "client";
-        gameBoard.start(primaryStage);
+        gameBoardLayout = new GameBoardLayout();
+        clinetTread = new ClientThread(client.getWriter(),client.getReader(), gameBoardLayout, primaryStage);
+        //Här skpara vi en client tråd och den behöver en reader, writer, gameboardlayout och stagen. För att funka
+        gameBoardLayout.setClientThread(clinetTread);
+        gameBoardLayout.name = "client";
+        gameBoardLayout.start(primaryStage);
 
 
 

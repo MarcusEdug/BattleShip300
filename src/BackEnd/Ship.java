@@ -29,20 +29,8 @@ public class Ship {
     public Ship(){}
 
 
-    // Metoder
-
-    // Metod: Återställa spelet och köra igen  ???  // Lägga till om tid ?
-    // Metod: Dela upp sökandet av koordinaterna i mindre delar  // Om tid när spelet är kopplat så det syns att det fungerar
-
     // Metod: Skapa skeppobjekten (Evelina Daun)
     public void createShipUnits(){
-
-        /*
-        // Om restart - rensa gamla listan
-        if(!shipList.isEmpty()){
-            // Tömma listan
-        }
-         */
 
         for(int i = 0; i < 4; i++){ // Yttre loop - Antalet skeppsorter
             for(int j = 0; j < numOfShips[i]; j++){ // Inre loop - Antalet specifika skepp
@@ -218,19 +206,6 @@ public class Ship {
         return array;
     }
 
-
-    // Metod: Kontrollera om det finns skeppobjekt med liv kvar (Evelina Daun)
-    // @return: True = Skepp har liv kvar  False = Inget skeppobjekt har inte liv kvar
-    public boolean checkActiveShips(){
-        for(ShipUnit s : shipList){
-            if(s.isActive()){
-                return true;
-            }
-        }
-        return false;
-    }
-
-
     // Metod: Förändra livet på det skepp som är träffat (Evelina Daun)
     // @param: X och y koordinater för träffade skeppet
     public String hitShipCoordinate(int x, int y){
@@ -240,8 +215,6 @@ public class Ship {
         if(!temp.getName().isEmpty()){
             test = temp.hitShip(); // Förändra skeppobjektet
 
-
-
         }
         if ( test == 0 ){
             return temp.getName();
@@ -249,7 +222,6 @@ public class Ship {
         else {
             return "v";
         }
-
 
     }
 

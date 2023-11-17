@@ -1,46 +1,23 @@
-package FrontEnd;
+package BackEnd;
 
-import BackEnd.Ship;
-import BackEnd.SystemBord;
-import com.sun.xml.internal.ws.commons.xmlutil.Converter;
-import javafx.application.Application;
-import javafx.geometry.Insets;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-
-
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Fire implements SystemBord {
-    Ship ship = new Ship();
-    String YRow;
-    int YRowInt;
-    int indexX;
-    int indexY;
-    int randomNumber;
-    ChangeColor changeColor = new ChangeColor();
-    Random random = new Random();
-    String shotFire;
-    int count = 0;
-    //en lista på alla skot som har skjutis (AR)
-    List<String> listOfShot = new ArrayList<>();
-    public String shotStatus = "i";
-    public String coordinat;
+public class BackEndControl implements SystemBoard {
+    private Ship ship = new Ship();
+    private Random random = new Random();
+    private String YRow;
+    private int YRowInt;
+    private int indexX;
+    private int indexY;
+    private String shotFire;
+    private int count = 0;
+    private List<String> listOfShot = new ArrayList<>();
+    private String shotStatus = "i";
+    private String coordinat;
 
-    // Skapar en random Sträng av två int värden som har en ett random värde. (AR , FK)
+    //Metod:Slumpar en koordinat och skickar iväg en sträng. Den kontrollerar att man skickar ut en unik sträng varje gång (AR, FK, MS, ED)
     public String fireOutput(int x, int y) {
         boolean isFiring = true;
         while (isFiring) {
@@ -60,54 +37,74 @@ public class Fire implements SystemBord {
         return shotFire;
     }
 
-    public Ship getShip(){
-        return ship;
-    }
-    //Tar emot ett sträng värde och bryter upp de till två int värden som sätts in i array[][] som blir kordinater.
-
-
+    //Metod: Tar in sträng värde och ändra sin egna karta och spara status på tidigare skjott (ED, FK, MS, AR)
     public void fireInput(String shotInput) {
         int valueX = Character.getNumericValue(shotInput.charAt(7));
         int valueY = covertYCharToYint((shotInput.charAt(8)));
         String tom = "";
-        if (array[valueX][valueY].equals("s")) {
-            //System.out.println("Jag har blivt Hit!");
-            String bajs = ship.hitShipCoordinate(valueX,valueY);
-            array[valueX][valueY] = "h";
+        if (arrayYours[valueX][valueY].equals("s")) {
+            String shipControl = ship.hitShipCoordinate(valueX,valueY);
+            arrayYours[valueX][valueY] = "h";
             tom = "h";
-            //shotStatus = "h";
-            if (!bajs.equals("v")){
+            if (!shipControl.equals("v")){
                 tom = "s";
-                System.out.println("Ett helt sjäp har träffas");
-                // Namn på båten skickas hitt!
+                //System.out.println("Ett helt sjäp har träffas");
             }
         }
         else {
-            //System.out.println("Jag har blivt Miss!");
-            array[valueX][valueY] = "m";
+            arrayYours[valueX][valueY] = "m";
             tom = "m";
-            //shotStatus = "m";
-            //String temp = ship.hitShipCoordinate(valueX,valueY);
         }
          shotStatus = tom;
     }
-    public void changeArray(String shotCoordinat, String temp){
+
+    //Metod: Upprättar backend karta för fienden och för sig själv (AR)
+    public void createEndMap(int XRowValue, int YRowValue){
+        for (int y = 0; y < XRowValue; y++) {
+            for (int x = 0; x < YRowValue; x++) {
+                arrayYours[y][x] = "i";
+                arrayEnemy[y][x] = "i";
+            }
+        }
+    }
+
+    //Metod: Skapar en delay (FK, MS, ED, AR, FN)
+    public void delyTheGame(int delay){
+        if(delay == 0){
+            try {
+                Thread.sleep(0);
+            } catch (InterruptedException ie) {
+                Thread.currentThread().interrupt();
+            }
+        }
+        else {
+            try {
+                Thread.sleep(delay * 100);
+            } catch (InterruptedException ie) {
+                Thread.currentThread().interrupt();
+            }
+        }
+    }
+
+    //Metod: Ändra fiendens karta efter skott koordinat och status på sitt tidigare skott (MS, ED, AR, FK)
+    public void changeEnemyArray(String shotCoordinat, String status){
         if ( shotCoordinat == null){
 
         }
         else {
             int valueX = Character.getNumericValue(shotCoordinat.charAt(0));
             int valueY = Character.getNumericValue(shotCoordinat.charAt(1));
-            if (temp.equals("h") || temp.equals("s")) {
+            if (status.equals("h") || status.equals("s")) {
                 arrayEnemy[valueX][valueY] = "h";
-                //FXarrayServer[valueX][valueY].setFill(Color.GREEN);
-            } else if (temp.equals("m")) {
+            } else if (status.equals("m")) {
                 arrayEnemy[valueX][valueY] = "m";
-                //FXarrayServer[valueX][valueY].setFill(Color.OLIVEDRAB);
+
             }
         }
 
     }
+
+    //Metod: Omvanlar int till string (AR, ED, MS, FK)
     public String convertIntToString(int y){
         if (y == 0){
             YRow = "a";
@@ -150,6 +147,8 @@ public class Fire implements SystemBord {
             return YRow;
         }
     }
+
+    //Metod: Omvanlar char till int (FK, MS, ED, AR)
     public int covertYCharToYint(char y){
         if (y == 'a'){
             YRowInt = 0;
@@ -192,12 +191,30 @@ public class Fire implements SystemBord {
             return YRowInt;
         }
     }
+
+    //Metod Tar ut kooridnater utfrån en sträng (AR, MS, ED FK)
     public String breakOut (String breakOut){
         String temp;
         int valueX = Character.getNumericValue(breakOut.charAt(7));
-        int valueY =Character.getNumericValue(breakOut.charAt(8));
+        int valueY = covertYCharToYint((breakOut.charAt(8)));
         temp = String.join("", String.valueOf(valueX), String.valueOf(valueY));
-
         return temp;
+    }
+
+
+    public String getCoordinat() {
+        return coordinat;
+    }
+
+    public void setCoordinat(String coordinat) {
+        this.coordinat = coordinat;
+    }
+
+    public String getShotStatus() {
+        return shotStatus;
+    }
+
+    public Ship getShip(){
+        return ship;
     }
 }

@@ -1,62 +1,54 @@
 package ServerAndClient;
 
-import BackEnd.BackEndMap;
-import BackEnd.SystemBord;
+import BackEnd.SystemBoard;
 import FrontEnd.ChangeColor;
-import FrontEnd.Fire;
-import FrontEnd.StartSkärm;
+import BackEnd.BackEndControl;
+import FrontEnd.GameBoardLayout;
+import FrontEnd.StartEndScreens;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Scanner;
 
-public class ClientThread extends Fire implements Runnable, SystemBord {
-    //Kan "extend" en annan klass om det behövs.
+public class ClientThread extends BackEndControl implements Runnable, SystemBoard {
+    private PrintWriter writer;
+    private BufferedReader reader;
+    private GameBoardLayout gameBoardLayout = new GameBoardLayout();
+    private Stage stage;
+    private ChangeColor changeColor = new ChangeColor();
 
-    PrintWriter writer;
-    BufferedReader reader;
-
+    private int counter;
+    private boolean win;
     private int delay;
-
-    Stage stage;
-
-    ChangeColor changeColor = new ChangeColor();
-
-    BackEndMap backEndMap = new BackEndMap();
-
-    int conuter;
-    boolean win;
-
     private boolean gameIsRunning = true;
 
-    public ClientThread(PrintWriter writer, BufferedReader reader, Stage stage){
+    public ClientThread(PrintWriter writer, BufferedReader reader,GameBoardLayout gameBoardLayout, Stage stage){
         this.writer = writer;
         this.reader = reader;
-        //this.delay = delay;
+        this.gameBoardLayout = gameBoardLayout;
         this.stage = stage;
-    }
 
+    }
     public ClientThread(){
-
     }
+
+    //Metod: Gör att spelet slutar och visar vinnst i end fönstret som kommer upp (ED)
     public void controllIfwin(){
-        if(conuter == 30){
+        if(counter == 30){
             win = true;
             gameIsRunning = false;
             writer.println("game over");
             System.out.println("You won");
-            StartSkärm.endplay(win, stage);
-            //ändra JavaFX
+            StartEndScreens.endplay(win, stage);
         }
     }
+    //Metod: Gör att spelet slutar och vissar förlust i end fönstret som kommer upp (ED)
     public void controllIflose(){
         win = false;
         gameIsRunning = false;
         System.out.println("You lost");
-        StartSkärm.endplay(win, stage);
-        //ändra JavaFX
+        StartEndScreens.endplay(win, stage);
     }
 
     @Override
@@ -64,20 +56,22 @@ public class ClientThread extends Fire implements Runnable, SystemBord {
         String shotOut = "";
         String shotIn = "";
 
-        backEndMap.createEndMap(XRowValue,YRowValue);
+
         if(gameIsRunning) {
             getShip().createShipUnits();
-            getShip().placeShipsOnMap(array);
+            getShip().placeShipsOnMap(arrayYours);
+            //Skapar och sätter ut skepp
 
-            System.out.println("Vi har skapa ship och 2d array");
-            changeColor.clientColor();
+            changeColor.clientYourMapsColor();
+            //Ändra din FX karta
 
             shotOut = fireOutput(XRowValue, YRowValue);
             writer.println(shotOut);
             System.out.println("Client skicka : " + shotOut);
             System.out.println(" ");
+            //Skjutter iväg ett skott mot Serven
 
-            coordinat = breakOut(shotOut);
+            setCoordinat(breakOut(shotOut));
             //Spara koordinater för skottet som skjötts
         }
 
@@ -85,32 +79,41 @@ public class ClientThread extends Fire implements Runnable, SystemBord {
 
             try {
                 shotIn = reader.readLine();
+                //tar in info från Serven
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
             if ( shotIn.equals("game over")){
                 controllIflose();
+                //Kollar om man har förlorat
+                break;
             }
             else {
                 fireInput(shotIn);
-                System.out.println("Server skicka : " + shotIn);
                 //Läser av skott som kom in
                 //Ändra sin egna karta
                 //skapar en status på skottet
+
+                gameBoardLayout.changeText(getShotStatus());
+                //Om en båt har gått ner så skriv ut de på FX kartan
+
+                System.out.println("Server skicka : " + shotIn);
+
 
                 changeColor.colorChangesYour(shotIn);
                 //ändra färg på din egna FX karta
 
                 String tempStatu = shotIn.substring(0, 1);
-                //Bryter ut statusen
+                //Bryter ut statusen ifrån inkommand skott och spara den
 
-                changeArray(coordinat, tempStatu);
-                // Ändra kartan för fienden
+                changeEnemyArray(getCoordinat(), tempStatu);
+                // Ändra backend kartan för fienden
 
-                changeColor.colorChangesEnemy(coordinat);
+                changeColor.colorChangesEnemy(getCoordinat());
                 //Ändra FX kartan för fienden
 
-                backEndMap.delyTheGame(0);
+                delyTheGame(delay);
+                //Sätt en delay på spelet
 
                 shotOut = fireOutput(XRowValue, YRowValue);
                 System.out.println("Client skicka : " + shotOut);
@@ -119,48 +122,24 @@ public class ClientThread extends Fire implements Runnable, SystemBord {
                 //Skjutter iväg ett skott
                 // som innehåller resultat på skottet som fienden skött och koordinater på mitt egna skott
 
-                coordinat = breakOut(shotOut);
+                setCoordinat(breakOut(shotOut));
+                //Ta ut koordinaterna för skottet som skickades iväg och spara den
 
                 if (tempStatu.equals("h")||tempStatu.equals("s")) {
-                    conuter++;
-                    System.out.println(conuter);
+                    counter++;
+                    //räkna hur många träffa som man har gjort
                 }
                 controllIfwin();
+                //Kolla ifall man har vunnit
             }
-            //Spara koordinater för skottet som skjötts
-
-            //System.out.println("jag skicka ut  " + shotOut);
-
-
-            /*coordinat = breakOut(shotOut);
-
-            //backEndMap.delyTheGame(2);
-
-            if (shotIn.equals("game over")){
-                controllIflose();
-                break;
-            }
-            fireInput(shotIn);
-            System.out.println("jag tog in " + shotIn);
-
-
-
-            String tempStatu = shotIn.substring(0,1);
-
-            if (tempStatu.equals("h")){
-                conuter++;
-            }
-
-            changeArray(coordinat,tempStatu);
-            System.out.println("Jag har ändra enemy kart till C: " + coordinat + " Status: " + tempStatu );
-            changeColor.colorChangesYour(shotIn);
-            changeColor.colorChangesEnemy(coordinat);
-
-             */
-
-
-
         }
+    }
 
+    public int getDelay() {
+        return delay;
+    }
+
+    public void setDelay(int delay) {
+        this.delay = delay;
     }
 }
