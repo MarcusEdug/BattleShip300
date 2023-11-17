@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class ServerMain extends Application implements SystemBoard {
     private Server server = new Server();
-    private GameBoardLayout gameBoard;
+    private GameBoardLayout gameBoardLayout;
 
     public static void main(String[]args) throws IOException {
         BackEndMap backEndMap = new BackEndMap();
@@ -24,11 +24,11 @@ public class ServerMain extends Application implements SystemBoard {
     @Override
     public void start(Stage primaryStage) throws Exception {
         server.connect();
-        gameBoard = new GameBoardLayout();
-        ServerThread serverThread = new ServerThread(server.getWriter(),server.getReader(), gameBoard, primaryStage);
-        gameBoard.setServerThread(serverThread);
-        gameBoard.name = "server";
-        gameBoard.start(primaryStage);
+        gameBoardLayout = new GameBoardLayout();
+        ServerThread serverThread = new ServerThread(server.getWriter(),server.getReader(), gameBoardLayout, primaryStage);
+        gameBoardLayout.setServerThread(serverThread);
+        gameBoardLayout.name = "server";
+        gameBoardLayout.start(primaryStage);
 
 
     }

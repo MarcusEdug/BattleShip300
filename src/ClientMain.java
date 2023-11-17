@@ -12,7 +12,7 @@ import java.io.IOException;
 public class ClientMain extends Application implements SystemBoard {
 
     private Client client = new Client();
-    private GameBoardLayout gameBoard;
+    private GameBoardLayout gameBoardLayout;
     private ClientThread clinetTread;
 
     public static void main (String[] args) throws IOException {
@@ -26,11 +26,11 @@ public class ClientMain extends Application implements SystemBoard {
     @Override
     public void start(Stage primaryStage) throws Exception {
         client.connect();
-        gameBoard = new GameBoardLayout();
-        clinetTread = new ClientThread(client.getWriter(),client.getReader(), gameBoard, primaryStage);
-        gameBoard.setClientThread(clinetTread);
-        gameBoard.name = "client";
-        gameBoard.start(primaryStage);
+        gameBoardLayout = new GameBoardLayout();
+        clinetTread = new ClientThread(client.getWriter(),client.getReader(), gameBoardLayout, primaryStage);
+        gameBoardLayout.setClientThread(clinetTread);
+        gameBoardLayout.name = "client";
+        gameBoardLayout.start(primaryStage);
 
 
 

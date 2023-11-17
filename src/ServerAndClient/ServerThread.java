@@ -130,7 +130,6 @@ public class ServerThread extends Fire implements Runnable, SystemBoard {
 
                 if (tempStatu.equals("h")||tempStatu.equals("s")) {
                     conuter++;
-                    System.out.println(conuter);
                 }
                 controllIfwin();
             }

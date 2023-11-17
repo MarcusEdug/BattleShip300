@@ -119,7 +119,6 @@ public class ClientThread extends Fire implements Runnable, SystemBoard {
 
                 if (tempStatu.equals("h")||tempStatu.equals("s")) {
                     counter++;
-                    System.out.println(counter);
                 }
                 controllIfwin();
             }

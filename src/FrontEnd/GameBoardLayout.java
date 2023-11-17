@@ -43,7 +43,7 @@ public class GameBoardLayout extends Application implements SystemBoard {
         scene1 = new Scene(gridPane, X_ROW_VALUE * CELL_SIZE, Y_ROW_VALUE * CELL_SIZE);
         scene2 = StartEndScreens.display(name,scene1, stage);
         setupWindow(stage);
-        setupPlayerLabels(gridPane);
+        //setupPlayerLabels(gridPane);
         setupGamePanes(gridPane);
         stage.setScene(scene2);
         stage.show();
@@ -56,8 +56,8 @@ public class GameBoardLayout extends Application implements SystemBoard {
         Screen screen = Screen.getPrimary();
         Rectangle2D bonus = screen.getVisualBounds();
 
-        double windowWidth = bonus.getWidth()*0.25;
-        double windowHeight = bonus.getHeight()*0.25;
+        double windowWidth = bonus.getWidth()*0.7;
+        double windowHeight = bonus.getHeight()*0.57;
         /*
         stage.setMinWidth(1100);
         stage.setMaxWidth(2000);
@@ -73,7 +73,7 @@ public class GameBoardLayout extends Application implements SystemBoard {
 
     }
 
-    public void setupPlayerLabels(GridPane gridPane) {
+    /*public void setupPlayerLabels(GridPane gridPane) {
         Label player1Label = new Label(SPELARE1);
         player1Label.setFont(Font.font("Arial", FontWeight.BOLD, 16));
         player1Label.setTextFill(Color.BLACK);
@@ -86,7 +86,20 @@ public class GameBoardLayout extends Application implements SystemBoard {
         gridPane.add(player2Label, X_ROW_VALUE + 1, 0, 1, 1);
     }
 
+     */
+
     public void setupGamePanes(GridPane gridPane) {
+        Text player1Label = new Text(SPELARE1);
+        player1Label.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+        //player1Label.setTextFill(Color.BLACK);
+
+        Text player2Label = new Text (SPELARE2);
+        player2Label.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+        //player2Label.setTextFill(Color.BLACK);
+
+        shipText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+
+
         CellLayout gamePane1 = new CellLayout("Spelplan 1", Y_ROW_VALUE, X_ROW_VALUE);
         gamePane1.createGameCells(XRowValue,YRowValue, 1);
         CellLayout gamePane2 = new CellLayout("Spelplan 2", Y_ROW_VALUE, X_ROW_VALUE); //Behöver en till backendmap.
@@ -95,22 +108,27 @@ public class GameBoardLayout extends Application implements SystemBoard {
         HBox letterHBox2 = createLetterHBox();
         VBox numVBox1 = createNumberVBox();
         VBox numVBox2 = createNumberVBox();
+        gridPane.setGridLinesVisible(true);
 
+        Text extraColum = new Text("                                               ");
+        gridPane.add(player1Label, 2, 0, 1, 1);
+        gridPane.add(letterHBox1, 2, 1);
+        gridPane.add(numVBox1, 1, 2);
+        gridPane.add(gamePane1, 2, 2);
+        gridPane.add(extraColum,3,1);
 
-        gridPane.add(letterHBox1, 1, 0);
-        gridPane.add(numVBox1, 0, 1);
-        gridPane.add(gamePane1, 1, 1);
-        gridPane.add(letterHBox2, X_ROW_VALUE + 2, 0);
-        gridPane.add(numVBox2, Y_ROW_VALUE + 1, 1);
-        gridPane.add(gamePane2, X_ROW_VALUE + 2, 1);
-        gridPane.add(shipText,13,1 );
+        gridPane.add(player2Label,  X_ROW_VALUE + 6, 0);
+        gridPane.add(letterHBox2, X_ROW_VALUE + 6, 1);
+        gridPane.add(numVBox2, Y_ROW_VALUE + 5, 2);
+        gridPane.add(gamePane2, X_ROW_VALUE + 6, 2);
+        gridPane.add(shipText, 3,2);
 
 
     }
 
     private HBox createLetterHBox() {
         HBox letterHBox = new HBox();
-        letterHBox.setPrefSize(X_ROW_VALUE * CELL_SIZE, CELL_SIZE);
+        letterHBox.setPrefSize(X_ROW_VALUE * CELL_SIZE, CELL_SIZE*0.5);
         for (int i = 1; i <= X_ROW_VALUE; i++) {
             Label letterLabel = new Label(String.valueOf((char) ('A' + i - 1)));
             letterLabel.setFont(Font.font("Arial", FontWeight.BOLD, CELL_SIZE * 0.5));
@@ -124,7 +142,7 @@ public class GameBoardLayout extends Application implements SystemBoard {
 
     private VBox createNumberVBox() {
         VBox numVBox = new VBox();
-        numVBox.setPrefSize(CELL_SIZE, Y_ROW_VALUE * CELL_SIZE);
+        numVBox.setPrefSize(CELL_SIZE*0.5, Y_ROW_VALUE * CELL_SIZE);
         for (int i = 0; i < Y_ROW_VALUE; i++) {
             Label numLabel = new Label(String.valueOf(i));
             numLabel.setFont(Font.font("Arial", FontWeight.BOLD, CELL_SIZE * 0.5));
