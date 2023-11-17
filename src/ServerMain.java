@@ -1,7 +1,6 @@
-import BackEnd.BackEndMap;
+import BackEnd.Fire;
 import BackEnd.SystemBoard;
 import FrontEnd.GameBoardLayout;
-import ServerAndClient.ClientThread;
 import ServerAndClient.Server;
 import ServerAndClient.ServerThread;
 import javafx.application.Application;
@@ -14,7 +13,7 @@ public class ServerMain extends Application implements SystemBoard {
     private GameBoardLayout gameBoardLayout;
 
     public static void main(String[]args) throws IOException {
-        BackEndMap backEndMap = new BackEndMap();
+        Fire backEndMap = new Fire();
         backEndMap.createEndMap(XRowValue,YRowValue);
 
 

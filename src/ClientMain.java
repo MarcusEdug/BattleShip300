@@ -1,9 +1,8 @@
-import BackEnd.BackEndMap;
+import BackEnd.Fire;
 import BackEnd.SystemBoard;
 import FrontEnd.GameBoardLayout;
 import ServerAndClient.Client;
 import ServerAndClient.ClientThread;
-import ServerAndClient.ServerThread;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -16,7 +15,7 @@ public class ClientMain extends Application implements SystemBoard {
     private ClientThread clinetTread;
 
     public static void main (String[] args) throws IOException {
-        BackEndMap backEndMap = new BackEndMap();
+        Fire backEndMap = new Fire();
         backEndMap.createEndMap(XRowValue,YRowValue);
 
 

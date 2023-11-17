@@ -1,12 +1,10 @@
 package ServerAndClient;
 
-import BackEnd.BackEndMap;
 import BackEnd.SystemBoard;
 import FrontEnd.ChangeColor;
-import FrontEnd.Fire;
+import BackEnd.Fire;
 import FrontEnd.GameBoardLayout;
 import FrontEnd.StartEndScreens;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
@@ -19,7 +17,6 @@ public class ServerThread extends Fire implements Runnable, SystemBoard {
     private GameBoardLayout gameBoardLayout = new GameBoardLayout();
     private Stage stage;
     private ChangeColor changeColor = new ChangeColor();
-    private BackEndMap backEndMap = new BackEndMap();
 
     private int conuter;
     private boolean win;
@@ -55,7 +52,7 @@ public class ServerThread extends Fire implements Runnable, SystemBoard {
     public void run() {
         String shotOut = "";
         String shotIn = "";
-        backEndMap.createEndMap(XRowValue,YRowValue);
+
 
         if (gameIsRunning) {
             getShip().createShipUnits();
@@ -83,7 +80,7 @@ public class ServerThread extends Fire implements Runnable, SystemBoard {
 
             //Här uppdattera vi våra egna FX karta efter skottet som kom in
 
-            backEndMap.delyTheGame(delay);
+            delyTheGame(delay);
 
             shotOut = fireOutput(XRowValue,YRowValue);
             System.out.println("Server skicka : " + shotOut);

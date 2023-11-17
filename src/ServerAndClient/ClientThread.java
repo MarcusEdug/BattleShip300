@@ -1,9 +1,8 @@
 package ServerAndClient;
 
-import BackEnd.BackEndMap;
 import BackEnd.SystemBoard;
 import FrontEnd.ChangeColor;
-import FrontEnd.Fire;
+import BackEnd.Fire;
 import FrontEnd.GameBoardLayout;
 import FrontEnd.StartEndScreens;
 import javafx.stage.Stage;
@@ -18,7 +17,7 @@ public class ClientThread extends Fire implements Runnable, SystemBoard {
     private GameBoardLayout gameBoardLayout = new GameBoardLayout();
     private Stage stage;
     private ChangeColor changeColor = new ChangeColor();
-    private BackEndMap backEndMap = new BackEndMap();
+    //private BackEndMap backEndMap = new BackEndMap();
 
     private int counter;
     private boolean win;
@@ -56,7 +55,7 @@ public class ClientThread extends Fire implements Runnable, SystemBoard {
         String shotOut = "";
         String shotIn = "";
 
-        backEndMap.createEndMap(XRowValue,YRowValue);
+
         if(gameIsRunning) {
             getShip().createShipUnits();
             getShip().placeShipsOnMap(array);
@@ -106,7 +105,7 @@ public class ClientThread extends Fire implements Runnable, SystemBoard {
                 changeColor.colorChangesEnemy(getCoordinat());
                 //Ändra FX kartan för fienden
 
-                backEndMap.delyTheGame(delay);
+                delyTheGame(delay);
 
                 shotOut = fireOutput(XRowValue, YRowValue);
                 System.out.println("Client skicka : " + shotOut);

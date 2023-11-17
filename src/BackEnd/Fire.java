@@ -1,4 +1,4 @@
-package FrontEnd;
+package BackEnd;
 
 import BackEnd.Ship;
 import BackEnd.SystemBoard;
@@ -64,6 +64,32 @@ public class Fire implements SystemBoard {
             tom = "m";
         }
          shotStatus = tom;
+    }
+
+    public void createEndMap(int XRowValue, int YRowValue){
+        for (int y = 0; y < XRowValue; y++) {
+            for (int x = 0; x < YRowValue; x++) {
+                array[y][x] = "i";
+                arrayEnemy[y][x] = "i";
+            }
+        }
+    }
+    //Kanske flyttas!
+    public void delyTheGame(int delay){
+        if(delay == 0){
+            try {
+                Thread.sleep(0);
+            } catch (InterruptedException ie) {
+                Thread.currentThread().interrupt();
+            }
+        }
+        else {
+            try {
+                Thread.sleep(delay * 100);
+            } catch (InterruptedException ie) {
+                Thread.currentThread().interrupt();
+            }
+        }
     }
 
     public Ship getShip(){
