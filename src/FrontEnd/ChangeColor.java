@@ -1,9 +1,9 @@
 package FrontEnd;
 
-import BackEnd.SystemBord;
+import BackEnd.SystemBoard;
 import javafx.scene.paint.Color;
 
-public class ChangeColor implements SystemBord {
+public class ChangeColor implements SystemBoard {
     /*
 
     Metoden tar in 2 int värden
@@ -13,7 +13,7 @@ public class ChangeColor implements SystemBord {
 
      */
 
-    int YRowInt;
+    private int YRowInt;
     public void colorChangesEnemy(String input){
         int valueX = Character.getNumericValue(input.charAt(0));
         int valueY =Character.getNumericValue(input.charAt(1));
@@ -23,7 +23,6 @@ public class ChangeColor implements SystemBord {
         else {
             FXarrayServer[valueX][valueY].setFill(Color.ORANGERED);
         }
-        //System.out.println(arrayEnemy[valueX][valueY]);
     }
     public void colorChangesYour(String input){
         int valueX = Character.getNumericValue(input.charAt(7));

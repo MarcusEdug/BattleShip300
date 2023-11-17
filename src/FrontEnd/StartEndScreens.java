@@ -1,8 +1,6 @@
 package FrontEnd;
-import BackEnd.SystemBord;
-import ServerAndClient.Client;
+import BackEnd.SystemBoard;
 import ServerAndClient.ClientThread;
-import ServerAndClient.Server;
 import ServerAndClient.ServerThread;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
@@ -13,11 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.PrintWriter;
-
-public class StartSkärm implements SystemBord {
+public class StartEndScreens implements SystemBoard {
 
 
     //public Stage stage;
@@ -26,7 +20,7 @@ public class StartSkärm implements SystemBord {
     //PrintWriter writer;
     ClientThread clientThread;
     ServerThread serverThread;
-    StartSkärm(ClientThread clientThread , ServerThread serverThread){
+    StartEndScreens(ClientThread clientThread , ServerThread serverThread){
         this.clientThread = clientThread;
         this.serverThread = serverThread;
         //this.stage = stage;
@@ -51,7 +45,7 @@ public class StartSkärm implements SystemBord {
         Button closeButton = new Button("Set");
 
         closeButton.setOnAction(e-> {
-            delayTime.add(choiceBox.getValue());
+            //delayTime.add(choiceBox.getValue());
             int delay = choiceBox.getValue();
             stage.setScene(scene);
             stage.setTitle(name);
@@ -63,6 +57,7 @@ public class StartSkärm implements SystemBord {
 
             if (name.equals("client")){
                 //Client client = new Client(delay);
+                clientThread.setDelay(delay);
                 System.out.println(delay);
                 //client.connect();
 
@@ -70,6 +65,7 @@ public class StartSkärm implements SystemBord {
             }
             else {
                 //Server server = new Server(delay);
+                serverThread.setDelay(delay);
                 System.out.println(delay);
                 //server.connect();
 

@@ -1,44 +1,28 @@
 package FrontEnd;
 
 import BackEnd.Ship;
-import BackEnd.SystemBord;
-import com.sun.xml.internal.ws.commons.xmlutil.Converter;
-import javafx.application.Application;
-import javafx.geometry.Insets;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
+import BackEnd.SystemBoard;
 
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Fire implements SystemBord {
+public class Fire implements SystemBoard {
     Ship ship = new Ship();
-    String YRow;
-    int YRowInt;
-    int indexX;
-    int indexY;
-    int randomNumber;
-    ChangeColor changeColor = new ChangeColor();
     Random random = new Random();
-    String shotFire;
-    int count = 0;
+    private String YRow;
+    private int YRowInt;
+    private int indexX;
+    private int indexY;
+    private String shotFire;
+    private int count = 0;
     //en lista på alla skot som har skjutis (AR)
-    List<String> listOfShot = new ArrayList<>();
-    public String shotStatus = "i";
-    public String coordinat;
+    private List<String> listOfShot = new ArrayList<>();
+    private String shotStatus = "i";
+    private String coordinat;
+
+    public String shipUnder = " hej";
 
     // Skapar en random Sträng av två int värden som har en ett random värde. (AR , FK)
     public String fireOutput(int x, int y) {
@@ -60,38 +44,31 @@ public class Fire implements SystemBord {
         return shotFire;
     }
 
-    public Ship getShip(){
-        return ship;
-    }
-    //Tar emot ett sträng värde och bryter upp de till två int värden som sätts in i array[][] som blir kordinater.
-
 
     public void fireInput(String shotInput) {
         int valueX = Character.getNumericValue(shotInput.charAt(7));
         int valueY = covertYCharToYint((shotInput.charAt(8)));
         String tom = "";
         if (array[valueX][valueY].equals("s")) {
-            //System.out.println("Jag har blivt Hit!");
-            String bajs = ship.hitShipCoordinate(valueX,valueY);
+            String shipControl = ship.hitShipCoordinate(valueX,valueY);
             array[valueX][valueY] = "h";
             tom = "h";
-            //shotStatus = "h";
-            if (!bajs.equals("v")){
+            if (!shipControl.equals("v")){
                 tom = "s";
+                shipUnder = "Ett helt sjäp har träffas";
                 System.out.println("Ett helt sjäp har träffas");
-                // Namn på båten skickas hitt!
             }
         }
         else {
-            //System.out.println("Jag har blivt Miss!");
             array[valueX][valueY] = "m";
             tom = "m";
-            //shotStatus = "m";
-            //String temp = ship.hitShipCoordinate(valueX,valueY);
         }
          shotStatus = tom;
     }
-    public void changeArray(String shotCoordinat, String temp){
+    public Ship getShip(){
+        return ship;
+    }
+    public void changeEnemyArray(String shotCoordinat, String temp){
         if ( shotCoordinat == null){
 
         }
@@ -100,10 +77,9 @@ public class Fire implements SystemBord {
             int valueY = Character.getNumericValue(shotCoordinat.charAt(1));
             if (temp.equals("h") || temp.equals("s")) {
                 arrayEnemy[valueX][valueY] = "h";
-                //FXarrayServer[valueX][valueY].setFill(Color.GREEN);
             } else if (temp.equals("m")) {
                 arrayEnemy[valueX][valueY] = "m";
-                //FXarrayServer[valueX][valueY].setFill(Color.OLIVEDRAB);
+
             }
         }
 
@@ -150,6 +126,7 @@ public class Fire implements SystemBord {
             return YRow;
         }
     }
+
     public int covertYCharToYint(char y){
         if (y == 'a'){
             YRowInt = 0;
@@ -192,12 +169,20 @@ public class Fire implements SystemBord {
             return YRowInt;
         }
     }
+
     public String breakOut (String breakOut){
         String temp;
         int valueX = Character.getNumericValue(breakOut.charAt(7));
-        int valueY =Character.getNumericValue(breakOut.charAt(8));
+        int valueY = covertYCharToYint((breakOut.charAt(8)));
         temp = String.join("", String.valueOf(valueX), String.valueOf(valueY));
-
         return temp;
+    }
+
+    public String getCoordinat() {
+        return coordinat;
+    }
+
+    public void setCoordinat(String coordinat) {
+        this.coordinat = coordinat;
     }
 }

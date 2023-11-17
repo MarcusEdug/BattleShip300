@@ -1,20 +1,24 @@
 package ServerAndClient;
 
 import BackEnd.BackEndMap;
-import BackEnd.Ship;
-import BackEnd.SystemBord;
+import BackEnd.SystemBoard;
 import FrontEnd.ChangeColor;
 import FrontEnd.Fire;
-import FrontEnd.StartSkärm;
+import FrontEnd.GameBoardLayout;
+import FrontEnd.StartEndScreens;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class ServerThread extends Fire implements Runnable, SystemBord {
+public class ServerThread extends Fire implements Runnable, SystemBoard {
     PrintWriter writer;
     BufferedReader reader;
+
+    GridPane gridPane = new GridPane();
+    GameBoardLayout gameBoardLayout = new GameBoardLayout();
 
     private int delay;
     Stage stage;
@@ -38,6 +42,8 @@ public class ServerThread extends Fire implements Runnable, SystemBord {
         this.reader = reader;
         //this.delay = delay;
         this.stage = stage;
+        //this.gridPane = gridPane;
+        this.gameBoardLayout = gameBoardLayout;
     }
     public ServerThread(){
 
@@ -50,7 +56,7 @@ public class ServerThread extends Fire implements Runnable, SystemBord {
             gameIsRunning = false;
             writer.println("game over");
             System.out.println("You won");
-            StartSkärm.endplay(win, stage);
+            StartEndScreens.endplay(win, stage);
             //ändra JavaFX
         }
     }
@@ -58,7 +64,7 @@ public class ServerThread extends Fire implements Runnable, SystemBord {
         win = false;
         gameIsRunning = false;
         System.out.println("You lost");
-        StartSkärm.endplay(win, stage);
+        StartEndScreens.endplay(win, stage);
         //ändra JavaFX
     }
 
@@ -69,6 +75,8 @@ public class ServerThread extends Fire implements Runnable, SystemBord {
         String shotOut = "";
         String shotIn = "";
         backEndMap.createEndMap(XRowValue,YRowValue);
+
+
 
         if (gameIsRunning) {
             getShip().createShipUnits();
@@ -95,14 +103,14 @@ public class ServerThread extends Fire implements Runnable, SystemBord {
             System.out.println("Client skicka : " + shotIn);
             //Här uppdattera vi våra egna FX karta efter skottet som kom in
 
-            backEndMap.delyTheGame(0);
+            backEndMap.delyTheGame(delay);
 
             shotOut = fireOutput(XRowValue,YRowValue);
             System.out.println("Server skicka : " + shotOut);
             writer.println(shotOut);
             //Här Skjutter vi på en sluppmässig punkt
 
-            coordinat = breakOut(shotOut);
+            setCoordinat(breakOut(shotOut));
             //Här spara vi punkten som vi skött på
 
             try {
@@ -118,6 +126,7 @@ public class ServerThread extends Fire implements Runnable, SystemBord {
                 //här ta vi emot skottet
 
                 fireInput(shotIn);
+
                 //Här får vi status på våra skott som vi skött
                 //Våra egna karta ändra efter skottet
 
@@ -126,10 +135,10 @@ public class ServerThread extends Fire implements Runnable, SystemBord {
 
                 //Här håller vi koll på hur oftas vi träffar
 
-                changeArray(coordinat, tempStatu);
+                changeEnemyArray(getCoordinat(), tempStatu);
                 //här ändra vi våran fiende karta
 
-                changeColor.colorChangesEnemy(coordinat);
+                changeColor.colorChangesEnemy(getCoordinat());
                 //Här uppdatar vi FX kartan för fienden
 
                 if (tempStatu.equals("h")||tempStatu.equals("s")) {
@@ -182,5 +191,13 @@ public class ServerThread extends Fire implements Runnable, SystemBord {
 
         }
 
+    }
+
+    public int getDelay() {
+        return delay;
+    }
+
+    public void setDelay(int delay) {
+        this.delay = delay;
     }
 }

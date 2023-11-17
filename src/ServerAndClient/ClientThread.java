@@ -1,22 +1,26 @@
 package ServerAndClient;
 
 import BackEnd.BackEndMap;
-import BackEnd.SystemBord;
+import BackEnd.SystemBoard;
 import FrontEnd.ChangeColor;
 import FrontEnd.Fire;
-import FrontEnd.StartSkärm;
+import FrontEnd.GameBoardLayout;
+import FrontEnd.StartEndScreens;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Scanner;
 
-public class ClientThread extends Fire implements Runnable, SystemBord {
+public class ClientThread extends Fire implements Runnable, SystemBoard {
     //Kan "extend" en annan klass om det behövs.
 
     PrintWriter writer;
     BufferedReader reader;
+
+    GridPane gridPane = new GridPane();
+    GameBoardLayout gameBoardLayout = new GameBoardLayout();
 
     private int delay;
 
@@ -36,7 +40,10 @@ public class ClientThread extends Fire implements Runnable, SystemBord {
         this.reader = reader;
         //this.delay = delay;
         this.stage = stage;
+        this.gameBoardLayout = gameBoardLayout;
     }
+
+
 
     public ClientThread(){
 
@@ -47,7 +54,7 @@ public class ClientThread extends Fire implements Runnable, SystemBord {
             gameIsRunning = false;
             writer.println("game over");
             System.out.println("You won");
-            StartSkärm.endplay(win, stage);
+            StartEndScreens.endplay(win, stage);
             //ändra JavaFX
         }
     }
@@ -55,7 +62,7 @@ public class ClientThread extends Fire implements Runnable, SystemBord {
         win = false;
         gameIsRunning = false;
         System.out.println("You lost");
-        StartSkärm.endplay(win, stage);
+        StartEndScreens.endplay(win, stage);
         //ändra JavaFX
     }
 
@@ -77,7 +84,7 @@ public class ClientThread extends Fire implements Runnable, SystemBord {
             System.out.println("Client skicka : " + shotOut);
             System.out.println(" ");
 
-            coordinat = breakOut(shotOut);
+            setCoordinat(breakOut(shotOut));
             //Spara koordinater för skottet som skjötts
         }
 
@@ -104,13 +111,13 @@ public class ClientThread extends Fire implements Runnable, SystemBord {
                 String tempStatu = shotIn.substring(0, 1);
                 //Bryter ut statusen
 
-                changeArray(coordinat, tempStatu);
+                changeEnemyArray(getCoordinat(), tempStatu);
                 // Ändra kartan för fienden
 
-                changeColor.colorChangesEnemy(coordinat);
+                changeColor.colorChangesEnemy(getCoordinat());
                 //Ändra FX kartan för fienden
 
-                backEndMap.delyTheGame(0);
+                backEndMap.delyTheGame(delay);
 
                 shotOut = fireOutput(XRowValue, YRowValue);
                 System.out.println("Client skicka : " + shotOut);
@@ -119,7 +126,7 @@ public class ClientThread extends Fire implements Runnable, SystemBord {
                 //Skjutter iväg ett skott
                 // som innehåller resultat på skottet som fienden skött och koordinater på mitt egna skott
 
-                coordinat = breakOut(shotOut);
+                setCoordinat(breakOut(shotOut));
 
                 if (tempStatu.equals("h")||tempStatu.equals("s")) {
                     conuter++;
@@ -162,5 +169,13 @@ public class ClientThread extends Fire implements Runnable, SystemBord {
 
         }
 
+    }
+
+    public int getDelay() {
+        return delay;
+    }
+
+    public void setDelay(int delay) {
+        this.delay = delay;
     }
 }

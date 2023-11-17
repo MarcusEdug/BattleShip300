@@ -1,13 +1,11 @@
 package FrontEnd;
 
-import BackEnd.BackEndMap;
-import BackEnd.SystemBord;
+import BackEnd.SystemBoard;
 import ServerAndClient.ClientThread;
 import ServerAndClient.ServerThread;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -20,57 +18,49 @@ import javafx.scene.text.FontWeight;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 
-public class GameBoard extends Application implements SystemBord {
-    public static final int CELL_SIZE = SystemBord.CELL_SIZE;
+public class GameBoardLayout extends Application implements SystemBoard {
+    public static final int CELL_SIZE = SystemBoard.CELL_SIZE;
     public static final int X_ROW_VALUE = XRowValue;
     public static final int Y_ROW_VALUE = YRowValue;
     private static final String SPELARE1 = "Min spelplan";
     private static final String SPELARE2 = "Fiendens spelplan";
-    private BackEndMap backEndMap2;
-    private String sceneState;
-    private boolean changeScene = true;
     public String name;
-    Scene scene1;
-    Scene scene2;
-    Scene scene3;
+    private Scene scene1;
+    private Scene scene2;
+    public String shipDown = " hej";
+    private BufferedReader reader;
+    private PrintWriter writer;
 
-    String ship;
-
-    BufferedReader reader;
-    PrintWriter writer;
-
-    public GameBoard(BufferedReader reader, PrintWriter writer){
+    //ClientThread clientThread;
+   // ServerThread serverThread;
+    public GameBoardLayout(BufferedReader reader, PrintWriter writer){
         this.reader = reader;
         this.writer = writer;
     }
 
+
+    /*public GameBoardLayout(ClientThread clientThread){
+        this.clientThread = clientThread;
+
+    }
+    public GameBoardLayout(ServerThread serverThread){
+        this.serverThread = serverThread;
+    }
+
+     */
+    public GameBoardLayout(){}
     @Override
     public void start(Stage stage) {
         GridPane gridPane = new GridPane();
         ClientThread clinetTread = new ClientThread(writer,reader,stage);
         ServerThread serverThread = new ServerThread(writer,reader,stage);
-        StartSkärm startSkärm = new StartSkärm(clinetTread, serverThread);
-        //this.backEndMap2 = new BackEndMap();
-        //this.backEndMap2.bout51(); //tänk på att vi behöver eventuellt 2 st backendmaps.
+        StartEndScreens StartEndScreens = new StartEndScreens(clinetTread, serverThread);
         scene1 = new Scene(gridPane, X_ROW_VALUE * CELL_SIZE, Y_ROW_VALUE * CELL_SIZE);
-        scene2 = startSkärm.display(name,scene1, stage);
+        scene2 = StartEndScreens.display(name,scene1, stage);
         setupWindow(stage);
         setupPlayerLabels(gridPane);
         setupGamePanes(gridPane);
-        /*while (changeScene) {
-            Scanner my = new Scanner(System.in);
-            sceneState = my.next();
-            if (sceneState.equals("Start")) {
-                stage.setScene(startScene());
-                stage.show();
 
-            }
-            else {
-                changeScene = false;
-            }
-        }
-
-         */
         stage.setScene(scene2);
         stage.show();
 
@@ -103,27 +93,24 @@ public class GameBoard extends Application implements SystemBord {
     }
 
     public void setupGamePanes(GridPane gridPane) {
-        GamePane gamePane1 = new GamePane("Spelplan 1", Y_ROW_VALUE, X_ROW_VALUE);
+        CellLayout gamePane1 = new CellLayout("Spelplan 1", Y_ROW_VALUE, X_ROW_VALUE);
         gamePane1.createGameCells(XRowValue,YRowValue, 1);
-        GamePane gamePane2 = new GamePane("Spelplan 2", Y_ROW_VALUE, X_ROW_VALUE); //Behöver en till backendmap.
+        CellLayout gamePane2 = new CellLayout("Spelplan 2", Y_ROW_VALUE, X_ROW_VALUE); //Behöver en till backendmap.
         gamePane2.createGameCells(XRowValue,YRowValue,2);
         HBox letterHBox1 = createLetterHBox();
         HBox letterHBox2 = createLetterHBox();
         VBox numVBox1 = createNumberVBox();
         VBox numVBox2 = createNumberVBox();
-        //Button buttonDelay = new Button("Change Delay");
-        Label label = new Label(ship);
+        Label label = new Label(shipDown);
 
         gridPane.add(letterHBox1, 1, 0);
         gridPane.add(numVBox1, 0, 1);
         gridPane.add(gamePane1, 1, 1);
         gridPane.add(letterHBox2, X_ROW_VALUE + 2, 0);
-        //gridPane.add(buttonDelay, 13,1);
         gridPane.add(numVBox2, Y_ROW_VALUE + 1, 1);
         gridPane.add(gamePane2, X_ROW_VALUE + 2, 1);
         gridPane.add(label,13,1 );
 
-        //buttonDelay.setOnAction(e-> GameAlert.display());
 
     }
 
@@ -153,6 +140,19 @@ public class GameBoard extends Application implements SystemBord {
             numVBox.getChildren().add(numLabel);
         }
         return numVBox;
+    }
+
+    public String getShipDown() {
+        return shipDown;
+    }
+
+    public void setShipDown(String shipDown) {
+        if (shipDown == null){
+            this.shipDown = "..";
+        }
+        else {
+            this.shipDown = shipDown;
+        }
     }
 
     public static void main(String[] args) {

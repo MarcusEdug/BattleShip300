@@ -1,16 +1,12 @@
 package ServerAndClient;
 
-import BackEnd.BackEndMap;
-import BackEnd.Ship;
-import BackEnd.SystemBord;
+import BackEnd.SystemBoard;
 import FrontEnd.ChangeColor;
-import FrontEnd.Fire;
-import ServerAndClient.ClientThread;
 
 import java.io.*;
 import java.net.Socket;
 
-public class Client implements SystemBord {
+public class Client implements SystemBoard {
 
     private int delay;
     private BufferedReader reader;
