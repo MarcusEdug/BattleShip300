@@ -29,11 +29,11 @@ public class CellLayout extends Pane implements SystemBoard {
                 if (array[y][x].equals("s")) {
                     FXarrayClient[y][x].setFill(Color.GREY);
                 } else {
-                    FXarrayClient[y][x].setFill(Color.NAVY);
+                    FXarrayClient[y][x].setFill(Color.valueOf("023E8A"));
 
                 }
 
-                cell.setFill(Color.NAVY);
+                cell.setFill(Color.valueOf("023E8A"));
                 cell.setStroke(Color.BLACK);
                 int finalX = x;
                 int finalY = y;

@@ -5,6 +5,7 @@ import ServerAndClient.ClientThread;
 import ServerAndClient.ServerThread;
 import javafx.application.Application;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -14,6 +15,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -22,7 +24,6 @@ import java.io.BufferedReader;
 import java.io.PrintWriter;
 
 public class GameBoardLayout extends Application implements SystemBoard {
-    //public static final int CELL_SIZE = SystemBoard.CELL_SIZE;
     private static final int X_ROW_VALUE = XRowValue;
     private static final int Y_ROW_VALUE = YRowValue;
     private static final String SPELARE1 = "Min spelplan";
@@ -30,7 +31,7 @@ public class GameBoardLayout extends Application implements SystemBoard {
     public String name;
     private Scene scene1;
     private Scene scene2;
-    private Text shipText = new Text("here");
+    private Text shipText = new Text("");
     private ClientThread clientThread;
     private ServerThread serverThread;
 
@@ -52,14 +53,24 @@ public class GameBoardLayout extends Application implements SystemBoard {
 
     //Fönstrets inställningar
     public void setupWindow(Stage stage) {
-        double windowWidth = 1300;
-        double windowHeight = 550;
+        Screen screen = Screen.getPrimary();
+        Rectangle2D bonus = screen.getVisualBounds();
+
+        double windowWidth = bonus.getWidth()*0.25;
+        double windowHeight = bonus.getHeight()*0.25;
+        /*
         stage.setMinWidth(1100);
         stage.setMaxWidth(2000);
+         */
         stage.setWidth(windowWidth);
+        /*
         stage.setMinHeight(550);
         stage.setMaxHeight(1000);
+
+         */
         stage.setHeight(windowHeight);
+
+
     }
 
     public void setupPlayerLabels(GridPane gridPane) {

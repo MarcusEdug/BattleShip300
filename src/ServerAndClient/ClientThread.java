@@ -82,6 +82,7 @@ public class ClientThread extends Fire implements Runnable, SystemBoard {
             }
             if ( shotIn.equals("game over")){
                 controllIflose();
+                break;
             }
             else {
                 fireInput(shotIn);

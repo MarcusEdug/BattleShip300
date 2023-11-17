@@ -18,20 +18,20 @@ public class ChangeColor implements SystemBoard {
         int valueX = Character.getNumericValue(input.charAt(0));
         int valueY =Character.getNumericValue(input.charAt(1));
         if (arrayEnemy[valueX][valueY].equals("h")||arrayEnemy[valueX][valueY].equals("s")) {
-            FXarrayServer[valueX][valueY].setFill(Color.GREEN);
+            FXarrayServer[valueX][valueY].setFill(Color.valueOf("6A994E"));
         }
         else {
-            FXarrayServer[valueX][valueY].setFill(Color.ORANGERED);
+            FXarrayServer[valueX][valueY].setFill(Color.valueOf("BC4749"));
         }
     }
     public void colorChangesYour(String input){
         int valueX = Character.getNumericValue(input.charAt(7));
         int valueY = covertYCharToYint((input.charAt(8)));
         if (array[valueX][valueY].equals("h")) {
-            FXarrayClient[valueX][valueY].setFill(Color.GREEN);
+            FXarrayClient[valueX][valueY].setFill(Color.valueOf("#6A994E"));
         }
         else {
-            FXarrayClient[valueX][valueY].setFill(Color.LIGHTGRAY);
+            FXarrayClient[valueX][valueY].setFill(Color.valueOf("E8DAB2"));
         }
     }
 
@@ -39,10 +39,10 @@ public class ChangeColor implements SystemBoard {
         for (int i = 0; i < XRowValue; i++){
             for (int j = 0; j < YRowValue; j++){
                 if (array[i][j].equals("s")) {
-                    FXarrayClient[i][j].setFill(Color.GREY);
+                    FXarrayClient[i][j].setFill(Color.valueOf("6B6B5B"));
                 }
                 else {
-                    FXarrayClient[i][j].setFill(Color.NAVY);
+                    FXarrayClient[i][j].setFill(Color.valueOf("023E8A"));
                 }
             }
 

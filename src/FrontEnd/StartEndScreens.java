@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 public class StartEndScreens implements SystemBoard {
@@ -21,11 +23,12 @@ public class StartEndScreens implements SystemBoard {
     }
     public Scene display(String name, Scene scene, Stage stage){
         Label label = new Label();
-        label.setText("hej");
+        label.setFont(Font.font("Arial", FontWeight.BOLD,80));
+        label.setText("HEJ, Välj delay!");
         ChoiceBox <Integer> choiceBox = new ChoiceBox <>();
         choiceBox.getItems().addAll(0,1,2,3,4,5);
         choiceBox.setValue(3);
-        Button closeButton = new Button("Set");
+        Button closeButton = new Button(" Starta! ");
 
         closeButton.setOnAction(e-> {
             int delay = choiceBox.getValue();
@@ -61,11 +64,12 @@ public class StartEndScreens implements SystemBoard {
 
     public static void endplay (boolean winOrLose, Stage stage){
         Label label = new Label();
+        label.setFont(Font.font("Arial", FontWeight.BOLD,100));
         if (winOrLose) {
-            label.setText("You won");
+            label.setText("Du vann!");
         }
         else {
-            label.setText("You lost");
+            label.setText("FÖRLÅT!\nDu har förlorat!\n :(");
         }
         VBox layout = new VBox(10);
         layout.getChildren().addAll(label);

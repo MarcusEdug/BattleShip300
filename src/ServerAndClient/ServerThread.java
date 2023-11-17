@@ -103,6 +103,7 @@ public class ServerThread extends Fire implements Runnable, SystemBoard {
             }
             if ( shotIn.equals("game over")){
                 controllIflose();
+                break;
             }
             else {
                 //här ta vi emot skottet
