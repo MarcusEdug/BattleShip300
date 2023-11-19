@@ -31,7 +31,7 @@ public class ServerThread extends BackEndControl implements Runnable, SystemBoar
     }
     public ServerThread(){}
 
-    //Metod: Gör att spelet slutar och visar vinnst i end fönstret som kommer upp (ED)
+    //Metod: Gör att spelet slutar och visar vinst i end fönstret som kommer upp (ED)
     public void controllIfwin(){
         if(counter == 30){
 
@@ -42,7 +42,7 @@ public class ServerThread extends BackEndControl implements Runnable, SystemBoar
             StartEndScreens.endplay(win, stage);
         }
     }
-    //Metod: Gör att spelet slutar och vissar förlust i end fönstret som kommer upp (ED)
+    //Metod: Gör att spelet slutar och visar förlust i end fönstret som kommer upp (ED)
     public void controllIflose(){
         win = false;
         gameIsRunning = false;
@@ -66,7 +66,7 @@ public class ServerThread extends BackEndControl implements Runnable, SystemBoar
 
             try {
                 shotIn = reader.readLine();
-                //Ta emot ett skott från Clienten
+                //Tar emot ett skott från Clienten
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -80,17 +80,17 @@ public class ServerThread extends BackEndControl implements Runnable, SystemBoar
         while (gameIsRunning) {
 
             changeColor.colorChangesYour(shotIn);
-            System.out.println("Client skicka : " + shotIn);
+            System.out.println("Client skickade : " + shotIn);
 
-            //Här uppdattera vi våra egna FX karta efter skottet som kom in
+            //Här uppdaterar vi våra egna FX karta efter skottet som kom in
 
             delyTheGame(delay);
             //Sätt en delay på spelet
 
             shotOut = fireOutput(XRowValue,YRowValue);
-            System.out.println("Server skicka : " + shotOut);
+            System.out.println("Server skickade : " + shotOut);
             writer.println(shotOut);
-            //Här skjutter vi på Clienten och vi skickar iväg status på skottet som vi tidigare fick
+            //Här skjuter vi på Clienten och vi skickar iväg status på skottet som vi tidigare fick
 
             setCoordinat(breakOut(shotOut));
             //Vi spara koordinaterna på skott
@@ -122,7 +122,7 @@ public class ServerThread extends BackEndControl implements Runnable, SystemBoar
                 //här ändra vi våran fiende backend karta
 
                 changeColor.colorChangesEnemy(getCoordinat());
-                //Här uppdatar vi FX kartan för fienden
+                //Här uppdaterar vi FX kartan för fienden
 
 
                 if (tempStatu.equals("h")||tempStatu.equals("s")) {

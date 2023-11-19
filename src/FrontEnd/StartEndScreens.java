@@ -25,7 +25,7 @@ public class StartEndScreens {
     public Scene display(String name, Scene scene, Stage stage){
         Label label = new Label();
         label.setFont(Font.font("Arial", FontWeight.BOLD,80));
-        label.setText("HEJ, Välj delay!");
+        label.setText("Hej! Välj en delay");
         ChoiceBox <Integer> choiceBox = new ChoiceBox <>();
         choiceBox.getItems().addAll(0,1,2,3,4,5);
         choiceBox.setValue(3);

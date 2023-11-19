@@ -7,7 +7,7 @@ public class ChangeColor implements SystemBoard {
 
     private int YRowInt;
 
-    //Metod: Ändra färgen på FX kartan för fienden ifrån skott (AR, FK, MS, ED)
+    //Metod: Ändra färgen på FX kartan för fienden utifrån skott (AR, FK, MS, ED)
     public void colorChangesEnemy(String input){
         int valueX = Character.getNumericValue(input.charAt(0));
         int valueY =Character.getNumericValue(input.charAt(1));
@@ -31,7 +31,7 @@ public class ChangeColor implements SystemBoard {
         }
     }
 
-    //Metod: Ändra start färgerna på din egna FX karta (FK, ED, MS, AR)
+    //Metod: Ändra startfärgerna på din egna FX karta (FK, ED, MS, AR)
     public void clientYourMapsColor(){
         for (int i = 0; i < XRowValue; i++){
             for (int j = 0; j < YRowValue; j++){
@@ -46,7 +46,7 @@ public class ChangeColor implements SystemBoard {
         }
     }
 
-    //Metod: Omvanla char till int ( FK, ED, AR, MS
+    //Metod: Omvandlar char till int (FK, ED, AR, MS)
     public int covertYCharToYint(char y){
         if (y == 'a'){
             YRowInt = 0;

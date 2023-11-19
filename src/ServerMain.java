@@ -26,7 +26,7 @@ public class ServerMain extends Application implements SystemBoard {
         server.connect();
         gameBoardLayout = new GameBoardLayout();
         ServerThread serverThread = new ServerThread(server.getWriter(),server.getReader(), gameBoardLayout, primaryStage);
-        //Här skpara vi en client tråd och den behöver en reader, writer, gameboardlayout och stagen. För att funka
+        //Här skapar vi en client-tråd och den behöver en reader, writer, gameboardlayout och stagen. För att funka
         gameBoardLayout.setServerThread(serverThread);
         gameBoardLayout.name = "server";
         gameBoardLayout.start(primaryStage);

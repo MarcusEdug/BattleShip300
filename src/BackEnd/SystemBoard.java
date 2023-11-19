@@ -6,7 +6,7 @@ public interface SystemBoard {
 
     /*
     Klass som använder sig av den här interface
-    -BackEndControll
+    -BackEndControl
     -ChangeColor
     -ClientThread
     -ClientMain

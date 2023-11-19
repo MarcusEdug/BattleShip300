@@ -28,7 +28,7 @@ public class ClientMain extends Application implements SystemBoard {
         client.connect();
         gameBoardLayout = new GameBoardLayout();
         clinetTread = new ClientThread(client.getWriter(),client.getReader(), gameBoardLayout, primaryStage);
-        //Här skpara vi en client tråd och den behöver en reader, writer, gameboardlayout och stagen. För att funka
+        //Här skapar vi en client-tråd och den behöver en reader, writer, gameboardlayout och stagen. För att funka
         gameBoardLayout.setClientThread(clinetTread);
         gameBoardLayout.name = "client";
         gameBoardLayout.start(primaryStage);
