@@ -25,11 +25,11 @@ public class BackEndControl implements SystemBoard {
             indexY= random.nextInt(y);
 
             convertIntToString(indexY);
-            String shotCoordinat = String.join("",String.valueOf(indexX), String.valueOf(indexY));
+            String shotCoordinate = String.join("",String.valueOf(indexX), String.valueOf(indexY));
 
             shotFire = String.join("",shotStatus, " shot ", String.valueOf(indexX), YRow);
-            if (!listOfShot.contains(shotCoordinat)) {
-                listOfShot.add(shotCoordinat);
+            if (!listOfShot.contains(shotCoordinate)) {
+                listOfShot.add(shotCoordinate);
                 count++;
                 isFiring = false;
             }
@@ -37,7 +37,7 @@ public class BackEndControl implements SystemBoard {
         return shotFire;
     }
 
-    //Metod: Tar in sträng värde och ändra sin egna karta och spara status på tidigare skjott (ED, FK, MS, AR)
+    //Metod: Tar in strängvärde och ändrar sin egna karta och spara status på tidigare skott (ED, FK, MS, AR)
     public void fireInput(String shotInput) {
         int valueX = Character.getNumericValue(shotInput.charAt(7));
         int valueY = covertYCharToYint((shotInput.charAt(8)));
@@ -48,7 +48,7 @@ public class BackEndControl implements SystemBoard {
             tom = "h";
             if (!shipControl.equals("v")){
                 tom = "s";
-                //System.out.println("Ett helt sjäp har träffas");
+                //System.out.println("Ett helt skepp har träffas");
             }
         }
         else {
@@ -87,13 +87,13 @@ public class BackEndControl implements SystemBoard {
     }
 
     //Metod: Ändra fiendens karta efter skott koordinat och status på sitt tidigare skott (MS, ED, AR, FK)
-    public void changeEnemyArray(String shotCoordinat, String status){
-        if ( shotCoordinat == null){
+    public void changeEnemyArray(String shotCoordinate, String status){
+        if ( shotCoordinate == null){
 
         }
         else {
-            int valueX = Character.getNumericValue(shotCoordinat.charAt(0));
-            int valueY = Character.getNumericValue(shotCoordinat.charAt(1));
+            int valueX = Character.getNumericValue(shotCoordinate.charAt(0));
+            int valueY = Character.getNumericValue(shotCoordinate.charAt(1));
             if (status.equals("h") || status.equals("s")) {
                 arrayEnemy[valueX][valueY] = "h";
             } else if (status.equals("m")) {
@@ -104,7 +104,7 @@ public class BackEndControl implements SystemBoard {
 
     }
 
-    //Metod: Omvanlar int till string (AR, ED, MS, FK)
+    //Metod: Omvandlar int till string (AR, ED, MS, FK)
     public String convertIntToString(int y){
         if (y == 0){
             YRow = "a";
@@ -148,7 +148,7 @@ public class BackEndControl implements SystemBoard {
         }
     }
 
-    //Metod: Omvanlar char till int (FK, MS, ED, AR)
+    //Metod: Omvandlar char till int (FK, MS, ED, AR)
     public int covertYCharToYint(char y){
         if (y == 'a'){
             YRowInt = 0;
@@ -192,7 +192,7 @@ public class BackEndControl implements SystemBoard {
         }
     }
 
-    //Metod Tar ut kooridnater utfrån en sträng (AR, MS, ED FK)
+    //Metod Tar ut koordinater utifrån en sträng (AR, MS, ED FK)
     public String breakOut (String breakOut){
         String temp;
         int valueX = Character.getNumericValue(breakOut.charAt(7));

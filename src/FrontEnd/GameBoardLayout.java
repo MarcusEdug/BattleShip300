@@ -51,7 +51,7 @@ public class GameBoardLayout extends Application implements SystemBoard {
     }
 
 
-    //Metod: Ändra storlek på fönstret utefrån sin egen dator skärm (FK, AR, MS, ED)
+    //Metod: Ändra storlek på fönstret utifrån sin egen datorskärm (FK, AR, MS, ED)
     public void setupWindow(Stage stage) {
         Screen screen = Screen.getPrimary();
         Rectangle2D bonus = screen.getVisualBounds();
@@ -64,7 +64,7 @@ public class GameBoardLayout extends Application implements SystemBoard {
 
     }
 
-    //Upprättar vad som finns i våran FX karta (ED, MS, AR, FK)
+    //Upprättar vad som finns i vår FX karta (ED, MS, AR, FK)
     public void setupGamePanes(GridPane gridPane) {
         Text player1Label = new Text(SPELARE1);
         player1Label.setFont(Font.font("Arial", FontWeight.BOLD, 16));
@@ -131,10 +131,10 @@ public class GameBoardLayout extends Application implements SystemBoard {
         return numVBox;
     }
 
-    //Metod: Gör så att de kommer upp en text på FX kartan att ett skepp
+    //Metod: Gör så att de kommer upp en text på FX kartan att ett skepp har sänkts
     public void changeText(String temp){
         if(temp.equals("s")){
-            shipText.setText("Ett helt sjäp har träffas");
+            shipText.setText("Ett helt skepp har träffas");
         }
         else {
             shipText.setText("");
