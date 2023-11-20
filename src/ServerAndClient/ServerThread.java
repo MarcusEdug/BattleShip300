@@ -61,7 +61,7 @@ public class ServerThread extends BackEndControl implements Runnable, SystemBoar
             getShip().placeShipsOnMap(arrayYours);
             //Skapa och sätt ut skepp på din backend karta
 
-            changeColor.clientYourMapsColor();
+            changeColor.changeYourMapColor();
             //Sätt ut skeppen på din egna FX karta
 
             try {
@@ -88,7 +88,7 @@ public class ServerThread extends BackEndControl implements Runnable, SystemBoar
             //Sätt en delay på spelet
 
             shotOut = fireOutput(XRowValue,YRowValue);
-            System.out.println("Server send : " + shotOut);
+            System.out.println("Server sent : " + shotOut);
             System.out.println(" ");
             writer.println(shotOut);
             //Här skjuter vi på Clienten och vi skickar iväg status på skottet som vi tidigare fick

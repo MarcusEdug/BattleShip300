@@ -30,6 +30,7 @@ public class StartEndScreens {
         choiceBox.getItems().addAll(0,1,2,3,4,5);
         choiceBox.setValue(3);
         Button closeButton = new Button(" Starta! ");
+        stage.setTitle(name);
 
         closeButton.setOnAction(e-> {
             int delay = choiceBox.getValue();
@@ -41,13 +42,13 @@ public class StartEndScreens {
 
             if (name.equals("client")){
                 clientThread.setDelay(delay);
-                System.out.println(delay);
+                System.out.println("The delay is " + delay);
 
                 clientMainThread.start();
             }
             else {
                 serverThread.setDelay(delay);
-                System.out.println(delay);
+                System.out.println("The delay is " + delay);
 
                 serverMainTread.start();
 

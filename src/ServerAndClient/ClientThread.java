@@ -62,12 +62,12 @@ public class ClientThread extends BackEndControl implements Runnable, SystemBoar
             getShip().placeShipsOnMap(arrayYours);
             //Skapar och sätter ut skepp
 
-            changeColor.clientYourMapsColor();
+            changeColor.changeYourMapColor();
             //Ändra din FX karta
 
             shotOut = fireOutput(XRowValue, YRowValue);
             writer.println(shotOut);
-            System.out.println("Client send : " + shotOut);
+            System.out.println("Client sent : " + shotOut);
             System.out.println(" ");
             //Skjutter iväg ett skott mot Serven
 
@@ -125,7 +125,7 @@ public class ClientThread extends BackEndControl implements Runnable, SystemBoar
                     //Sätt en delay på spelet
 
                     shotOut = fireOutput(XRowValue, YRowValue);
-                    System.out.println("Client send : " + shotOut);
+                    System.out.println("Client sent : " + shotOut);
                     System.out.println(" ");
                     writer.println(shotOut);
                     //Skjuter iväg ett skott
@@ -133,15 +133,6 @@ public class ClientThread extends BackEndControl implements Runnable, SystemBoar
 
                     setCoordinat(breakOut(shotOut));
                     //Ta ut koordinaterna för skottet som skickades iväg och spara den
-
-               /* if (tempStatu.equals("h")||tempStatu.equals("s")) {
-                    counter++;
-                    //räkna hur många träffa som man har gjort
-                }
-                controllIfwin();
-
-                */
-                    //Kolla ifall man har vunnit
                 }
             }
         }
