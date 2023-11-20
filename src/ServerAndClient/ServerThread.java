@@ -80,7 +80,7 @@ public class ServerThread extends BackEndControl implements Runnable, SystemBoar
         while (gameIsRunning) {
 
             changeColor.colorChangesYour(shotIn);
-            System.out.println("Client skickade : " + shotIn);
+            System.out.println("Client sent : " + shotIn);
 
             //Här uppdaterar vi våra egna FX karta efter skottet som kom in
 
@@ -88,7 +88,8 @@ public class ServerThread extends BackEndControl implements Runnable, SystemBoar
             //Sätt en delay på spelet
 
             shotOut = fireOutput(XRowValue,YRowValue);
-            System.out.println("Server skickade : " + shotOut);
+            System.out.println("Server send : " + shotOut);
+            System.out.println(" ");
             writer.println(shotOut);
             //Här skjuter vi på Clienten och vi skickar iväg status på skottet som vi tidigare fick
 
@@ -105,6 +106,7 @@ public class ServerThread extends BackEndControl implements Runnable, SystemBoar
             }
             if ( shotIn.equals("game over")){
                 //vi kollar ifall man har förlorat
+                System.out.println("Client sent : " + shotIn);
                 controllIflose();
                 break;
             }
@@ -128,11 +130,12 @@ public class ServerThread extends BackEndControl implements Runnable, SystemBoar
                 if (tempStatu.equals("h")||tempStatu.equals("s")) {
                     counter++;
                     //Håller räkningen på hur många gånger vi träffar
+                    controllIfwin();
+                    //kollar ifall vi har vunnit
                 }
-                controllIfwin();
-                //kollar ifall vi har vunnit
             }
         }
+
     }
 
     public int getDelay() {

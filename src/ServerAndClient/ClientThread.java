@@ -67,7 +67,7 @@ public class ClientThread extends BackEndControl implements Runnable, SystemBoar
 
             shotOut = fireOutput(XRowValue, YRowValue);
             writer.println(shotOut);
-            System.out.println("Client skickade : " + shotOut);
+            System.out.println("Client send : " + shotOut);
             System.out.println(" ");
             //Skjutter iväg ett skott mot Serven
 
@@ -84,6 +84,7 @@ public class ClientThread extends BackEndControl implements Runnable, SystemBoar
                 throw new RuntimeException(e);
             }
             if ( shotIn.equals("game over")){
+                System.out.println("Server sent : " + shotIn);
                 controllIflose();
                 //Kollar om man har förlorat
                 break;
@@ -97,7 +98,7 @@ public class ClientThread extends BackEndControl implements Runnable, SystemBoar
                 gameBoardLayout.changeText(getShotStatus());
                 //Om en båt har sänkts så skrivs det ut på FX kartan
 
-                System.out.println("Server skicka : " + shotIn);
+                System.out.println("Server sent : " + shotIn);
 
 
                 changeColor.colorChangesYour(shotIn);
@@ -112,25 +113,36 @@ public class ClientThread extends BackEndControl implements Runnable, SystemBoar
                 changeColor.colorChangesEnemy(getCoordinat());
                 //Ändra FX kartan för fienden
 
-                delyTheGame(delay);
-                //Sätt en delay på spelet
-
-                shotOut = fireOutput(XRowValue, YRowValue);
-                System.out.println("Client skickade : " + shotOut);
-                System.out.println(" ");
-                writer.println(shotOut);
-                //Skjuter iväg ett skott
-                // som innehåller resultat på skottet som fienden skött och koordinater på mitt egna skott
-
-                setCoordinat(breakOut(shotOut));
-                //Ta ut koordinaterna för skottet som skickades iväg och spara den
-
                 if (tempStatu.equals("h")||tempStatu.equals("s")) {
+                    counter++;
+                    //räkna hur många träffa som man har gjort
+                    controllIfwin();
+                    //Kolla ifall man har vunnit
+                }
+
+                if (counter != 30) {
+                    delyTheGame(delay);
+                    //Sätt en delay på spelet
+
+                    shotOut = fireOutput(XRowValue, YRowValue);
+                    System.out.println("Client send : " + shotOut);
+                    System.out.println(" ");
+                    writer.println(shotOut);
+                    //Skjuter iväg ett skott
+                    // som innehåller resultat på skottet som fienden skött och koordinater på mitt egna skott
+
+                    setCoordinat(breakOut(shotOut));
+                    //Ta ut koordinaterna för skottet som skickades iväg och spara den
+
+               /* if (tempStatu.equals("h")||tempStatu.equals("s")) {
                     counter++;
                     //räkna hur många träffa som man har gjort
                 }
                 controllIfwin();
-                //Kolla ifall man har vunnit
+
+                */
+                    //Kolla ifall man har vunnit
+                }
             }
         }
     }
