@@ -79,7 +79,7 @@ public class BackEndControl implements SystemBoard {
         }
         else {
             try {
-                Thread.sleep(delay * 100);
+                Thread.sleep(delay * 1000);
             } catch (InterruptedException ie) {
                 Thread.currentThread().interrupt();
             }

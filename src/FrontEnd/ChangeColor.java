@@ -32,7 +32,7 @@ public class ChangeColor implements SystemBoard {
     }
 
     //Metod: Ändra startfärgerna på din egna FX karta (FK, ED, MS, AR)
-    public void clientYourMapsColor(){
+    public void changeYourMapColor(){
         for (int i = 0; i < XRowValue; i++){
             for (int j = 0; j < YRowValue; j++){
                 if (arrayYours[i][j].equals("s")) {
