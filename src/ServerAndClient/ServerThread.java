@@ -74,6 +74,7 @@ public class ServerThread extends BackEndControl implements Runnable, SystemBoar
             fireInput(shotIn);
             //Här får vi en status på tidigare skott
             //Här ändras våra egna karta efter skottet
+            delyTheGame(delay);
 
 
         }
